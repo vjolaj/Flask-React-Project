@@ -33,3 +33,27 @@ class SignUpForm(FlaskForm):
     firstName = StringField('first name', validators=[DataRequired()])
     lastName = StringField('last name', validators=[DataRequired()])
     phoneNumber = StringField('phone number', validators=[DataRequired(), Length(max=10, min=10), phoneNumber_exists]) 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

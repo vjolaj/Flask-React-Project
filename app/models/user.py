@@ -17,6 +17,9 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(255), nullable=False)
     phoneNumber = db.Column(db.Integer, nullable=False, unique=True)
     
+    reviews = db.relationship("Review", back_populates="user")
+    restaurants = db.relationship("Restaurant", back_populates="owner")
+    orders = db.relationship("Order", back_populates="user")
     
     @property
     def password(self):

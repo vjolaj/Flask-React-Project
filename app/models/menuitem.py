@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .shoppingcart_menuitem import shoppingCart_menuItems
 
 class MenuItem(db.Model):
     __tablename__ = 'menuItems'
@@ -9,13 +10,13 @@ class MenuItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     itemName = db.Column(db.String(50), nullable=False)
     restaurantId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("restaurants.id")))
-    price = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Numeric(4, 2), nullable=False)
     itemType = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255))
     imageUrl = db.Column(db.String(255))
     
     restaurant = db.relationship("Restaurant", back_populates="menuItems")
-    shoppingCarts = db.relationship("ShoppingCart", secondary="shoppingCart_menuItems", back_populates="menuItem")
+    shoppingCarts = db.relationship("ShoppingCart", secondary=shoppingCart_menuItems, back_populates="menuItems")
     
 
     def to_dict(self):

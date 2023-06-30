@@ -5,13 +5,13 @@ shoppingCart_menuItems = db.Table(
     db.Column(
         "shoppingCartId",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("shoppingCart.id")),
+        db.ForeignKey(add_prefix_for_prod("shoppingCarts.id")),
         primary_key=True
     ),
     db.Column(
         "menuItemId",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("menuItem.id")),
+        db.ForeignKey(add_prefix_for_prod("menuItems.id")),
         primary_key=True
     )
     

@@ -1,19 +1,18 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Restaurants(db.Model):
+class Restaurant(db.Model):
     __tablename__ = 'restaurants'
     
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    ownerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("owners.id")))
+    ownerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     name = db.Column(db.String(255), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     cuisineType = db.Column(db.String(40), nullable=False)
-    priceRange = db.Column(db.Integer, nullable=False)
+    priceRange = db.Column(db.String, nullable=False)
     imageUrl = db.Column(db.String(255), nullable=False)
-    rating = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(255))
     
     

@@ -17,7 +17,7 @@ class Order(db.Model):
 
     user = db.relationship("User", back_populates="orders")
     restaurant = db.relationship("Restaurant", back_populates="orders")
-    shoppingCart = db.relationship("ShoppingCart", back_populates="orders")
+    shoppingCarts = db.relationship("ShoppingCart", back_populates="order")
 
     def to_dict(self):
         return {

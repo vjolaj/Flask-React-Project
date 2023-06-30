@@ -8,7 +8,7 @@ class Review(db.Model):
     restaurantId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("restaurants.id")))
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     rating = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String(255))
+    description = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, default=db.func.now())
     
     restaurant = db.relationship("Restaurant", back_populates="reviews")

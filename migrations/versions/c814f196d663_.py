@@ -46,7 +46,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['ownerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('menuItems',
+    op.create_table('menuitems',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('itemName', sa.String(length=50), nullable=False),
     sa.Column('restaurantId', sa.Integer(), nullable=True),
@@ -98,6 +98,12 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE restaurants SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE menuitems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE shoppingCarts SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE shoppingCart_menuItems SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
@@ -107,7 +113,7 @@ def downgrade():
     op.drop_table('shoppingCarts')
     op.drop_table('reviews')
     op.drop_table('orders')
-    op.drop_table('menuItems')
+    op.drop_table('menuitems')
     op.drop_table('restaurants')
     op.drop_table('users')
     # ### end Alembic commands ###

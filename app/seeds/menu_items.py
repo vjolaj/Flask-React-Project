@@ -101,7 +101,7 @@ def seed_menuItems():
         description = "",
         imageUrl = "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/516125/516125_p/516125"
     )
-    
+
     db.session.add(menuItem1)
     db.session.add(menuItem2)
     db.session.add(menuItem3)
@@ -117,7 +117,7 @@ def seed_menuItems():
 
 def undo_menuItems():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.menuitems RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.menuItems RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM menuItems"))
         

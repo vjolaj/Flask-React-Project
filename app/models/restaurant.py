@@ -30,6 +30,5 @@ class Restaurant(db.Model):
             'cuisineType': self.cuisineType,
             'priceRange': self.priceRange,
             'imageUrl': self.imageUrl,
-            'rating': self.rating,
             'description': self.description
         }

@@ -33,7 +33,7 @@ def seed_reviews():
 
     review5 = Review(
         restaurantId = 1,
-        userId = 5,
+        userId = 1,
         rating = 1,
         description = "Worst experience ever! The food was tasteless and seemed to have been reheated multiple times. The service was incredibly slow, and the staff was rude and unprofessional. I wouldn't recommend this place to anyone."
     )

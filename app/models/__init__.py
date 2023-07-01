@@ -1,6 +1,6 @@
 from .db import db
 from .user import User
-from .menuitem import MenuItem
+from .menuItem import MenuItem
 from .order import Order
 from .restaurant import Restaurant
 from .review import Review

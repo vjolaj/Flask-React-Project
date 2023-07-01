@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .shoppingcart_menuitem import shoppingCart_menuItems
 
 class MenuItem(db.Model):
-    __tablename__ = 'menuItems'
+    __tablename__ = 'menuitems'
     
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

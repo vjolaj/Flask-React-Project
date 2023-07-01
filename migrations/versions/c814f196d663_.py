@@ -88,7 +88,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['orderId'], ['orders.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('shoppingCart_menuItems',
+    op.create_table('shoppingcart_menuitems',
     sa.Column('shoppingCartId', sa.Integer(), nullable=False),
     sa.Column('menuItemId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['menuItemId'], ['menuitems.id'], ),
@@ -103,7 +103,7 @@ def upgrade():
         op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE shopping_carts SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE shoppingCart_menuItems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE shoppingcart_menuitems SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

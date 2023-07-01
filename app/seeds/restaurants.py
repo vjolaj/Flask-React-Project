@@ -45,7 +45,7 @@ def seed_restaurants():
         cuisineType = "Mexican",
         priceRange = "$$$",
         imageUrl = "https://duyt4h9nfnj50.cloudfront.net/resized/16f61060f98ded0e3991ebeae0225766-w2880-dc.jpg",
-        description = "El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city. Offering a diverse menu of authentic Mexican dishes, from sizzling fajitas to flavorful enchiladas, it promises a fiesta of flavors. With its lively atmosphere, friendly staff, and excellent service, El Sol Mexicano is a must-visit for Mexican food enthusiasts."
+        description = "El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city. Offering a diverse menu of authentic Mexican dishes, from sizzling fajitas to flavorful enchiladas, it promises a fiesta of flavors."
     )
     restaurant6 = Restaurant(
         ownerId = 3,
@@ -54,7 +54,7 @@ def seed_restaurants():
         cuisineType = "Mexican",
         priceRange = "$$",
         imageUrl = "https://d1ralsognjng37.cloudfront.net/9ba8dac9-f3d0-4de0-92e1-f9331f040936",
-        description = "Experience the true taste of Mexico at La Cantina Mexicana. From mouthwatering tacos to zesty guacamole, their menu showcases the rich and authentic flavors of Mexican cuisine. The cozy and inviting ambiance, coupled with attentive service, creates an enjoyable dining experience. Whether you’re a fan of spicy salsas or refreshing margaritas, La Cantina Mexicana has something to satisfy every craving."
+        description = "Experience the true taste of Mexico at La Cantina Mexicana. From mouthwatering tacos to zesty guacamole, their menu showcases the rich and authentic flavors of Mexican cuisine."
     )
     db.session.add(restaurant1)
     db.session.add(restaurant2)

@@ -1,17 +1,21 @@
 """empty message
 
-Revision ID: 21102f3926e6
-Revises: 13c0821f6854
-Create Date: 2023-06-30 18:14:13.041088
+Revision ID: cc3a4db45836
+Revises: 
+Create Date: 2023-06-30 20:35:50.152731
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = '21102f3926e6'
-down_revision = '13c0821f6854'
+revision = 'cc3a4db45836'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -37,9 +41,8 @@ def upgrade():
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('address', sa.String(length=255), nullable=False),
     sa.Column('cuisineType', sa.String(length=40), nullable=False),
-    sa.Column('priceRange', sa.Integer(), nullable=False),
+    sa.Column('priceRange', sa.String(), nullable=False),
     sa.Column('imageUrl', sa.String(length=255), nullable=False),
-    sa.Column('rating', sa.Numeric(precision=2, scale=1), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['ownerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -93,6 +96,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['shoppingCartId'], ['shoppingCarts.id'], ),
     sa.PrimaryKeyConstraint('shoppingCartId', 'menuItemId')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

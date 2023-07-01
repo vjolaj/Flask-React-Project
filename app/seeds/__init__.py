@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .restaurants import seed_restaurants, undo_restaurants
 from .reviews import seed_reviews, undo_reviews
-from .menu_items import seed_menu_items, undo_menuItems
+from .menu_items import seed_menu_items, undo_menu_items
 from .orders import seed_order, undo_order
 
 from app.models.db import db, environment, SCHEMA

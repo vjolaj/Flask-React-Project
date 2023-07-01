@@ -1,7 +1,7 @@
 from app.models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
 
-def seed_menuItems():
+def seed_menu_items():
   
     menuItem1 = MenuItem(
         itemName = "Big Mac",

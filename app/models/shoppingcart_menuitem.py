@@ -5,7 +5,7 @@ shoppingCart_menuItems = db.Table(
     db.Column(
         "shoppingCartId",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("shoppingCarts.id")),
+        db.ForeignKey(add_prefix_for_prod("shopping_carts.id")),
         primary_key=True
     ),
     db.Column(

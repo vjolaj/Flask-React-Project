@@ -11,7 +11,7 @@ shoppingCart_menuItems = db.Table(
     db.Column(
         "menuItemId",
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("menuItems.id")),
+        db.ForeignKey(add_prefix_for_prod("menuitems.id")),
         primary_key=True
     )
     

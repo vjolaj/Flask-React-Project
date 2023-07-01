@@ -91,7 +91,7 @@ def upgrade():
     op.create_table('shoppingCart_menuItems',
     sa.Column('shoppingCartId', sa.Integer(), nullable=False),
     sa.Column('menuItemId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['menuItemId'], ['menuItems.id'], ),
+    sa.ForeignKeyConstraint(['menuItemId'], ['menuitems.id'], ),
     sa.ForeignKeyConstraint(['shoppingCartId'], ['shoppingCarts.id'], ),
     sa.PrimaryKeyConstraint('shoppingCartId', 'menuItemId')
     )

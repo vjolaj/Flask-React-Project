@@ -115,7 +115,7 @@ def seed_menuItems():
     db.session.add(menuItem11)
     db.session.commit()
 
-def undo_menuItems():
+def undo_menu_items():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.menuItems RESTART IDENTITY CASCADE;")
     else:

@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     phoneNumber = db.Column(db.Integer, nullable=False, unique=True)
     
     reviews = db.relationship("Review", back_populates="user")
-    restaurants = db.relationship("Restaurant", back_populates="owner")
+    restaurants = db.relationship("Restaurant", back_populates="owner", cascade="all, delete")
     orders = db.relationship("Order", back_populates="user")
     
     @property

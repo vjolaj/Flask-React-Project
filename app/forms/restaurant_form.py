@@ -3,7 +3,6 @@ from wtforms import StringField, IntegerField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length
 
 class RestaurantForm(FlaskForm):
-    ownerId = StringField('owner_id', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired(), Length(max=255)])
     address = StringField('Address', validators=[DataRequired(), Length(max=255)])
     cuisineType = SelectField('Cuisine Type', choices=[('American', 'American'), ('Asian', 'Asian'), ('Italian', 'Italian'), ('Mexican', 'Mexican'), ('Seafood', 'Seafood'), ('Pizza','Pizza')])

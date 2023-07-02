@@ -19,7 +19,7 @@ class Restaurant(db.Model):
     owner = db.relationship("User", back_populates="restaurants")
     reviews = db.relationship("Review", back_populates="restaurant")
     orders = db.relationship("Order", back_populates="restaurant")
-    menuItems = db.relationship("MenuItem", back_populates="restaurant")
+    menuItems = db.relationship("MenuItem", back_populates="restaurant", cascade="all, delete")
     
     def to_dict(self):
         return {

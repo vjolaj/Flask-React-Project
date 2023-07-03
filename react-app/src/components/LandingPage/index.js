@@ -31,12 +31,16 @@ const LandingPage = () => {
     // useEffect(()=>{
     //   return (() => dispatch(clearPageAction()))
     // },[dispatch])
+
   return (
     <>
 
       <div className="landingBack">
         <div className="landing-nav-right">
-           <button onClick={loginButton} className="whiteLogIn">Log in</button>
+          <div>
+            <button onClick={loginButton} className="whiteLogIn"><i class="fa-solid fa-user"></i> Log in</button>
+          </div>
+           
           <button onClick={signupButton} className="blackSignUp">Sign Up</button>
         </div>
 

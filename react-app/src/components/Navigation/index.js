@@ -36,10 +36,10 @@ function Navigation({ isLoaded }){
 				</div>
 			<div className='logo'>
 				<p>
-					<NavLink exact to="/" className='logo'>Epic</NavLink>
+					<NavLink exact to="/restaurants" className='logo'>Epic</NavLink>
 				</p>
 				<p>
-					<NavLink exact to="/" className='Eats'>Eats</NavLink>
+					<NavLink exact to="/restaurants" className='Eats'>Eats</NavLink>
 				</p>	
 			</div>
 				

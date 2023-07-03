@@ -43,12 +43,12 @@
       font-size: 20px;
  
 }
-.logIn-Form p{
+/* .logIn-Form p{
   padding-bottom: 1rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
   
-}
+} */
 .input{
   background-color: rgba(211, 211, 211, 0.331);
   border: none;
@@ -61,7 +61,7 @@
 
 .logIn-form-button{
     display: flex;
-      height: 2.5rem;
+      height: 2.6rem;
       color: white;
       background-color: black;
       border: none;
@@ -71,4 +71,13 @@
       justify-content: center;
       align-items: center;
       align-self: center;
+}
+
+.or{
+  height: 10px;
+  margin: 0;
+  margin-bottom: 11px;
+  color: rgb(180, 177, 177);
+  
+
 }

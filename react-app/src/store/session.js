@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+// const CLEAR_PAGE = 'page/clear'
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -10,6 +11,12 @@ const setUser = (user) => ({
 const removeUser = () => ({
 	type: REMOVE_USER,
 });
+
+// export const clearPageAction = () =>{
+//     return {
+//         type: CLEAR_PAGE
+//     }
+// };
 
 const initialState = { user: null };
 
@@ -103,6 +110,8 @@ export default function reducer(state = initialState, action) {
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		// case CLEAR_PAGE:
+		// 	return{...state, initialState:{}}
 		default:
 			return state;
 	}

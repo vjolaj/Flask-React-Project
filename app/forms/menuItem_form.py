@@ -1,0 +1,17 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, DecimalField, SelectField
+from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
+
+def price_within_range(form, field):
+    #Checking if price is within $0 to $100
+    price = field.data
+    if price < 0 or price > 100:
+        raise ValidationError("Price must be within $0 and $100.")
+    
+class MenuItemForm(FlaskForm):
+    itemName = StringField('Item Name', validators=[DataRequired(), Length(max=255)])
+    price = DecimalField('Price', validators=[DataRequired(), price_within_range])
+    itemType = SelectField('Item Type', choices=[('Entree', 'Entree'), ('Side', 'Side'), ('Dessert', 'Dessert'), ('Drink', 'Drink')])
+    description = StringField('Item description', validators=[DataRequired(), Length(max=255)])
+    imageUrl = StringField('ImageUrl', validators=[DataRequired()])
+

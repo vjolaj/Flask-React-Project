@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.models import Restaurant, db, User, MenuItem
-from app.forms import RestaurantForm
+from app.forms import RestaurantForm, MenuItemForm
 from .auth_routes import validation_errors_to_error_messages
 
 restaurant_routes = Blueprint("restaurants", __name__)
@@ -118,5 +118,28 @@ def edit_menu_items(restaurantId):
     if restaurant is None:
         return {'errors': ['Restaurant does not exist']}, 404
     
+    if restaurant.ownerId is not current_user.id:
+        return {'errors': ['Unauthorized access']}, 403
+    
     restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
+
+    form = MenuItemForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    if form.validate_on_submit():
+        new_menu_item = MenuItem(
+            restaurantId= restaurantId,
+            itemName=form.data['itemName'],
+            price=form.data['price'],
+            itemType=form.data['itemType'],
+            description=form.data['description'],
+            imageUrl=form.data['imageUrl']
+        )
+        db.session.add(new_menu_item)
+        db.session.commit()
+        
+        return {"new_menu_item": new_menu_item.to_dict()}
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
     return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}

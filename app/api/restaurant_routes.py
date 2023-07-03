@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from app.models import Restaurant, db, User
+from app.models import Restaurant, db, User, MenuItem
 from app.forms import RestaurantForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -87,7 +87,7 @@ def update_restaurant(restaurantId):
 @login_required
 def delete_restaurant(restaurantId):
     """
-    This route will return a list of restaurants owned by the current user.
+    This route will delete a restaurant.
     """
     restaurant_to_delete = Restaurant.query.get(restaurantId)
 
@@ -107,3 +107,16 @@ def get_current_restaurants():
     """
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
+
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET', 'POST'])
+@login_required
+def edit_menu_items(restaurantId):
+    """
+    This route will both and get and add menu items to a restaurant.
+    """
+    restaurant = Restaurant.query.get(restaurantId)
+    if restaurant is None:
+        return {'errors': ['Restaurant does not exist']}, 404
+    
+    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
+    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}

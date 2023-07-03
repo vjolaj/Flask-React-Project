@@ -1,31 +1,49 @@
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+// import OpenModalButton from "../OpenModalButton";
+// import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
+
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef = useRef();
+
+	  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+	
 	return (
 		<div className='nav'>
 			<div className='navLeft'>
-				<p className='userButton'>
+				<div className='userButton'>
 					<ProfileButton user={sessionUser} className='userButton'/>
-				</p>
-				<div className='logo'>
+				</div>
+			<div className='logo'>
 				<p>
 					<NavLink exact to="/" className='logo'>Epic</NavLink>
 				</p>
 				<p>
 					<NavLink exact to="/" className='Eats'>Eats</NavLink>
 				</p>	
-				</div>
+			</div>
 				
 			</div>
-
-			<div></div>
-
 		</div>
 		
 	);

@@ -5,8 +5,8 @@ from wtforms.validators import DataRequired, Length, NumberRange, ValidationErro
 def price_within_range(form, field):
     #Checking if price is within $0 to $100
     price = field.data
-    if price < 0 or price > 100:
-        raise ValidationError("Price must be within $0 and $100.")
+    if price < 0 or price > 99.99:
+        raise ValidationError("Price must be within $0 and $99.99.")
     
 class MenuItemForm(FlaskForm):
     itemName = StringField('Item Name', validators=[DataRequired(), Length(max=255)])

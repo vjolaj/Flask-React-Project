@@ -39,19 +39,19 @@ const getUserOrdersThunk = () => async dispatch => {
     return data;
 };
 
-const postUserOrderThunk = (order) => async dispatch => {
-    const {  } = order
+// const checkoutThunk = (order) => async dispatch => {
+//     const {  } = order
 
-    const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+//     const res = await fetch('/api/orders', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
 
-        })
-    })
-}
+//         })
+//     })
+// }
 
 const initialState = {
     currentUserOrders: {},
@@ -70,12 +70,16 @@ const ordersReducer = (state = initialState, action) => {
                 ...state,
                 currentUserOrders: {...state.currentUserOrders}
             };
-            newState.currentUserOrders[action.order.id] = action.order
+            newUserOrders.currentUserOrders[action.order.id] = action.order
             return newUserOrders;
         case GET_RESTAURANT_ORDERS:
             return {
                 ...state,
                 restaurantOrders: action.orders
             };
+        default:
+            return state;
     }
 }
+
+export default ordersReducer;

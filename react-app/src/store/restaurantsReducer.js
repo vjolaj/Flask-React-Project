@@ -145,6 +145,8 @@ const restaurantsReducer = (state = initialState, action) => {
             }
             delete newState.allRestaurants[action.id]
             return newState
+        default:
+            return state;
     }
 };
 

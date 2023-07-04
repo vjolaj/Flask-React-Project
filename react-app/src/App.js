@@ -34,13 +34,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-<<<<<<< HEAD
-          <Route path="/newmenuitem">
-            <SignupFormPage />
-=======
+          {/* <Route path="/newmenuitem">
+            <SignupFormPage /> */}
           <Route exact path='/restaurants'>
             <RestaurantsIndex/>
->>>>>>> reviews_routes
           </Route>
         </Switch>
       )}

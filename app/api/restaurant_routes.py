@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from app.models import Restaurant, db, User
-from app.forms import RestaurantForm
+from app.models import Restaurant, db, User, Review
+from app.forms import RestaurantForm, ReviewForm
 from .auth_routes import validation_errors_to_error_messages
 
 restaurant_routes = Blueprint("restaurants", __name__)
@@ -107,3 +107,39 @@ def get_current_restaurants():
     """
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
+
+
+#Get all reviews of single restaurant
+@restaurant_routes.route("/<int:restaurantId>/reviews")
+def get_reviews_single_restaurant(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    reviews = Review.query.filter_by(restaurantId = restaurantId)
+    return {"restaurant_reviews":{review.id: review.to_dict() for review in reviews}}
+
+#Get all reviews    
+@restaurant_routes.route("/reviews")
+def get_all_reviews():
+    reviews = Review.query.all()
+    return {"restaurant_reviews":{review.id: review.to_dict() for review in reviews}}
+
+#POST a new review
+@restaurant_routes.route("/<int:restaurantId>/reviews/new", methods=['POST'])
+@login_required
+def create_review(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    form=ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+  
+    if form.validate_on_submit():
+        new_review = Review(
+            restaurantId = restaurant.id,
+            userId = current_user.id,
+            rating = form.data['rating'],
+            description= form.data['description']
+        )
+
+        db.session.add(new_review)
+        db.session.commit()
+        
+        return {"new_review": new_review.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

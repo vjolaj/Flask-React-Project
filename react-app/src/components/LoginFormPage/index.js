@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -14,8 +14,16 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
+    useEffect(()=>{
+        const errors = [];
+        if (password.length > 1 || password.length < 6) errors.password="Password needs to be at least 6 characters.";
+        setErrors(errors);
+    },[password])
+
+
   if (sessionUser) return <Redirect to="/restaurants" />;
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -58,6 +66,7 @@ function LoginFormPage() {
         </ul>
         <label>
           <p>What's your email and password?</p>
+         
           <input
           className="input"
             type="text"
@@ -65,6 +74,7 @@ function LoginFormPage() {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Enter Email"
+            
           />
         </label>
         <label>

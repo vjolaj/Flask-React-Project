@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
 import RestaurantsIndex from "./components/RestaurantsIndex";
+import Main from "./components/Main";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function App() {
           {/* <Route path="/newmenuitem">
             <SignupFormPage /> */}
           <Route exact path='/restaurants'>
-            <RestaurantsIndex/>
+            <Main/>
           </Route>
         </Switch>
       )}

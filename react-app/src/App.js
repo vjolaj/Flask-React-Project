@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
+import RestaurantsIndex from "./components/RestaurantsIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,8 +34,13 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+<<<<<<< HEAD
           <Route path="/newmenuitem">
             <SignupFormPage />
+=======
+          <Route exact path='/restaurants'>
+            <RestaurantsIndex/>
+>>>>>>> reviews_routes
           </Route>
         </Switch>
       )}

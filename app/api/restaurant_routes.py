@@ -1,7 +1,12 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
+<<<<<<< HEAD
 from app.models import Restaurant, db, User, MenuItem, Review
 from app.forms import RestaurantForm, MenuItemForm, ReviewForm
+=======
+from app.models import Restaurant, db, User, Review
+from app.forms import RestaurantForm
+>>>>>>> reviews_routes
 from .auth_routes import validation_errors_to_error_messages
 from .AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
@@ -109,6 +114,7 @@ def get_current_restaurants():
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
 
+<<<<<<< HEAD
 @restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET', 'POST'])
 @login_required
 def edit_menu_items(restaurantId):
@@ -183,3 +189,5 @@ def create_review(restaurantId):
         
         return {"new_review": new_review.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+=======
+>>>>>>> reviews_routes

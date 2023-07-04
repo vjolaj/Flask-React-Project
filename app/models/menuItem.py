@@ -19,9 +19,8 @@ class MenuItem(db.Model):
     restaurant = db.relationship("Restaurant", back_populates="menuItems")
     # orderItems = db.relationship("OrderItem", back_populates="menuItem", cascade="all, delete")
     # orders = db.relationship("Order", secondary="OrderItem", back_populates="menuItems")
-    orderAssociation = db.relationship("OrderItem", back_populates="menuItem")
+    orderAssociation = db.relationship("OrderItem", back_populates="menuItem", cascade="all, delete")
     orders = association_proxy("orderAssociation", 'order', creator=lambda o: OrderItem(order=o))
-
 
     def to_dict(self):
         return {

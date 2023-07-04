@@ -9,7 +9,7 @@ class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     orderId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("orders.id")))
     menuItemId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menuItems.id")))
-    quantity = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Integer, default=1, nullable=False)
 
     # menuItem = db.relationship("MenuItem", back_populates="orderItems")
     # order = db.relationship("Order", back_populates="orderItems")

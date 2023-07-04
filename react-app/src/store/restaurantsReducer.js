@@ -5,10 +5,10 @@ const DELETE_SINGLE_RESTAURANT = "/restaurant/DELETE/single";
 
 //action creators
 const readAllRestaurantsAction = (restaurants) => {
-  return {
-    type: GET_ALL_RESTAURANTS,
-    restaurants,
-  };
+    return{
+       type: GET_ALL_RESTAURANTS,
+    restaurants, 
+    }
 };
 
 const readSingleRestaurantAction = (restaurant) => {
@@ -29,6 +29,10 @@ const deleteRestaurantAction = (restaurant) => {
 export const getAllRestaurantsThunk = () => async (dispatch) => {
   const res = await fetch("/api/restaurants");
 
+//    if (res.ok) {
+//         const {restaurants} = await res.json();
+//         dispatch(readAllRestaurantsAction(restaurants));
+//     }
   const data = await res.json();
 
   const normalizedData = {};
@@ -38,6 +42,8 @@ export const getAllRestaurantsThunk = () => async (dispatch) => {
 
   dispatch(readAllRestaurantsAction(normalizedData));
   return data;
+
+
 };
 
 export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
@@ -138,30 +144,48 @@ export const deleteRestaurantThunk = (id) => async (dispatch) => {
 };
 
 const initialState = {
-  singleRestaurant: {},
-  allRestaurants: {},
+    singleRestaurant: {},
+    allRestaurants: {}
 };
 
 const restaurantsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case GET_ALL_RESTAURANTS:
-      return {
-        ...state,
-        allRestaurants: action.restaurants,
-      };
-    case GET_SINGLE_RESTAURANT:
-      return {
-        ...state,
-        singleRestaurant: action.restaurant,
-      };
-    case DELETE_SINGLE_RESTAURANT:
-      const newState = {
-        ...state,
-        allRestaurants: { ...state.allRestaurants },
-      };
-      delete newState.allRestaurants[action.id];
-      return newState;
-  }
+    switch (action.type) {
+        case GET_ALL_RESTAURANTS:
+            return {
+                ...state,
+                allRestaurants: action.restaurants
+            }
+        case GET_SINGLE_RESTAURANT:
+            return {
+                ...state,
+                singleRestaurant: action.restaurant
+        }
+        case DELETE_SINGLE_RESTAURANT:
+            const newState = {
+                ...state,
+                allRestaurants: {...state.allRestaurants}
+            }
+            delete newState.allRestaurants[action.id]
+            return newState
+        default:
+            return state
+    }
 };
+
+// const initialState = {};
+// const restaurantsReducer = (state = initialState, action) => {
+//   let newState = {};
+
+//   switch (action.type) {
+//     case GET_ALL_RESTAURANTS:
+//         action.restaurants.forEach((restaurant) => {
+//         newState[restaurant.id] = restaurant
+//       })
+//       return newState
+//     default:
+//     return state;
+//   }
+  
+// };
 
 export default restaurantsReducer;

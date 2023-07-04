@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.models import Restaurant, db, User, Review
-from app.forms import RestaurantForm, ReviewForm
+from app.forms import RestaurantForm
 from .auth_routes import validation_errors_to_error_messages
 
 restaurant_routes = Blueprint("restaurants", __name__)

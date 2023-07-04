@@ -31,6 +31,6 @@ class Restaurant(db.Model):
             'priceRange': self.priceRange,
             'imageUrl': self.imageUrl,
             'description': self.description,
-            'rating' : sum([review.rating for review in self.reviews]) / len(self.reviews),
+            'rating' : (len(self.reviews) and sum([review.rating for review in self.reviews]) / len(self.reviews)) or 0,
             'reviewCount' : len(self.reviews)
         }

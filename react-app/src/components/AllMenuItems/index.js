@@ -27,8 +27,8 @@ export default function RestaurantMenuItems() {
         <div className="itemContainer" key={menuItem.id}>
           <h2 className="itemName">{menuItem.itemName}</h2>
           <div>{menuItem.price}</div>
-          <div>{menuItem.description}</div>
-          <div>{menuItem.itemType}</div>
+          {/* <div>{menuItem.description}</div> */}
+          {/* <div>{menuItem.itemType}</div> */}
           <img className="itemImage" src={menuItem.imageUrl} alt="image of item" />
         </div>
       ))}

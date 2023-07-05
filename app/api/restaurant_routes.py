@@ -109,12 +109,19 @@ def get_current_restaurants():
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
 
-@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET', 'POST'])
+#Get al menu items of a single Restaurant
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET'])
+def get_menu_items(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
+    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+
+
+#Post a new menu Item
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['POST'])
 @login_required
 def edit_menu_items(restaurantId):
-    """
-    This route will both and get and add menu items to a restaurant.
-    """
+   
     restaurant = Restaurant.query.get(restaurantId)
     if restaurant is None:
         return {'errors': ['Restaurant does not exist']}, 404
@@ -122,8 +129,7 @@ def edit_menu_items(restaurantId):
     if restaurant.ownerId is not current_user.id:
         return {'errors': ['Unauthorized access']}, 403
     
-    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
-
+    # restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
     form = MenuItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     
@@ -145,9 +151,11 @@ def edit_menu_items(restaurantId):
         
         return {"new_menu_item": new_menu_item.to_dict()}
     if form.errors:
+    # print("🥲", errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
-    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+   
+    # return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+
 
 #Get all reviews of single restaurant
 @restaurant_routes.route("/<int:restaurantId>/reviews")

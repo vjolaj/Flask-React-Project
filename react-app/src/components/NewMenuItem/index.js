@@ -35,7 +35,7 @@ function NewMenuItemPage() {
     setImageLoading(true);
     return dispatch(addMenuItemThunk(restaurantId, formData))
     .then(() => {
-        history.push(`/restaurants/${restaurantId}/menuitems`)
+        history.push(`/restaurants/${restaurantId}`)
     })
   };
 

@@ -27,23 +27,21 @@ const deleteReviewAction = id => {
 
 //thunks
 export const getRestaurantReviewsThunk = (restaurantId) => async dispatch => {
-    const res = await csrfFetch(`/api/restaurant/${restaurantId}/reviews`);
-
-    const data = await res.json();
-
-    const normalizedData = {};
-    Object.values(data.Reviews).forEach(review => {
-        normalizedData[review.id] = review
-    });
+    const res = await fetch(`/api/restaurants/${restaurantId}/reviews`);
     
-    dispatch(getRestaurantReviewsAction(normalizedData));
-    return data;
+    if(res.ok){
+       const reviewRes = await res.json();
+    //    console.log(reviewRes,'🤗')
+        let reviews = reviewRes.restaurant_reviews; 
+        dispatch(getRestaurantReviewsAction(reviews));
+        return reviews
+    }
 };
 
 export const createRestaurantReviewThunk = (review) => async dispatch => {
     const { restaurantId, description, rating } = review;
 
-    const res = await csrfFetch(`/api/spots/${restaurantId}/reviews`, {
+    const res = await fetch(`/api/spots/${restaurantId}/reviews`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -64,7 +62,7 @@ export const createRestaurantReviewThunk = (review) => async dispatch => {
 };
 
 export const deleteReviewThunk = (id, spotId) => async dispatch => {
-    const res = await csrfFetch(`/api/reviews/${id}`, {
+    const res = await fetch(`/api/reviews/${id}`, {
         method: 'DELETE'
     })
 
@@ -80,7 +78,8 @@ export const deleteReviewThunk = (id, spotId) => async dispatch => {
 
 const initialState = {
     restaurant: {},
-    user: {}
+    user: {},
+    reviews:{}
 };
 
 const reviewsReducer = (state = initialState, action) => {
@@ -88,7 +87,7 @@ const reviewsReducer = (state = initialState, action) => {
         case GET_REVIEWS:
             return {
                 ...state,
-                spot: action.reviews
+                reviews: {...action.reviews}
             };
             case POST_REVIEW:
                 const newState = {...state,

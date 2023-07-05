@@ -1,0 +1,12 @@
+.itemImage{
+    width: 10rem;
+    height: 7rem;
+}
+
+.menuItemsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}

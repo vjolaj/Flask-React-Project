@@ -50,11 +50,10 @@ export default function NewRestaurant() {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        return dispatch(createRestaurantThunk(formData))
-    //     .then(() => {
-    //         history.push(`/restaurants/${restaurantId}/menuitems`)
-    //     })
+        const newRestaurant =  dispatch(createRestaurantThunk(formData))
+        newRestaurant && history.push(`/restaurants/${newRestaurant.id}`)
       };
+  
       return (
         <>
           <form onSubmit={handleSubmit} className="addMenuItem-Form">

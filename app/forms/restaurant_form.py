@@ -9,7 +9,7 @@ class RestaurantForm(FlaskForm):
     priceRange = SelectField('Price Range', choices=[('$', '$'), ('$$', '$$'), ('$$$', '$$$'), ('$$$$', '$$$$')])
     imageUrl = StringField('ImageUrl', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired(), Length(max=255)])
-    submit = SubmitField('Submit')
+
 
 
 

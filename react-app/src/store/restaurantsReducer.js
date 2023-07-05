@@ -51,17 +51,22 @@ export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
 };
 
 export const createRestaurantThunk = (restaurant) => async (dispatch) => {
-  const res = await fetch("/api/restaurants/new", {
-    method: "POST",
-    body: restaurant,
-  });
+  try {
+    const res = await fetch("/api/restaurants/new", {
+      method: "POST",
+      body: restaurant,
+    });
 
-  if (res.ok) {
-    const { resRestaurant } = await res.json();
-    console.log("NEW RESTAURANT ITEM DATA", resRestaurant);
-    dispatch(readSingleRestaurantAction(resRestaurant));
-  } else {
-    console.log("There was an error making your post!");
+    if (res.ok) {
+      const { resRestaurant } = await res.json();
+      console.log("NEW RESTAURANT ITEM DATA", resRestaurant);
+      dispatch(readSingleRestaurantAction(resRestaurant));
+    } else {
+      const errorMessage = await res.text();
+      throw new Error(errorMessage);
+    }
+  } catch (error) {
+    console.log("Error creating restaurant:", error.message);
   }
 };
 

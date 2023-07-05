@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from app.models import Restaurant, db, User
-from app.forms import RestaurantForm
+from app.models import Restaurant, db, User, MenuItem, Review
+from app.forms import RestaurantForm, MenuItemForm, ReviewForm
 from .auth_routes import validation_errors_to_error_messages
+from .AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 restaurant_routes = Blueprint("restaurants", __name__)
 
@@ -87,7 +88,7 @@ def update_restaurant(restaurantId):
 @login_required
 def delete_restaurant(restaurantId):
     """
-    This route will return a list of restaurants owned by the current user.
+    This route will delete a restaurant.
     """
     restaurant_to_delete = Restaurant.query.get(restaurantId)
 
@@ -107,3 +108,78 @@ def get_current_restaurants():
     """
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
+
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET', 'POST'])
+@login_required
+def edit_menu_items(restaurantId):
+    """
+    This route will both and get and add menu items to a restaurant.
+    """
+    restaurant = Restaurant.query.get(restaurantId)
+    if restaurant is None:
+        return {'errors': ['Restaurant does not exist']}, 404
+    
+    if restaurant.ownerId is not current_user.id:
+        return {'errors': ['Unauthorized access']}, 403
+    
+    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
+
+    form = MenuItemForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    if form.validate_on_submit():
+        image = form.data["imageUrl"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+       
+        new_menu_item = MenuItem(
+            restaurantId= restaurantId,
+            itemName=form.data['itemName'],
+            price=form.data['price'],
+            itemType=form.data['itemType'],
+            description=form.data['description'],
+            imageUrl= upload['url']
+        )
+        db.session.add(new_menu_item)
+        db.session.commit()
+        
+        return {"new_menu_item": new_menu_item.to_dict()}
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
+    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+
+#Get all reviews of single restaurant
+@restaurant_routes.route("/<int:restaurantId>/reviews")
+def get_reviews_single_restaurant(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    reviews = Review.query.filter_by(restaurantId = restaurantId)
+    return {"restaurant_reviews":{review.id: review.to_dict() for review in reviews}}
+
+#Get all reviews    
+@restaurant_routes.route("/reviews")
+def get_all_reviews():
+    reviews = Review.query.all()
+    return {"restaurant_reviews":{review.id: review.to_dict() for review in reviews}}
+
+#POST a new review
+@restaurant_routes.route("/<int:restaurantId>/reviews/new", methods=['POST'])
+@login_required
+def create_review(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    form=ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+  
+    if form.validate_on_submit():
+        new_review = Review(
+            restaurantId = restaurant.id,
+            userId = current_user.id,
+            rating = form.data['rating'],
+            description= form.data['description']
+        )
+
+        db.session.add(new_review)
+        db.session.commit()
+        
+        return {"new_review": new_review.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

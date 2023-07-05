@@ -26,12 +26,14 @@ const getRestaurantsOrders = orders => {
 };
 
 //thunks
-const getUserOrdersThunk = () => async dispatch => {
+export const getUserOrdersThunk = () => async dispatch => {
+    console.log('requesting from backend...')
     const res = await fetch('/api/orders/current'); //userId will be attached in the backend
 
     const data = await res.json();
+    console.log(data)
     const normalizedData = {};
-    Object.values(data.Orders).forEach(order => {
+    Object.values(data.users_orders).forEach(order => {
         normalizedData[order.id] = order
     });
 
@@ -39,7 +41,7 @@ const getUserOrdersThunk = () => async dispatch => {
     return data;
 };
 
-// const checkoutThunk = (order) => async dispatch => {
+// export const checkoutThunk = (order) => async dispatch => {
 //     const {  } = order
 
 //     const res = await fetch('/api/orders', {

@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
+import PastOrdersPage from "./components/Orders/pastOrders";
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
         </Switch>
       )}
+          <Route path="/orders" >
+            <PastOrdersPage />
+          </Route>
 
       
     </>

@@ -9,8 +9,10 @@ def get_users_orders():
     """
     This route will return a list of all past orders of the current logged in user.
     """
+    print('backend hit, requesting...')
+    print(current_user)
     orders = Order.query.filter(Order.userId == current_user.id and Order.isCompleted == True).all()
-    print(orders)
+    print('****************', orders)
 
     return {
         "users_orders": {

@@ -56,6 +56,11 @@ function ProfileButton({ user }) {
         history.push('/signup')
         closeMenu();
     }
+  const ordersRedirect = (e) => {
+    e.preventDefault();
+    history.push('/orders')
+    closeMenu()
+  }
   return (
     <>
       <button onClick={openMenu} className="userButton">
@@ -66,6 +71,7 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li onClick={ordersRedirect}>Past Orders</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

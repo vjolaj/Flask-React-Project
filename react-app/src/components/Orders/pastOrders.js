@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserOrdersThunk } from '../../store/ordersReducer';
+import OrderTile from './orderTile';
+
 
 const PastOrdersPage = () => {
     const orders = useSelector(state => state.orders.currentUserOrders)

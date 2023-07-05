@@ -103,3 +103,6 @@ width: 17rem;
     align-self: center;
 }
 
+.profile-dropdown > li {
+  color: black;
+}

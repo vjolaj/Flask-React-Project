@@ -1,9 +1,10 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from .shoppingcart_menuitem import shoppingCart_menuItems
+from sqlalchemy.ext.associationproxy import association_proxy
+from .orderItem import OrderItem
 
 class MenuItem(db.Model):
     __tablename__ = 'menuitems'
-    
+
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
@@ -14,10 +15,12 @@ class MenuItem(db.Model):
     itemType = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255))
     imageUrl = db.Column(db.String(255))
-    
+
     restaurant = db.relationship("Restaurant", back_populates="menuItems")
-    shoppingCarts = db.relationship("ShoppingCart", secondary=shoppingCart_menuItems, back_populates="menuItems")
-    
+    # orderItems = db.relationship("OrderItem", back_populates="menuItem", cascade="all, delete")
+    # orders = db.relationship("Order", secondary="OrderItem", back_populates="menuItems")
+    orderAssociation = db.relationship("OrderItem", back_populates="menuItem", cascade="all, delete")
+    orders = association_proxy("orderAssociation", 'order', creator=lambda o: OrderItem(order=o))
 
     def to_dict(self):
         return {

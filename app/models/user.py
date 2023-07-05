@@ -16,11 +16,11 @@ class User(db.Model, UserMixin):
     firstName = db.Column(db.String(255), nullable=False)
     lastName = db.Column(db.String(255), nullable=False)
     phoneNumber = db.Column(db.Integer, nullable=False, unique=True)
-    
-    reviews = db.relationship("Review", back_populates="user")
+
+    reviews = db.relationship("Review", back_populates="user", cascade="all, delete")
     restaurants = db.relationship("Restaurant", back_populates="owner", cascade="all, delete")
-    orders = db.relationship("Order", back_populates="user")
-    
+    orders = db.relationship("Order", back_populates="user", cascade="all, delete")
+
     @property
     def password(self):
         return self.hashed_password

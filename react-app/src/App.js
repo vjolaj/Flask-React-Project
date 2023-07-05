@@ -6,7 +6,6 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
-import PastOrdersPage from "./components/Orders/pastOrders";
 
 
 function App() {
@@ -35,6 +34,20 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path = "/restaurants/:restaurantId/menuitems">
+            <RestaurantMenuItems />
+          </Route>
+          <Route exact path="/restaurants/:restaurantId/newmenuitem">
+            <NewMenuItemPage />
+          </Route>
+          <Route exact path='/restaurants'>
+            <Main/>
+          </Route>
+          <Route exact path='/restaurants/:restaurantId'>
+            <RestaurantShow/>
+          </Route>
+
+          
         </Switch>
       )}
           <Route path="/orders" >

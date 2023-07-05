@@ -2,14 +2,16 @@ import React, {useState, useEffect, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { removeFilter } from '../../store/filterReducer';
 // import OpenModalButton from "../OpenModalButton";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -27,6 +29,10 @@ function Navigation({ isLoaded }){
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+
+  const handleEpicEatsClick = () => {
+    dispatch(removeFilter()); // Dispatch the removeFilter action
+  };
 	
 	return (
 		<div className='nav'>
@@ -36,10 +42,10 @@ function Navigation({ isLoaded }){
 				</div>
 			<div className='logo'>
 				<p>
-					<NavLink exact to="/restaurants" className='logo'>Epic</NavLink>
+					<NavLink exact to="/restaurants" className='logo' onClick={handleEpicEatsClick}>Epic</NavLink>
 				</p>
 				<p>
-					<NavLink exact to="/restaurants" className='Eats'>Eats</NavLink>
+					<NavLink exact to="/restaurants" className='Eats' onClick={handleEpicEatsClick}>Eats</NavLink>
 				</p>	
 			</div>
 				

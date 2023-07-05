@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import { removeFilter } from '../../store/filter_reducer';
+import { removeFilter } from '../../store/filterReducer';
 // import OpenModalButton from "../OpenModalButton";
 import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";

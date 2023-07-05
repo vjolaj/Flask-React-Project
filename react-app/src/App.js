@@ -5,8 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import LandingPage from "./components/LandingPage"
-import RestaurantsIndex from "./components/RestaurantsIndex";
+import LandingPage from "./components/LandingPage";
+import RestaurantShow from "./components/RestaurantShow";
 import Main from "./components/Main";
 
 function App() {
@@ -40,6 +40,11 @@ function App() {
           <Route exact path='/restaurants'>
             <Main/>
           </Route>
+          <Route exact path='/restaurants/:restaurantId'>
+            <RestaurantShow/>
+          </Route>
+
+          
         </Switch>
       )}
 

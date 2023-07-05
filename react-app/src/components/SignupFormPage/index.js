@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
@@ -16,6 +16,22 @@ function SignupFormPage() {
 	const [phoneNumber, setPhoneNumber] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+        const errors = [];
+        if (username.length === 0) errors.username = "";
+        if (email.length === 0) errors.email = "";
+        if (firstName.length === 0) errors.firstName = "";
+        if (lastName.length === 0) errors.lastName = "";
+        if (password.length === 0 || password.length < 6) errors.password = "";
+        if (confirmPassword.length === 0 || confirmPassword.length < 6) errors.confirmPassword = "";
+        if (phoneNumber.length < 10 && phoneNumber.length > 0) errors.phoneNumber = "Please enter a 10 digit phone number";
+        if (username.length < 4 && username.length > 0) errors.username = 'Username needs to be at least 4 characters.';
+        if (password.length < 6 && password.length > 0) errors.password = 'Password needs to be at least 6 characters.';
+        
+
+        setErrors(errors);
+    }, [email, firstName, lastName, username, password, confirmPassword, phoneNumber])
 
   if (sessionUser) return <Redirect to="/restaurants" />;
 
@@ -49,6 +65,13 @@ function SignupFormPage() {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <p>Join Epic Eats today</p>
+                    {errors.firstName && <p className="signError">{errors.firstName}</p>}
+                    {errors.lastName && <p className="signError">{errors.lastName}</p>}
+                    {errors.email && <p className="signError">{errors.email}</p>}
+                    {errors.phoneNumber && <p className="signError">{errors.phoneNumber}</p>}
+                    {errors.password && <p className="signError">{errors.password}</p>}
+                    {errors.username && <p className="signError">{errors.username}</p>}
+                    {errors.confirmPassword && (<p className="signError">{errors.confirmPassword}</p>)}
         <label>
          
           <input

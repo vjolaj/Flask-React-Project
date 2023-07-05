@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
+import RestaurantsIndex from "./components/RestaurantsIndex";
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          {/* <Route path="/newmenuitem">
+            <SignupFormPage /> */}
+          <Route exact path='/restaurants'>
+            <RestaurantsIndex/>
           </Route>
         </Switch>
       )}

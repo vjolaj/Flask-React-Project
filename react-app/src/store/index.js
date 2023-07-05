@@ -10,7 +10,8 @@ const rootReducer = combineReducers({
   session,
   restaurants :restaurantsReducer,
   menuItems: menuItemsReducer,
-  filter: filterReducer
+  filter: filterReducer,
+  orders: ordersReducer
 });
 
 

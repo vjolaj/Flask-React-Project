@@ -42,8 +42,6 @@ export const getAllRestaurantsThunk = () => async (dispatch) => {
 
   dispatch(readAllRestaurantsAction(normalizedData));
   return data;
-
-
 };
 
 export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
@@ -167,6 +165,8 @@ const restaurantsReducer = (state = initialState, action) => {
             }
             delete newState.allRestaurants[action.id]
             return newState
+        default:
+          return state;
     }
 };
 

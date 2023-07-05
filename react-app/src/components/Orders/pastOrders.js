@@ -5,14 +5,14 @@ import OrderTile from './orderTile';
 
 
 const PastOrdersPage = () => {
-    const orders = useSelector(state => state.orders.currentUserOrders)
     const dispatch = useDispatch();
+    const orders = useSelector(state => state.orders.currentUserOrders);
 
     useEffect(() => {
         dispatch(getUserOrdersThunk())
     }, [dispatch])
 
-    if (!orders.length) return null;
+    console.log(orders)
 
     return (
         <div className="past-orders-div">

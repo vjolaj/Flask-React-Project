@@ -31,7 +31,6 @@ export const getUserOrdersThunk = () => async dispatch => {
     const res = await fetch('/api/orders/current'); //userId will be attached in the backend
 
     const data = await res.json();
-    console.log(data)
     const normalizedData = {};
     Object.values(data.users_orders).forEach(order => {
         normalizedData[order.id] = order

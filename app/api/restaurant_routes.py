@@ -23,7 +23,9 @@ def get_single_restaurant(restaurantId):
     """
     This route will return a restaurant by restaurant Id.
     """
+    print("getting restaurant")
     restaurant_info = Restaurant.query.get(restaurantId)
+    print(restaurant_info.to_dict())
     return {"restaurant_info": restaurant_info.to_dict()}
 
 

@@ -1,14 +1,14 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class OrderItem(db.Model):
-    __tablename__ = 'orderItems'
+    __tablename__ = 'orderitems'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     orderId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("orders.id")))
-    menuItemId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menuItems.id")))
+    menuItemId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menuitems.id")))
     quantity = db.Column(db.Integer, default=1, nullable=False)
 
     # menuItem = db.relationship("MenuItem", back_populates="orderItems")

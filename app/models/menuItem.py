@@ -3,7 +3,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from .orderItem import OrderItem
 
 class MenuItem(db.Model):
-    __tablename__ = 'menuItems'
+    __tablename__ = 'menuitems'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

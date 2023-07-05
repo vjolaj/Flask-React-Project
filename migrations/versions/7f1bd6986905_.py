@@ -46,7 +46,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['ownerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('menuItems',
+    op.create_table('menuitems',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('itemName', sa.String(length=50), nullable=False),
     sa.Column('restaurantId', sa.Integer(), nullable=True),
@@ -86,7 +86,7 @@ def upgrade():
     sa.Column('orderId', sa.Integer(), nullable=True),
     sa.Column('menuItemId', sa.Integer(), nullable=True),
     sa.Column('quantity', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['menuItemId'], ['menuItems.id'], ),
+    sa.ForeignKeyConstraint(['menuItemId'], ['menuitems.id'], ),
     sa.ForeignKeyConstraint(['orderId'], ['orders.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -94,7 +94,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE restaurants SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE menuItems SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE menuitems SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE orderItems SET SCHEMA {SCHEMA};")

@@ -7,6 +7,10 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
 import RestaurantsIndex from "./components/RestaurantsIndex";
+import NewMenuItemPage from "./components/NewMenuItem";
+import RestaurantMenuItems from "./components/AllMenuItems";
+import RestaurantShow from "./components/RestaurantShow";
+import Main from "./components/Main";
 
 
 function App() {
@@ -35,11 +39,20 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route path="/newmenuitem">
-            <SignupFormPage /> */}
-          <Route exact path='/restaurants'>
-            <RestaurantsIndex/>
+          <Route exact path = "/restaurants/:restaurantId/menuitems">
+            <RestaurantMenuItems />
           </Route>
+          <Route exact path="/restaurants/:restaurantId/newmenuitem">
+            <NewMenuItemPage />
+          </Route>
+          <Route exact path='/restaurants'>
+            <Main/>
+          </Route>
+          <Route exact path='/restaurants/:restaurantId'>
+            <RestaurantShow/>
+          </Route>
+
+          
         </Switch>
       )}
 

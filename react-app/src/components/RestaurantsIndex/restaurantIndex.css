@@ -1,0 +1,22 @@
+.restImg {
+  width: 19rem;
+  height: 12rem;
+}
+
+.rest-index-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 3.5rem;
+  gap: 28px;
+ 
+}
+
+.singleRestContainer {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  text-decoration: none;
+}

@@ -9,6 +9,8 @@ import LandingPage from "./components/LandingPage"
 import RestaurantsIndex from "./components/RestaurantsIndex";
 import NewMenuItemPage from "./components/NewMenuItem";
 import RestaurantMenuItems from "./components/AllMenuItems";
+import RestaurantShow from "./components/RestaurantShow";
+import Main from "./components/Main";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,8 +45,13 @@ function App() {
             <NewMenuItemPage />
           </Route>
           <Route exact path='/restaurants'>
-            <RestaurantsIndex/>
+            <Main/>
           </Route>
+          <Route exact path='/restaurants/:restaurantId'>
+            <RestaurantShow/>
+          </Route>
+
+          
         </Switch>
       )}
 

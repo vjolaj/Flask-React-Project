@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import restaurantsReducer from './restaurantsReducer';
 import menuItemsReducer from './menuItemsReducer';
+import filterReducer from './filterReducer';
 
 const rootReducer = combineReducers({
   session,
   restaurants :restaurantsReducer,
-  menuItems: menuItemsReducer
+  menuItems: menuItemsReducer,
+  filter: filterReducer
 });
 
 

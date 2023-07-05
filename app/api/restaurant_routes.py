@@ -35,16 +35,20 @@ def create_restaurant():
     """
     form = RestaurantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    form.ownerId.data = current_user.id
+    # form.ownerId.data = current_user.id
 
     if form.validate_on_submit():
+        image = form.data["imageUrl"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        
         new_restaurant = Restaurant(
             ownerId= current_user.id,
             name=form.data['name'],
             address=form.data['address'],
             cuisineType=form.data['cuisineType'],
             priceRange=form.data['priceRange'],
-            imageUrl=form.data['imageUrl'],
+            imageUrl= upload['url'],
             description=form.data['description']
         )
         db.session.add(new_restaurant)

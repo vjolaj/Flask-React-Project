@@ -11,6 +11,7 @@ import NewMenuItemPage from "./components/NewMenuItem";
 import RestaurantMenuItems from "./components/AllMenuItems";
 import RestaurantShow from "./components/RestaurantShow";
 import Main from "./components/Main";
+import NewRestaurant from "./components/NewRestaurant";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route exact path='/restaurants'>
             <Main/>
+          </Route>
+          <Route exact path='/restaurants/newrestaurant'>
+            <NewRestaurant/>
           </Route>
           <Route exact path='/restaurants/:restaurantId'>
             <RestaurantShow/>

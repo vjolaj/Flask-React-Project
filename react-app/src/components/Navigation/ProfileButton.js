@@ -5,8 +5,8 @@ import { logout } from "../../store/session";
 // import LoginFormModal from "../LoginFormModal";
 // import SignupFormModal from "../SignupFormModal";
 // import { NavLink } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
-import './Navigation.css'
+import { useHistory, Link } from "react-router-dom";
+import "./Navigation.css";
 
 function ProfileButton({ user }) {
   const history = useHistory();
@@ -21,7 +21,6 @@ function ProfileButton({ user }) {
 
   useEffect(() => {
     if (!showMenu) return;
-
 
     const closeMenu = (e) => {
       if (!ulRef.current || !ulRef.current.contains(e.target)) {
@@ -38,24 +37,31 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    history.push('/');
-    closeMenu()
+    history.push("/");
+    closeMenu();
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
+
   
+  const loginButton = (e) => {
+    e.preventDefault();
+    history.push('/login')
+    closeMenu();
+  }
 
-    const loginButton = (e) => {
-        e.preventDefault();
-        history.push('/login')
-        closeMenu();
-    }
+  const signupButton = (e) => {
+    e.preventDefault();
+    history.push('/signup')
+    closeMenu();
+  }
 
-    const signupButton = (e) => {
-        e.preventDefault();
-        history.push('/signup')
-        closeMenu();
-    }
+  const ordersRedirect = (e) => {
+    e.preventDefault();
+    history.push('/orders')
+    closeMenu()
+  }
   return (
     <>
       <button onClick={openMenu} className="userButton">
@@ -63,29 +69,22 @@ function ProfileButton({ user }) {
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-   
           <div>
               <div>
-               <p>Hello {user.username}</p>
-              {user.email} 
+                <p>Hello {user.username}</p>
+                {user.email}
+            <div><Link to="/restaurants/current">Manage Restaurants</Link></div>
+                <p onClick={ordersRedirect}>Past Orders</p>
               </div>
               <button onClick={handleLogout} className="logOut-button">Log Out</button>
           </div>
-          
         ) : (
           <>
-            {/* <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            /> */}
+         
         <div className="menuButtons">
           <button onClick={signupButton} className="menuSignUpButton">Sign Up</button>
           <button onClick={loginButton} className="menuLoginButton">Log in</button>
-          
         </div>
-        
-
             {/* <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}

@@ -5,10 +5,10 @@ const DELETE_SINGLE_RESTAURANT = "/restaurant/DELETE/single";
 
 //action creators
 const readAllRestaurantsAction = (restaurants) => {
-    return{
-       type: GET_ALL_RESTAURANTS,
-    restaurants, 
-    }
+  return {
+    type: GET_ALL_RESTAURANTS,
+    restaurants,
+  };
 };
 
 const readSingleRestaurantAction = (restaurant) => {
@@ -29,10 +29,10 @@ const deleteRestaurantAction = (restaurant) => {
 export const getAllRestaurantsThunk = () => async (dispatch) => {
   const res = await fetch("/api/restaurants");
 
-//    if (res.ok) {
-//         const {restaurants} = await res.json();
-//         dispatch(readAllRestaurantsAction(restaurants));
-//     }
+  //    if (res.ok) {
+  //         const {restaurants} = await res.json();
+  //         dispatch(readAllRestaurantsAction(restaurants));
+  //     }
   const data = await res.json();
 
   const normalizedData = {};
@@ -42,48 +42,41 @@ export const getAllRestaurantsThunk = () => async (dispatch) => {
 
   dispatch(readAllRestaurantsAction(normalizedData));
   return data;
-
-
 };
 
 export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
   dispatch(readSingleRestaurantAction(restaurant));
 
   return restaurant;
+
+  //   const res = await fetch(`api/restaurants/${restaurantId}`)
+
+  // if (res.ok){
+  //   const restaurant = await res.json()
+  //  dispatch(readSingleRestaurantAction(restaurant)); 
+  //  return restaurant;
+  // }
 };
 
+
 export const createRestaurantThunk = (restaurant) => async (dispatch) => {
-  const {
-    name,
-    address,
-    cuisine_type,
-    price_range,
-    imageUrl,
-    rating,
-    description,
-  } = restaurant;
+  try {
+    const res = await fetch("/api/restaurants/new", {
+      method: "POST",
+      body: restaurant,
+    });
 
-  const res = await fetch("/api/restaurants", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      address,
-      cuisine_type,
-      price_range,
-      imageUrl,
-      rating,
-      description,
-    }),
-  });
-
-  const data = await res.json();
-
-  //we can add menu items here or we can do this in another thunk if we end up using 2 pages for adding restaurant details and then menu
-
-  return data;
+    if (res.ok) {
+      const { resRestaurant } = await res.json();
+      console.log("NEW RESTAURANT ITEM DATA", resRestaurant);
+      dispatch(readSingleRestaurantAction(resRestaurant));
+    } else {
+      const errorMessage = await res.text();
+      throw new Error(errorMessage);
+    }
+  } catch (error) {
+    console.log("Error creating restaurant:", error.message);
+  }
 };
 
 export const editRestaurantThunk = (restaurant) => async (dispatch) => {
@@ -144,32 +137,32 @@ export const deleteRestaurantThunk = (id) => async (dispatch) => {
 };
 
 const initialState = {
-    singleRestaurant: {},
-    allRestaurants: {}
+  singleRestaurant: {},
+  allRestaurants: {},
 };
 
 const restaurantsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case GET_ALL_RESTAURANTS:
-            return {
-                ...state,
-                allRestaurants: action.restaurants
-            }
-        case GET_SINGLE_RESTAURANT:
-            return {
-                ...state,
-                singleRestaurant: action.restaurant
-        }
-        case DELETE_SINGLE_RESTAURANT:
-            const newState = {
-                ...state,
-                allRestaurants: {...state.allRestaurants}
-            }
-            delete newState.allRestaurants[action.id]
-            return newState
-        default:
-            return state
-    }
+  switch (action.type) {
+    case GET_ALL_RESTAURANTS:
+      return {
+        ...state,
+        allRestaurants: action.restaurants,
+      };
+    case GET_SINGLE_RESTAURANT:
+      return {
+        ...state,
+        singleRestaurant: action.restaurant,
+      };
+    case DELETE_SINGLE_RESTAURANT:
+      const newState = {
+        ...state,
+        allRestaurants: { ...state.allRestaurants },
+      };
+      delete newState.allRestaurants[action.id];
+      return newState;
+    default:
+      return state;
+  }
 };
 
 // const initialState = {};
@@ -185,7 +178,7 @@ const restaurantsReducer = (state = initialState, action) => {
 //     default:
 //     return state;
 //   }
-  
+
 // };
 
 export default restaurantsReducer;

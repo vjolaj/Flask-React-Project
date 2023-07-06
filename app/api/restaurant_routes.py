@@ -23,7 +23,9 @@ def get_single_restaurant(restaurantId):
     """
     This route will return a restaurant by restaurant Id.
     """
+    print("getting restaurant")
     restaurant_info = Restaurant.query.get(restaurantId)
+    print(restaurant_info.to_dict())
     return {"restaurant_info": restaurant_info.to_dict()}
 
 
@@ -35,16 +37,20 @@ def create_restaurant():
     """
     form = RestaurantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    form.ownerId.data = current_user.id
+    # form.ownerId.data = current_user.id
 
     if form.validate_on_submit():
+        image = form.data["imageUrl"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        
         new_restaurant = Restaurant(
             ownerId= current_user.id,
             name=form.data['name'],
             address=form.data['address'],
             cuisineType=form.data['cuisineType'],
             priceRange=form.data['priceRange'],
-            imageUrl=form.data['imageUrl'],
+            imageUrl= upload['url'],
             description=form.data['description']
         )
         db.session.add(new_restaurant)
@@ -109,12 +115,19 @@ def get_current_restaurants():
     current_restaurants = Restaurant.query.filter(Restaurant.ownerId == current_user.id).all()
     return {"current_restaurants": {restaurant.id: restaurant.to_dict() for restaurant in current_restaurants}}
 
-@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET', 'POST'])
+#Get al menu items of a single Restaurant
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['GET'])
+def get_menu_items(restaurantId):
+    restaurant = Restaurant.query.get(restaurantId)
+    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
+    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+
+
+#Post a new menu Item
+@restaurant_routes.route("/<int:restaurantId>/menu-items", methods=['POST'])
 @login_required
 def edit_menu_items(restaurantId):
-    """
-    This route will both and get and add menu items to a restaurant.
-    """
+   
     restaurant = Restaurant.query.get(restaurantId)
     if restaurant is None:
         return {'errors': ['Restaurant does not exist']}, 404
@@ -122,8 +135,7 @@ def edit_menu_items(restaurantId):
     if restaurant.ownerId is not current_user.id:
         return {'errors': ['Unauthorized access']}, 403
     
-    restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
-
+    # restaurant_menu_items = MenuItem.query.filter(MenuItem.restaurantId == restaurantId).all()
     form = MenuItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     
@@ -145,9 +157,11 @@ def edit_menu_items(restaurantId):
         
         return {"new_menu_item": new_menu_item.to_dict()}
     if form.errors:
+    # print("🥲", errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
-    return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+   
+    # return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}
+
 
 #Get all reviews of single restaurant
 @restaurant_routes.route("/<int:restaurantId>/reviews")

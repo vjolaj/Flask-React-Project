@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import "./NewMenuItem.css";
+import "./NewMenuItemModal.css";
 import { addMenuItemThunk } from "../../store/menuItemsReducer";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { useModal } from "../../context/Modal";
 
-function NewMenuItemPage() {
-  const { restaurantId } = useParams();
+function NewMenuItemModal({restaurant}) {
+  // const { restaurantId } = useParams();
+  const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
@@ -33,9 +35,10 @@ function NewMenuItemPage() {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
     setImageLoading(true);
-    return dispatch(addMenuItemThunk(restaurantId, formData))
+    return dispatch(addMenuItemThunk(restaurant.id, formData))
     .then(() => {
-        history.push(`/restaurants/${restaurantId}/menuitems`)
+        closeModal();
+        history.push(`/restaurants/${restaurant.id}`)
     })
   };
 
@@ -113,4 +116,4 @@ function NewMenuItemPage() {
   );
 }
 
-export default NewMenuItemPage;
+export default NewMenuItemModal;

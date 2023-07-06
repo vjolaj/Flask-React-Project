@@ -1,4 +1,4 @@
-from flask import Blueprint, session
+from flask import Blueprint, session, request
 from app.models import User, db, Order
 from flask_login import current_user
 
@@ -26,5 +26,18 @@ def get_cart():
     Gets the logged in users shopping cart
     """
     order = Order.query.filter(Order.userId == current_user.id and Order.isCompleted == False).first()
-
     return order.to_dict()
+
+@cart_routes.route('/<int:orderId>', methods=["POST"])
+def update_cart(orderId):
+    """
+    This route will update the cart
+    """
+    req = request.get_json()
+
+    menuItem = req['menuItem']
+    order = Order.query.get(orderId)
+    print(order.to_dict())
+    order.menuItems.append(menuItem)
+    return order.to_dict()
+    

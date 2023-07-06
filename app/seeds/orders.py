@@ -5,7 +5,7 @@ def seed_order():
     order1 = Order(
        userId = 1,
        restaurantId = 1,
-       isCompleted= True,
+       isCompleted= False,
        deliveryMethod = "delivery",
        paymentDetails = "PayPal",
        address = "321 Drive"
@@ -14,7 +14,7 @@ def seed_order():
     order2 = Order(
         userId = 2,
         restaurantId = 1,
-        isCompleted = True,
+        isCompleted = False,
         deliveryMethod = "delivery",
         paymentDetails = "Credit Card",
         address = "456 Main Street"

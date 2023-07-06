@@ -5,10 +5,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readSingleRestaurantThunk } from "../../store/restaurantsReducer";
 import { getAllMenuItemsThunk } from "../../store/menuItemsReducer";
-import NewMenuItemPage from "../NewMenuItem";
+import NewMenuItemModal from "../NewMenuItemModal";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { getRestaurantReviewsThunk } from "../../store/reviewsReducer";
 import "./restaurantShow.css";
+import OpenModalButton from "../OpenModalButton";
+
 
 const RestaurantShow = () => {
   const { restaurantId } = useParams();
@@ -79,12 +81,16 @@ const RestaurantShow = () => {
         {user && restaurant.ownerId === user.id && (
           <div className="plus-container">
             {/* <p>This is your Restaurant!</p> */}
-            <NavLink to={`/restaurants/${restaurant.id}/newmenuitem`}>
+            {/* <NavLink to={`/restaurants/${restaurant.id}/newmenuitem`}> */}
               {/* <button>Add more items to your Menu!</button> */}
               {/* <img src="https://cdn-icons-png.flaticon.com/512/43/43869.png"  alt="plus" className="plus"/> */}
-             <button className="click-here">Click here to add more items</button>
-            </NavLink>
-            
+             {/* <button className="click-here">Click here to add more items</button> */}
+             <OpenModalButton
+                buttonText="Add a Menu Item"
+                modalComponent={<NewMenuItemModal restaurant={restaurant} />}
+              />
+            {/* </NavLink> */}
+            {/* </div> */}
           </div>
         )}
       </div>

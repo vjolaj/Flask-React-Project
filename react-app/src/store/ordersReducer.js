@@ -2,6 +2,7 @@
 const GET_USER_ORDERS = '/user/orders/GET';
 const POST_USER_ORDERS = '/user/orders/POST';
 const GET_RESTAURANT_ORDERS = '/restaurants/orders/GET';
+const EDIT_ORDER = '/order/PUT'
 
 //action creators
 const getUserOrdersAction = orders => {
@@ -25,6 +26,13 @@ const getRestaurantsOrders = orders => {
     }
 };
 
+const EditOrder = (payload) => {
+    return {
+        type: EDIT_ORDER,
+        payload
+    }
+}
+
 //thunks
 export const getUserOrdersThunk = () => async dispatch => {
     console.log('requesting from backend...')
@@ -39,6 +47,20 @@ export const getUserOrdersThunk = () => async dispatch => {
     dispatch(getUserOrdersAction(normalizedData));
     return data;
 };
+
+export const editOrderThunk = (id, body) => async dispatch => {
+    const res = await fetch(`/api/orders/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(EditOrder(data))
+    }
+}
 
 // export const checkoutThunk = (order) => async dispatch => {
 //     const {  } = order
@@ -56,7 +78,8 @@ export const getUserOrdersThunk = () => async dispatch => {
 
 const initialState = {
     currentUserOrders: {},
-    restaurantOrders: {}
+    restaurantOrders: {},
+    cart: {}
 }
 
 const ordersReducer = (state = initialState, action) => {
@@ -78,6 +101,11 @@ const ordersReducer = (state = initialState, action) => {
                 ...state,
                 restaurantOrders: action.orders
             };
+        case EDIT_ORDER:
+            return {
+                ...state,
+                cart: action.payload
+            }
         default:
             return state;
     }

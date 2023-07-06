@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./CheckoutPage.css"
+import { editOrderThunk } from "../../store/ordersReducer";
 
 
 export default function CheckoutPage() {
@@ -17,7 +18,7 @@ export default function CheckoutPage() {
                         <i class="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
                             <div>delivery address</div>
-                            <button className="checkout-page-button">Edit</button>
+                            <input className="checkout-page-input"/>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -27,7 +28,7 @@ export default function CheckoutPage() {
                                 <div>Meet at door</div>
                                 <div>Add delivery instructions</div>
                             </div>
-                            <button className="checkout-page-button">Edit</button>
+                            <input className="checkout-page-input"/>
                         </div>
                     </div>
                 </div>
@@ -59,14 +60,14 @@ export default function CheckoutPage() {
                         <i class="fa-regular fa-credit-card"></i>
                         <div className="space-between bottom-border">
                             <div>Credit or Debit Card</div>
-                            <button className="checkout-page-button">Edit</button>
+                            <input className="checkout-page-input"/>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
                         <i class="fa-solid fa-tag"></i>
                         <div className="space-between">
                             <div>Add promo code</div>
-                            <button className="checkout-page-button">Edit</button>
+                            <input className="checkout-page-input"/>
                         </div>
                     </div>
                 </div>
@@ -115,7 +116,7 @@ export default function CheckoutPage() {
                         <button className="checkout-page-button">$3.00</button>
                         <button className="checkout-page-button">$4.00</button>
                         <button className="checkout-page-button">$5.00</button>
-                        <button className="checkout-page-button">Other</button>
+                        <input className="checkout-page-button"/>
                     </div>
                 </div>
                 <div className="right-section">

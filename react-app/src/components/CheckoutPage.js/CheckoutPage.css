@@ -82,6 +82,14 @@
     gap: 10px;
 }
 
+.checkout-page-input {
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgb(221, 221, 221);
+}
+
 .checkout-page-button {
     border: none;
     border-radius: 16px;

@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { getAllRestaurantsThunk } from "../../store/restaurantsReducer";
 import "./restaurantIndex.css";
 
+
 const RestaurantsIndex = ({ restaurants }) => {
   const dispatch = useDispatch();
 
@@ -14,6 +15,12 @@ const RestaurantsIndex = ({ restaurants }) => {
 
   if (!restaurants) return null;
 
+   const getRandomDeliveryFee = () => {
+    const fees = ["$3.99", "$5.99", "$2.49", "$1.49", "$0.99", 'Free'];
+    return fees[Math.floor(Math.random() * fees.length)];
+  };
+
+  
   return (
     <div className="rest-index-container">
       {restaurants.map((restaurant) => (
@@ -24,7 +31,9 @@ const RestaurantsIndex = ({ restaurants }) => {
                 <img src={restaurant.imageUrl} alt="img" className="restImg" />
               </NavLink>
             </div>
-            <h2>{restaurant.name}</h2>
+            <p className="main-name">{restaurant.name}</p>
+            <p className="delivery-fee-main">{getRandomDeliveryFee()} Delivery Fee</p>
+            
           </div>
         </div>
       ))}

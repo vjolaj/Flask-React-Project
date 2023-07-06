@@ -6,7 +6,7 @@ const DELETE_SINGLE_RESTAURANT = "/restaurant/DELETE/single";
 //action creators
 const readAllRestaurantsAction = (restaurants) => {
     return{
-       type: GET_ALL_RESTAURANTS,
+    type: GET_ALL_RESTAURANTS,
     restaurants, 
     }
 };
@@ -48,7 +48,16 @@ export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
   dispatch(readSingleRestaurantAction(restaurant));
 
   return restaurant;
+
+  //   const res = await fetch(`api/restaurants/${restaurantId}`)
+
+  // if (res.ok){
+  //   const restaurant = await res.json()
+  //  dispatch(readSingleRestaurantAction(restaurant)); 
+  //  return restaurant;
+  // }
 };
+
 
 export const createRestaurantThunk = (restaurant) => async (dispatch) => {
   const {

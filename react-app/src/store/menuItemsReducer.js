@@ -17,11 +17,11 @@ export const addMenuItem = (menuItem) => {
 
 
 //thunks
-export const getAllMenuItemsThunk = (id) => async (dispatch) => {
-  const res = await fetch(`/api/restaurants//${id}/menu-items`);
+export const getAllMenuItemsThunk = (restaurantId) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants//${restaurantId}/menu-items`);
 
   const data = await res.json();
-
+  // console.log(data, '⭐️')
   const normalizedData = {};
   Object.values(data.restaurant_menu_items).forEach((menuItem) => {
     normalizedData[menuItem.id] = menuItem;

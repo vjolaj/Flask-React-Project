@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import "./NewRestaurant.css"
-import { createRestaurantThunk } from "../../store/restaurantsReducer";
+import { createRestaurantThunk, getUserRestaurantsThunk } from "../../store/restaurantsReducer";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function NewRestaurant() {
@@ -50,8 +50,11 @@ export default function NewRestaurant() {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        const newRestaurant =  dispatch(createRestaurantThunk(formData))
-        newRestaurant && history.push(`/restaurants/${newRestaurant.id}`)
+        return dispatch(createRestaurantThunk(formData))
+        .then(() => {
+            dispatch(getUserRestaurantsThunk())
+            history.push(`/restaurants/current`)
+        })
       };
   
       return (

@@ -5,6 +5,7 @@ import { getUserRestaurantsThunk } from "../../store/restaurantsReducer";
 import "./ManageRestaurants.css";
 import OpenModalButton from "../OpenModalButton";
 import DeleteRestaurantModal from "../DeleteRestaurantModal";
+import NewMenuItemModal from "../NewMenuItemModal";
 
 const ManageRestaurants = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,12 @@ const ManageRestaurants = () => {
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
+          <div>
+          <OpenModalButton
+                buttonText="Add Menu Item"
+                modalComponent={<NewMenuItemModal restaurant={restaurant} />}
+              />
+            </div>
               <OpenModalButton
                 buttonText="Delete Restaurant"
                 modalComponent={<DeleteRestaurantModal restaurant={restaurant} />}

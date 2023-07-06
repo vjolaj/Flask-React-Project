@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useModal } from "../../context/Modal";
-// import './DeleteRestaurantModal.css'
+import './DeleteRestaurantModal.css'
 import { deleteRestaurantThunk } from "../../store/restaurantsReducer";
 import { getUserRestaurantsThunk } from "../../store/restaurantsReducer";
 
@@ -18,7 +18,6 @@ function DeleteRestaurantModal ({restaurant}) {
         .then(() => {
           closeModal();
           dispatch(getUserRestaurantsThunk())
-        //   history.push('/spots/current')
         //   })
         //   .catch(async (res) => {
         //     const data = await res.json();

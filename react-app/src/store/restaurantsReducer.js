@@ -48,7 +48,16 @@ export const readSingleRestaurantThunk = (restaurant) => async (dispatch) => {
   dispatch(readSingleRestaurantAction(restaurant));
 
   return restaurant;
+
+  //   const res = await fetch(`api/restaurants/${restaurantId}`)
+
+  // if (res.ok){
+  //   const restaurant = await res.json()
+  //  dispatch(readSingleRestaurantAction(restaurant)); 
+  //  return restaurant;
+  // }
 };
+
 
 export const createRestaurantThunk = (restaurant) => async (dispatch) => {
   try {

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import "./NewRestaurant.css"
-import { createRestaurantThunk, getUserRestaurantsThunk } from "../../store/restaurantsReducer";
+import "./EditRestaurant.css"
+import { readSingleRestaurantThunk, getUserRestaurantsThunk, editRestaurantThunk } from "../../store/restaurantsReducer";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function EditRestaurant() {
+  const { restaurantId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    const restaurant = useSelector((state => state.restaurants.singleRestaurant))
+    const restaurant = useSelector(
+      (state) => state.restaurants.allRestaurants[restaurantId]
+    );
     const [name, setName] = useState("");
     const [address, setAddress] = useState("")
     const [cuisineType, setCuisineType] = useState("")
@@ -38,6 +41,16 @@ export default function EditRestaurant() {
         "$$$",
         "$$$$"
     ]
+    useEffect(() => {
+      if (restaurant) {
+        setName(restaurant.name || "");
+        setAddress(restaurant.address || "");
+        setCuisineType(restaurant.cuisineType || "")
+        setDescription(restaurant.description || "")
+        setPriceRange(restaurant.priceRange || "")
+        setImage(restaurant.imageUrl || "")
+      };
+    }, [restaurant]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -51,11 +64,11 @@ export default function EditRestaurant() {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        return dispatch(createRestaurantThunk(formData))
-        .then(() => {
-            dispatch(getUserRestaurantsThunk())
-            history.push(`/restaurants/current`)
-        })
+        dispatch(editRestaurantThunk(formData, restaurantId)).then(() => {
+          dispatch(getUserRestaurantsThunk()).then(() => {
+            history.push(`/restaurants/current`);
+          });
+        });
       };
   
       return (
@@ -66,7 +79,7 @@ export default function EditRestaurant() {
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
-            <p>Add a new Restaurant</p>
+            <p>Edit Your Restaurant Details</p>
             <label>
               <input
                 type="text"

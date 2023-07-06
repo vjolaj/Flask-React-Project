@@ -55,17 +55,24 @@ const ManageRestaurants = () => {
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
-          <div>
-          <OpenModalButton
-                buttonText="Add Menu Item"
-                modalComponent={<NewMenuItemModal restaurant={restaurant} />}
-              />
-            </div>
+              <div>
+                <OpenModalButton
+                  buttonText="Add Menu Item"
+                  modalComponent={<NewMenuItemModal restaurant={restaurant} />}
+                />
+              </div>
               <OpenModalButton
                 buttonText="Delete Restaurant"
-                modalComponent={<DeleteRestaurantModal restaurant={restaurant} />}
+                modalComponent={
+                  <DeleteRestaurantModal restaurant={restaurant} />
+                }
               />
             </div>
+            <Link to={`/restaurants/${restaurant.id}/update`}>
+              <button className="editRestaurant">
+                Update Restaurant Details
+              </button>
+            </Link>
           </div>
         ))}
       </div>

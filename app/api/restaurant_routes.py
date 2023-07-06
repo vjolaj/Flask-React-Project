@@ -59,7 +59,7 @@ def create_restaurant():
         return {"new_restaurant": new_restaurant.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
    
-@restaurant_routes.route('/<int:restaurantId>', methods=["POST"])
+@restaurant_routes.route('/<int:restaurantId>', methods=["PUT"])
 @login_required
 def update_restaurant(restaurantId):
     restaurant_to_update = Restaurant.query.get(restaurantId)
@@ -77,12 +77,15 @@ def update_restaurant(restaurantId):
             return {'errors': ['Restaurant does not exist']}, 404
         if restaurant_to_update.ownerId is not current_user.id:
             return {'errors': ['Unauthorized access']}, 403
-        print(">>>>>>>FORM DATA HEREEEE<<<<<<<<", form.data)
+        image = form.data["imageUrl"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        
         restaurant_to_update.name = form.data['name']
         restaurant_to_update.address=form.data['address']
         restaurant_to_update.cuisineType=form.data['cuisineType']
         restaurant_to_update.priceRange=form.data['priceRange']
-        restaurant_to_update.imageUrl=form.data['imageUrl']
+        restaurant_to_update.imageUrl= upload['url']
         restaurant_to_update.description=form.data['description']
         # restaurant_to_update.ownerId = current_user.id
         # restaurant_to_update.id = restaurantId

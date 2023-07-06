@@ -3,9 +3,10 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 // const CLEAR_PAGE = 'page/clear'
 
-const setUser = (user) => ({
+const setUser = (user, cart) => ({
 	type: SET_USER,
-	payload: user,
+	user,
+	cart
 });
 
 const removeUser = () => ({
@@ -18,10 +19,13 @@ const removeUser = () => ({
 //     }
 // };
 
-const initialState = { user: null };
+const initialState = { 
+	user: null,
+	cart: null
+};
 
 export const authenticate = () => async (dispatch) => {
-	const response = await fetch("/api/auth/", {
+	const response = await fetch("/api/auth", {
 		headers: {
 			"Content-Type": "application/json",
 		},
@@ -50,7 +54,9 @@ export const login = (email, password) => async (dispatch) => {
 
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(setUser(data));
+		const cartRes = await fetch("/api/cart")
+		const cartData = await cartRes.json()
+		dispatch(setUser(data, cartData));
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
@@ -89,10 +95,17 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 			phoneNumber
 		}),
 	});
-	console.log(response)
+
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(setUser(data));
+		const cartRes = await fetch("/api/cart/new-order", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
+		const cartData = await cartRes.json();
+		dispatch(setUser(data, cartData));
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
@@ -107,9 +120,10 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
-			return { user: action.payload };
+			return { user: action.user,
+			cart: action.cart };
 		case REMOVE_USER:
-			return { user: null };
+			return { user: null, cart: null };
 		// case CLEAR_PAGE:
 		// 	return{...state, initialState:{}}
 		default:

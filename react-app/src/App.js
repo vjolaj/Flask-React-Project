@@ -12,6 +12,8 @@ import RestaurantShow from "./components/RestaurantShow";
 import Main from "./components/Main";
 import NewRestaurant from "./components/NewRestaurant";
 import ManageRestaurants from "./components/ManageRestaurants";
+import RestaurantShow from "./components/RestaurantShow";
+import PastOrdersPage from "./components/Orders/pastOrders";
 
 
 function App() {

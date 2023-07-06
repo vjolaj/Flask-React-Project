@@ -26,12 +26,13 @@ const getRestaurantsOrders = orders => {
 };
 
 //thunks
-const getUserOrdersThunk = () => async dispatch => {
+export const getUserOrdersThunk = () => async dispatch => {
+    console.log('requesting from backend...')
     const res = await fetch('/api/orders/current'); //userId will be attached in the backend
 
     const data = await res.json();
     const normalizedData = {};
-    Object.values(data.Orders).forEach(order => {
+    Object.values(data.users_orders).forEach(order => {
         normalizedData[order.id] = order
     });
 
@@ -39,19 +40,19 @@ const getUserOrdersThunk = () => async dispatch => {
     return data;
 };
 
-const postUserOrderThunk = (order) => async dispatch => {
-    const {  } = order
+// export const checkoutThunk = (order) => async dispatch => {
+//     const {  } = order
 
-    const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+//     const res = await fetch('/api/orders', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
 
-        })
-    })
-}
+//         })
+//     })
+// }
 
 const initialState = {
     currentUserOrders: {},
@@ -70,12 +71,16 @@ const ordersReducer = (state = initialState, action) => {
                 ...state,
                 currentUserOrders: {...state.currentUserOrders}
             };
-            newState.currentUserOrders[action.order.id] = action.order
+            newUserOrders.currentUserOrders[action.order.id] = action.order
             return newUserOrders;
         case GET_RESTAURANT_ORDERS:
             return {
                 ...state,
                 restaurantOrders: action.orders
             };
+        default:
+            return state;
     }
 }
+
+export default ordersReducer;

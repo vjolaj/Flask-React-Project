@@ -43,17 +43,25 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
+
+  
   const loginButton = (e) => {
     e.preventDefault();
-    history.push("/login");
+    history.push('/login')
     closeMenu();
-  };
+  }
 
   const signupButton = (e) => {
     e.preventDefault();
-    history.push("/signup");
+    history.push('/signup')
     closeMenu();
-  };
+  }
+
+  const ordersRedirect = (e) => {
+    e.preventDefault();
+    history.push('/orders')
+    closeMenu()
+  }
   return (
     <>
       <button onClick={openMenu} className="userButton">
@@ -70,6 +78,12 @@ function ProfileButton({ user }) {
             <button onClick={handleLogout} className="logOut-button">
               Log Out
             </button>
+              <div>
+                <p>Hello {user.username}</p>
+                {user.email}
+                <p onClick={ordersRedirect}>Past Orders</p>
+              </div>
+              <button onClick={handleLogout} className="logOut-button">Log Out</button>
           </div>
         ) : (
           <>
@@ -87,6 +101,10 @@ function ProfileButton({ user }) {
               </button>
             </div>
 
+        <div className="menuButtons">
+          <button onClick={signupButton} className="menuSignUpButton">Sign Up</button>
+          <button onClick={loginButton} className="menuLoginButton">Log in</button>
+        </div>
             {/* <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}

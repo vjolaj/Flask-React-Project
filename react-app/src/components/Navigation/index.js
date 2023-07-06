@@ -6,11 +6,13 @@ import { removeFilter } from '../../store/filterReducer';
 // import OpenModalButton from "../OpenModalButton";
 import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
+import Cart from '../Cart';
 
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const cart = useSelector(state => state.session.cart)
 	const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState(false);
@@ -33,13 +35,17 @@ function Navigation({ isLoaded }){
   const handleEpicEatsClick = () => {
     dispatch(removeFilter()); // Dispatch the removeFilter action
   };
+
+  const openCart = () => {
+	return
+  }
 	
 	return (
 		<div className='nav'>
 			<div className='navLeft'>
 				<div className='userButton'>
 					<ProfileButton user={sessionUser} className='userButton'/>
-				</div>
+			</div>
 			<div className='logo'>
 				<p>
 					<NavLink exact to="/restaurants" className='logo' onClick={handleEpicEatsClick}>Epic</NavLink>
@@ -48,7 +54,9 @@ function Navigation({ isLoaded }){
 					<NavLink exact to="/restaurants" className='Eats' onClick={handleEpicEatsClick}>Eats</NavLink>
 				</p>	
 			</div>
-				
+		</div>
+			<div className='cart' onClick={openCart}>
+				<Cart />
 			</div>
 		</div>
 		

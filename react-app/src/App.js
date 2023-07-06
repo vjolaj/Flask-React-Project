@@ -12,6 +12,8 @@ import RestaurantMenuItems from "./components/AllMenuItems";
 import RestaurantShow from "./components/RestaurantShow";
 import Main from "./components/Main";
 import NewRestaurant from "./components/NewRestaurant";
+import ManageRestaurants from "./components/ManageRestaurants";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -39,23 +41,24 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path='/restaurants'>
+            <Main/>
+          </Route>
+          <Route exact path='/restaurants/current'>
+            <ManageRestaurants/>
+          </Route>
+          <Route exact path='/restaurants/newrestaurant'>
+            <NewRestaurant/>
+          </Route>
           <Route exact path = "/restaurants/:restaurantId/menuitems">
             <RestaurantMenuItems />
           </Route>
           <Route exact path="/restaurants/:restaurantId/newmenuitem">
             <NewMenuItemPage />
           </Route>
-          <Route exact path='/restaurants'>
-            <Main/>
-          </Route>
-          <Route exact path='/restaurants/newrestaurant'>
-            <NewRestaurant/>
-          </Route>
           <Route exact path='/restaurants/:restaurantId'>
             <RestaurantShow/>
           </Route>
-
-          
         </Switch>
       )}
 

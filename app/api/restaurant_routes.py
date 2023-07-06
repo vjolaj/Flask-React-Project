@@ -62,9 +62,9 @@ def create_restaurant():
 @restaurant_routes.route('/<int:restaurantId>', methods=["POST"])
 @login_required
 def update_restaurant(restaurantId):
-    # restaurant_to_update = Restaurant.query.get(restaurantId)
-    # if restaurant_to_update is None:
-    #     return {'errors': ['Restaurant does not exist']}, 404
+    restaurant_to_update = Restaurant.query.get(restaurantId)
+    if restaurant_to_update is None:
+        return {'errors': ['Restaurant does not exist']}, 404
     """
     This route will update a restaurant (not functional yet).
     """
@@ -79,13 +79,13 @@ def update_restaurant(restaurantId):
             return {'errors': ['Unauthorized access']}, 403
         print(">>>>>>>FORM DATA HEREEEE<<<<<<<<", form.data)
         restaurant_to_update.name = form.data['name']
-        restaurant_to_update.address=form.data['address'],
-        restaurant_to_update.cuisineType=form.data['cuisineType'],
-        restaurant_to_update.priceRange=form.data['priceRange'],
-        restaurant_to_update.imageUrl=form.data['imageUrl'],
+        restaurant_to_update.address=form.data['address']
+        restaurant_to_update.cuisineType=form.data['cuisineType']
+        restaurant_to_update.priceRange=form.data['priceRange']
+        restaurant_to_update.imageUrl=form.data['imageUrl']
         restaurant_to_update.description=form.data['description']
-        restaurant_to_update.ownerId = current_user.id
-        restaurant_to_update.id = restaurantId
+        # restaurant_to_update.ownerId = current_user.id
+        # restaurant_to_update.id = restaurantId
         db.session.commit()
         return {"updated_restaurant": restaurant_to_update.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

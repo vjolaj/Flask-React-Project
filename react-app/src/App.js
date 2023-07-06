@@ -56,6 +56,9 @@ function App() {
           <Route exact path='/restaurants/:restaurantId'>
             <RestaurantShow/>
           </Route>
+          <Route exact path='/orders'>
+            <PastOrdersPage />
+          </Route>
         </Switch>
       )}
 

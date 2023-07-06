@@ -1,6 +1,7 @@
 .restImg {
   width: 19rem;
   height: 12rem;
+  border-radius: 1rem;
 }
 
 .rest-index-container {
@@ -10,7 +11,9 @@
   gap: 25px;
   justify-content: center;
   margin-top: 3.5rem;
+  margin-right: 1rem;
   gap: 28px;
+  
  
 }
 
@@ -19,4 +22,18 @@
   flex-direction: column;
   width: 18rem;
   text-decoration: none;
+  font-family: sans-serif;
+  
+}
+
+.main-name{
+  margin: 0;
+  font-size: 19px;
+  margin-top: 2px;
+}
+
+.delivery-fee-main{
+  margin: 0;
+  margin-top: 2px;
+  font-size: 15.5px;
 }

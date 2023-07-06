@@ -11,11 +11,12 @@ const CATEGORIES = {
   FastFood: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/fastfood.png",
   Sandwich:"https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/sandwich.png",
   Asian: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/asian.png",
+  American:"https://oobreats.s3.amazonaws.com/american.png",
   Chinese: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/chinese.png",
   Italian: "https://oobreats.s3.amazonaws.com/italian.png",
   Sushi: 'https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/sushi.png',
   Healthy: 'https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/healthy.png',
-  Alcohol: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"
+  // Alcohol: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"
 };
 
 const Main = () => {
@@ -48,15 +49,17 @@ const Main = () => {
           </button>
         ))}
       </div>
-
+      <h2 className="filter-name">{filter}</h2>
        {showNoRestaurantsMessage ? (
-       
         <div className="apologize">
            <p className="apologize">We apologize, but there are currently no restaurants available for this category.</p>
            <img src="https://www.cambridge.org/elt/blog/wp-content/uploads/2019/07/Sad-Face-Emoji.png" alt="sad-face" className="sadFace"/>
         </div>
       ) : (
-        <RestaurantsIndex restaurants={filteredRestaurants} />
+        <div>
+          <RestaurantsIndex restaurants={filteredRestaurants} />
+        </div>
+        
       )}
     </div>
   );

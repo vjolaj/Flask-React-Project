@@ -22,7 +22,7 @@ const RestaurantShow = () => {
   reviews = Object.values(reviews);
 
   // console.log(reviews, '😍')
-  console.log(restaurant);
+  // console.log(restaurant);
   // console.log(menuItems)
 
   // Calculate total number of reviews
@@ -71,15 +71,20 @@ const RestaurantShow = () => {
           <p>• {restaurant.cuisineType} •</p>
           <p>{restaurant.priceRange}</p>
         </div>
+         <p className="delivery">30-45 min • $3.99 Delivery Fee</p> 
       </div>
 
       <RestaurantMenuItems menuItems={filteredMenuItems} />
       <div>
         {user && restaurant.ownerId === user.id && (
-          <div>
+          <div className="plus-container">
+            {/* <p>This is your Restaurant!</p> */}
             <NavLink to={`/restaurants/${restaurant.id}/newmenuitem`}>
-              <button>Add more items to your Menu!</button>
+              {/* <button>Add more items to your Menu!</button> */}
+              {/* <img src="https://cdn-icons-png.flaticon.com/512/43/43869.png"  alt="plus" className="plus"/> */}
+             <button className="click-here">Click here to add more items</button>
             </NavLink>
+            
           </div>
         )}
       </div>

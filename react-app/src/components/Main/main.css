@@ -12,10 +12,17 @@
     background-color: white;
     border: none;
     height: 4rem;
+    transition: transform 0.3s;
+}
+
+.singleCategory:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .categories-name{
     font-size: 15px;
+
 }
 
 .apologize{
@@ -30,8 +37,16 @@
 
 .sadFace{
     display: flex;
-        justify-content: center;
-        flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
     width: 5rem;
     height: 5rem;
+}
+
+.filter-name{
+    font-family: sans-serif;
+    margin-left: 6rem;
+    margin-top: 3rem;
+    width: 2rem;
+    font-size: 1.7rem;
 }

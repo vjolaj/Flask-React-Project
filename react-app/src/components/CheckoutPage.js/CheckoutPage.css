@@ -1,0 +1,114 @@
+#checkout-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#checkout-left-side {
+    display: flex;
+    width: 62%;
+    flex-direction: column;
+}
+
+#checkout-right-side {
+    display: flex;
+    width: 38%;
+    flex-direction: column;
+}
+
+#checkout-right-side:before {
+    content: "";
+    background-color: rgb(247, 247, 247);
+    position: absolute;
+    height: 100%;
+    width: 38%;
+    z-index: -1;
+    left: 62%;
+    top: 0px;
+}
+
+
+.bottom-border {
+    border-bottom: 2px rgb(219, 219, 219) solid;
+    padding: 15px 0px;
+}
+
+.space-between {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    width: 63%;
+    margin: 0px 32px;
+}
+
+.left-subsection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 50px 0px 80px;
+}
+#place-order-button {
+    background-color: rgb(4, 145, 77);
+    color: white;
+    font-size: 18px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#tip-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.info-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkout-page-button {
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgb(221, 221, 221);
+}
+
+.checkout-page-button:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}
+
+#checkout-left-side h2 {
+    font-size: 35px;
+    margin: 0px;
+}
+
+#checkout-left-side h3 {
+    font-size: 22px;
+}
+
+.left-subsection > i {
+    font-size: 20px;
+}
+
+.checkout-right-side h4 {
+    display: flex;
+    margin: 0px;
+}

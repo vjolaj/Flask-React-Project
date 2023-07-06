@@ -11,12 +11,13 @@ import NewMenuItemPage from "./components/NewMenuItem";
 import RestaurantMenuItems from "./components/AllMenuItems";
 import RestaurantShow from "./components/RestaurantShow";
 import Main from "./components/Main";
+import CheckoutPage from "./components/CheckoutPage.js";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const location = useLocation();
-  
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -25,8 +26,8 @@ function App() {
 
   return (
     <>
-    
-     {!hideNavigation && < Navigation isLoaded={isLoaded}/>} 
+
+     {!hideNavigation && < Navigation isLoaded={isLoaded}/>}
       {isLoaded && (
         <Switch>
           <Route exact path = '/'>
@@ -50,12 +51,13 @@ function App() {
           <Route exact path='/restaurants/:restaurantId'>
             <RestaurantShow/>
           </Route>
-
-          
+          <Route exact path='/user/checkout'>
+            <CheckoutPage/>
+          </Route>
         </Switch>
       )}
 
-      
+
     </>
   );
 }

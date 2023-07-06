@@ -18,7 +18,7 @@ export default function RestaurantMenuItems() {
   if (!menuItems) {
     return <div>Loading Menu Items...</div>;
   }
-
+ 
   return (
     <div className="menuItemsContainer">
       {Object.values(menuItems).map((menuItem) => (

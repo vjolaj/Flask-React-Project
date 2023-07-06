@@ -22,7 +22,7 @@ class Order(db.Model):
     # orderItems = db.relationship("OrderItem", back_populates="order", cascade="all, delete")
     # menuItems = db.relationship("MenuItem", secondary="OrderItem", back_populates="orders")
     menuItemAssociation = db.relationship("OrderItem", back_populates="order", cascade="all, delete")
-    menuItems = association_proxy("menuItemAssociation", 'menuItem', creator=lambda item, amount=1: OrderItem(menuItem=item, quantity=amount))
+    menuItems = association_proxy("menuItemAssociation", 'menuItem', creator=lambda input: OrderItem(menuItem=input['item'], quantity=input['amount']))
     # *In theory* should be able to add menuItems in the format of:
     #           new_menuItem = MenuItem(
     #               'itemName': request.json.get('itemName'),
@@ -41,7 +41,7 @@ class Order(db.Model):
     #           current_orderItem.quantity = 4
 
     def to_dict(self):
-        items = {orderItem.menuItemId : dict(orderItem.MenuItem, **{'quantity' : orderItem.quantity}) for orderItem in self.menuItemAssociation}
+        items = {orderItem.menuItemId : dict(orderItem.to_dict()['MenuItem'], **{'quantity' : orderItem.to_dict()['quantity']}) for orderItem in self.menuItemAssociation}
 
         return {
             'id': self.id,
@@ -53,6 +53,6 @@ class Order(db.Model):
             'address': self.address,
             'orderedAt': self.orderedAt,
             'Items' : items,
-            'totalItems' : sum([item.quantity for item in items]),
-            'totalCost' : sum([item.price for item in items]),
+            'totalItems' : sum([item['quantity'] for item in items.values()]),
+            'totalCost' : sum([item['price'] * item['quantity'] for item in items.values()]),
         }

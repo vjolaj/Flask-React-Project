@@ -1,12 +1,13 @@
+import { getCartThunk, newCartThunk } from "./ordersReducer";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 // const CLEAR_PAGE = 'page/clear'
 
-const setUser = (user, cart) => ({
+const setUser = (user) => ({
 	type: SET_USER,
-	user,
-	cart
+	user
 });
 
 const removeUser = () => ({
@@ -21,7 +22,6 @@ const removeUser = () => ({
 
 const initialState = { 
 	user: null,
-	cart: null
 };
 
 export const authenticate = () => async (dispatch) => {
@@ -54,9 +54,8 @@ export const login = (email, password) => async (dispatch) => {
 
 	if (response.ok) {
 		const data = await response.json();
-		const cartRes = await fetch("/api/cart")
-		const cartData = await cartRes.json()
-		dispatch(setUser(data, cartData));
+		dispatch(setUser(data));
+		dispatch(getCartThunk())
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
@@ -98,14 +97,8 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 
 	if (response.ok) {
 		const data = await response.json();
-		const cartRes = await fetch("/api/cart/new-order", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			}
-		});
-		const cartData = await cartRes.json();
-		dispatch(setUser(data, cartData));
+		dispatch(setUser(data));
+		dispatch(newCartThunk())
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
@@ -120,10 +113,9 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
-			return { user: action.user,
-			cart: action.cart };
+			return { user: action.user };
 		case REMOVE_USER:
-			return { user: null, cart: null };
+			return { user: null};
 		// case CLEAR_PAGE:
 		// 	return{...state, initialState:{}}
 		default:

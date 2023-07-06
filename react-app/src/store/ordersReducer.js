@@ -2,7 +2,8 @@
 const GET_USER_ORDERS = '/user/orders/GET';
 const POST_USER_ORDERS = '/user/orders/POST';
 const GET_RESTAURANT_ORDERS = '/restaurants/orders/GET';
-const EDIT_ORDER = '/order/PUT'
+const ADD_TO_CART = '/user/cart/POST'
+const GET_CART = '/user/cart/GET'
 
 //action creators
 const getUserOrdersAction = orders => {
@@ -11,6 +12,13 @@ const getUserOrdersAction = orders => {
         orders
     }
 };
+
+const addToCartAction = menuItem => {
+    return {
+        type: ADD_TO_CART,
+        menuItem
+    }
+}
 
 const postUserOrderAction = order => {
     return {
@@ -26,16 +34,15 @@ const getRestaurantsOrders = orders => {
     }
 };
 
-const EditOrder = (payload) => {
+const setCartAction = cart => {
     return {
-        type: EDIT_ORDER,
-        payload
+        type: GET_CART,
+        cart
     }
 }
 
 //thunks
 export const getUserOrdersThunk = () => async dispatch => {
-    console.log('requesting from backend...')
     const res = await fetch('/api/orders/current'); //userId will be attached in the backend
 
     const data = await res.json();
@@ -48,33 +55,34 @@ export const getUserOrdersThunk = () => async dispatch => {
     return data;
 };
 
-export const editOrderThunk = (id, body) => async dispatch => {
-    const res = await fetch(`/api/orders/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    })
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(EditOrder(data))
-    }
+export const getCartThunk = () => async dispatch => {
+    const cartRes = await fetch("/api/cart")
+	const cartData = await cartRes.json()
+
+    dispatch(setCartAction(cartData))
+
+    return null
 }
 
-// export const checkoutThunk = (order) => async dispatch => {
-//     const {  } = order
+export const newCartThunk = () => async dispatch => {
+    const cartRes = await fetch("/api/cart/new-order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const cartData = await cartRes.json();
 
-//     const res = await fetch('/api/orders', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
+    dispatch(setCartAction(cartData))
 
-//         })
-//     })
+    return null
+}
+
+// export const addToCartThunk = (menuItem) => async dispatch => {
+
+//     const res = await fetch(`/api/orders/${}`)
 // }
+
 
 const initialState = {
     currentUserOrders: {},
@@ -101,10 +109,10 @@ const ordersReducer = (state = initialState, action) => {
                 ...state,
                 restaurantOrders: action.orders
             };
-        case EDIT_ORDER:
+        case GET_CART:
             return {
                 ...state,
-                cart: action.payload
+                cart: action.cart
             }
         default:
             return state;

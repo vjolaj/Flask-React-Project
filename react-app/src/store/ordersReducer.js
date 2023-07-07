@@ -106,8 +106,8 @@ export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch 
     const data = await res.json();
 
     const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
-        const restaurantData = await restaurantRes.json()
-        data.restaurant = restaurantData.restaurant_info
+    const restaurantData = await restaurantRes.json()
+    data.restaurant = restaurantData.restaurant_info
     console.log(data)
     if (!res.ok) {
         console.log(data)
@@ -133,6 +133,10 @@ export const updateItemQuantityThunk = (quantity, orderId, menuItemId) => async 
     });
 
     const data = res.json();
+
+    const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
+    const restaurantData = await restaurantRes.json()
+    data.restaurant = restaurantData.restaurant_info
 
     dispatch(setCartAction(data))
 

@@ -87,3 +87,10 @@ font-size: 1.3rem;
 .submit-form-button:hover {
     opacity: 1.0
 }
+
+.error {
+    color: red;
+    margin: 2px;
+
+
+}

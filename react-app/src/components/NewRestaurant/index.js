@@ -17,8 +17,10 @@ export default function NewRestaurant() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({})
   const dispatch = useDispatch();
   const history = useHistory();
+  const [submitted, setSubmitted] = useState(false)
 
   const cuisineTypes = [
     "",
@@ -37,8 +39,34 @@ export default function NewRestaurant() {
 
   const prices = ["", "$", "$$", "$$$", "$$$$"];
 
+  useEffect(() => {
+    const errorsObject = {};
+    if (!name) {
+        errorsObject.name = "Name is required"
+    }
+    if (!address) {
+        errorsObject.address = "Address is required"
+    }
+    if (!priceRange || priceRange === "") {
+        errorsObject.priceRange = "Price range selection is required"
+    }
+    if (!cuisineType || cuisineType === "") {
+        errorsObject.cuisineType = "Cuisine type selection is required"
+    }
+    if (!description) {
+        errorsObject.description = "Description is required"
+    }
+    if (!image) {
+        errorsObject.image = "Image upload is required"
+    }
+
+    setValidationErrors(errorsObject)
+}, [name, address, priceRange, cuisineType, description, image])
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true)
     const formData = new FormData();
     formData.append("name", name);
     formData.append("address", address);
@@ -49,6 +77,10 @@ export default function NewRestaurant() {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
     setImageLoading(true);
+    if (Object.values(validationErrors).length) {
+      return null
+  }
+  setValidationErrors({})
     return dispatch(createRestaurantThunk(formData)).then(() => {
       dispatch(getUserRestaurantsThunk());
       history.push(`/restaurants/current`);
@@ -74,7 +106,8 @@ export default function NewRestaurant() {
               required
               placeholder="Restaurant Name"
               className="input"
-            />
+              />
+              {submitted && validationErrors.name && <p className="error">{validationErrors.name}</p>}
           </div>
           <div className="individualFormContainer">
             Enter the restaurant's address
@@ -86,6 +119,8 @@ export default function NewRestaurant() {
               placeholder="Restaurant Address"
               className="input"
             />
+              {submitted && validationErrors.address && <p className="error">{validationErrors.address}</p>}
+
           </div>
           <div className="individualFormContainer cuisine">
             Select the restaurant's cuisine type
@@ -99,6 +134,8 @@ export default function NewRestaurant() {
                 </option>
               ))}
             </select>
+            {submitted && validationErrors.cuisineType && <p className="error">{validationErrors.cuisineType}</p>}
+
           </div>
           <div className="longerFormContainer">
             Select the restaurant's price range. If your entrees generally cost
@@ -115,6 +152,7 @@ export default function NewRestaurant() {
                 </option>
               ))}
             </select>
+            {submitted && validationErrors.priceRange && <p className="error">{validationErrors.priceRange}</p>}
           </div>
           <div className="longerFormContainer">
             Please enter a description for your restaurant. Describe your
@@ -127,6 +165,7 @@ export default function NewRestaurant() {
               placeholder="Restaurant Description"
               className="input"
             />
+            {submitted && validationErrors.description && <p className="error">{validationErrors.description}</p>}
           </div>
           <div className="form-input-box">
             <div
@@ -141,6 +180,8 @@ export default function NewRestaurant() {
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
               ></input>
+              {submitted && validationErrors.image && <p className="error">{validationErrors.image}</p>}
+
             </div>
           </div>
           <button type="submit" className="submit-form-button">

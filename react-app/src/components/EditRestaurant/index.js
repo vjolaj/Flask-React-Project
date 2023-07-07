@@ -18,6 +18,8 @@ export default function EditRestaurant() {
     const [description, setDescription] = useState("")
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
+    const [validationErrors, setValidationErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -43,6 +45,30 @@ export default function EditRestaurant() {
     ]
 
     useEffect(() => {
+      const errorsObject = {};
+      if (!name) {
+          errorsObject.name = "Name is required"
+      }
+      if (!address) {
+          errorsObject.address = "Address is required"
+      }
+      if (!priceRange || priceRange === "") {
+          errorsObject.priceRange = "Price range selection is required"
+      }
+      if (!cuisineType || cuisineType === "") {
+          errorsObject.cuisineType = "Cuisine type selection is required"
+      }
+      if (!description) {
+          errorsObject.description = "Description is required"
+      }
+      if (!image || image.filename == null) {
+          errorsObject.image = "Image upload is required"
+      }
+  
+      setValidationErrors(errorsObject)
+  }, [name, address, priceRange, cuisineType, description, image])
+
+    useEffect(() => {
       if (restaurant) {
         setName(restaurant.name || "");
         setAddress(restaurant.address || "");
@@ -55,6 +81,7 @@ export default function EditRestaurant() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSubmitted(true)
         const formData = new FormData();
         formData.append("name", name);
         formData.append("address", address);
@@ -65,11 +92,14 @@ export default function EditRestaurant() {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        dispatch(editRestaurantThunk(formData, restaurantId)).then(() => {
-          dispatch(getUserRestaurantsThunk()).then(() => {
+        if (Object.values(validationErrors).length) {
+          return null
+        }
+        setValidationErrors({})
+        return dispatch(editRestaurantThunk(formData, restaurantId)).then(() => {
+          dispatch(getUserRestaurantsThunk());
             history.push(`/restaurants/current`);
           });
-        });
       };
   
       return (
@@ -92,6 +122,7 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Name"
                 className="input"
               />
+              {submitted && validationErrors.name && <p className="error">{validationErrors.name}</p>}
             </div>
             <div className="individualFormContainer">
                 Edit the restaurant's address
@@ -103,6 +134,7 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Address"
                 className="input"
               />
+              {submitted && validationErrors.address && <p className="error">{validationErrors.address}</p>}
             </div>
             <div className="individualFormContainer cuisine">
             Edit the restaurant's cuisine type
@@ -119,6 +151,7 @@ export default function EditRestaurant() {
                 </option>
               ))}
             </select>
+            {submitted && validationErrors.cuisineType && <p className="error">{validationErrors.cuisineType}</p>}
           </div>
           <div className="longerFormContainer">
             Edit the restaurant's price range. If your entrees generally cost $1-10, select "$". If your entrees generally cost $11-20, select "$$". If your entrees generally cost $21-35, select "$$$". If your entrees generally cost more than $35, select "$$$$".
@@ -135,6 +168,7 @@ export default function EditRestaurant() {
                 </option>
               ))}
             </select>
+            {submitted && validationErrors.priceRange && <p className="error">{validationErrors.priceRange}</p>}
           </div>
             <div className="longerFormContainer">
             Edit the description for your restaurant. Describe your cuisine and try to highlight what makes your restaurant unique.
@@ -146,6 +180,7 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Description"
                 className="input"
               />
+              {submitted && validationErrors.description && <p className="error">{validationErrors.description}</p>}
             </div>
             <div className="form-input-box">
               <div className="imageInputContainer longerFormContainer" htmlFor="image">
@@ -156,6 +191,8 @@ export default function EditRestaurant() {
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
                 ></input>
+                {submitted && validationErrors.image && <p className="error">{validationErrors.image}</p>}
+  
                 </div>
             </div>
             <button type="submit" className="submit-form-button">

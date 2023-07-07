@@ -61,7 +61,7 @@ export default function EditRestaurant() {
       if (!description) {
           errorsObject.description = "Description is required"
       }
-      if (!image || image.filename == null) {
+      if (!image) {
           errorsObject.image = "Image upload is required"
       }
   
@@ -75,27 +75,27 @@ export default function EditRestaurant() {
         setCuisineType(restaurant.cuisineType || "");
         setDescription(restaurant.description || "");
         setPriceRange(restaurant.priceRange || "");
-        setImage(restaurant.imageUrl || "");
+        setImage(restaurant.imageUrl.filename || "");
       }
     }, [restaurant]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setSubmitted(true)
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("address", address);
-        formData.append("cuisineType", cuisineType);
-        formData.append("priceRange", priceRange);
-        formData.append("imageUrl", image);
-        formData.append("description", description);
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
-        setImageLoading(true);
-        if (Object.values(validationErrors).length) {
-          return null
-        }
-        setValidationErrors({})
+      e.preventDefault();
+      setSubmitted(true)
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("address", address);
+      formData.append("cuisineType", cuisineType);
+      formData.append("priceRange", priceRange);
+      formData.append("imageUrl", image);
+      formData.append("description", description);
+      // aws uploads can be a bit slow—displaying
+      // some sort of loading message is a good idea
+      setImageLoading(true);
+      if (Object.values(validationErrors).length) {
+        return null
+      }
+      setValidationErrors({})
         return dispatch(editRestaurantThunk(formData, restaurantId)).then(() => {
           dispatch(getUserRestaurantsThunk());
             history.push(`/restaurants/current`);

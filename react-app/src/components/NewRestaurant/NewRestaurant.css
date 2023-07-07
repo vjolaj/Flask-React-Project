@@ -1,3 +1,7 @@
+body {
+    font-family: sans-serif;
+}
+
 .add-restaurant-form {
         width: 50%;
         display: flex;
@@ -6,7 +10,7 @@
         margin: auto
 }
     
-input {
+.add-restaurant-form > input {
     width: 100%;
 }
 
@@ -59,7 +63,7 @@ font-size: 1.3rem;
     margin-top: 10px;
 }
 
-.file-upload-button{
+/* .file-upload-button{
     border-top: 15px;
     padding: 10px;
     background-color: #e4e6e4;
@@ -68,14 +72,14 @@ font-size: 1.3rem;
     border: none;
     font-size: 0.8rem;
     font-weight: 600;
-}
+} */
 
 .submit-form-button {
     width: 100%;
     border-top: 15px;
     padding: 10px;
     height: 3rem;
-    background-color: #c1e3c1;
+    background-color: #96e196;
     opacity: 0.8;
     border-radius: 10px;
     border: none;

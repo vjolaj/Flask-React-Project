@@ -21,7 +21,7 @@ const ManageRestaurants = () => {
   return (
     <div className="manage-rest-container">
       <div className="manageRestaurantsHeaders">
-        <h2 className="manageHeader">Manage Spots</h2>
+        <div className="manageHeader">Manage Spots</div>
         <Link to="/restaurants/newrestaurant">
           <button className="addRestaurantButton">
             Create a New Restaurant
@@ -31,7 +31,7 @@ const ManageRestaurants = () => {
       <div className="rest-index-container">
         {Object.values(restaurants).map((restaurant) => (
           <div key={restaurant.id}>
-            <div className="ManageSingleRestContainer">
+            <div className="singleRestContainer">
               <div>
                 <NavLink to={`/restaurants/${restaurant.id}`}>
                   <img
@@ -41,15 +41,14 @@ const ManageRestaurants = () => {
                   />
                 </NavLink>
               </div>
-              <h3 className="name">{restaurant.name}</h3>
-           
+              <h2>{restaurant.name}</h2>
+            </div>
             <div className="manageSpot-buttons">
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
           <div className="editButtons"></div>
-              <div className="container">
-          <div className="black-button">
+              <div>
                 <OpenModalButton
                   buttonText="Add Menu Item"
                   modalComponent={<NewMenuItemModal restaurant={restaurant} />}
@@ -62,18 +61,13 @@ const ManageRestaurants = () => {
             </Link>
             </div>
             <div className="deleteRestaurantButton">
-            <div className="black-button">
-             <OpenModalButton
+            <OpenModalButton
               buttonText="Delete Restaurant"
               modalComponent={
                 <DeleteRestaurantModal restaurant={restaurant} />
               }
             />
             </div>
-             </div>
-            </div>
- </div>
-
           </div>
         ))}
 
@@ -82,5 +76,6 @@ const ManageRestaurants = () => {
     </div>
   );
 };
+
 
 export default ManageRestaurants;

@@ -25,7 +25,7 @@ def remove_item_from_order(orderId):
     req = request.get_json()
     # menuItemId = req["menuItemId"]
     # menuItem = MenuItem.query.get(menuItemId)
-    item = OrderItem.query.filter(OrderItem.orderId == orderId and OrderItem.menuItemId == req['menuItemId']).first()
+    item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == req['menuItemId']).first()
 
     db.session.delete(item)
     db.session.commit()

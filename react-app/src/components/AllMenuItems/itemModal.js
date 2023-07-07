@@ -55,16 +55,22 @@ const ItemModal = ({ menuItem }) => {
         <>
         <h1 onClick={openMenu} className="plus">+</h1>
         <div className={modalClassName} ref={modalRef}>
-            <button><i onClick={closeMenu} class="fa-solid fa-x"></i></button>
+        <div onClick={closeMenu} id="item-modal-background"/>
+        <div className='item-modal-div'>
+              <button><i onClick={closeMenu} class="fa-solid fa-x"></i></button>
             <div className="add-to-cart-modal-details">
-                <h2>{menuItem.name}</h2>
-                <img className="itemImage" src={menuItem.imageUrl} alt="image"/>
-                <div className="edit-quantity-div">
-                  <button onClick={decrementQuantity}>-</button>
-                  <h4>{quantity}</h4>
-                  <button onClick={incrementQuantity}>+</button>
+                <h2>{menuItem.itemName}</h2>
+                <img className="item-image" src={menuItem.imageUrl} alt="image"/>
+                <p>{menuItem.description}</p>
+                <div className="item-modal-bottom ">
+                  <div className="cart-item-quantity">
+                    <button onClick={decrementQuantity}>-</button>
+                    <h4>{quantity}</h4>
+                    <button onClick={incrementQuantity}>+</button>
+                  </div>
+                  <button id='add-to-cart-button' onClick={handleSubmit}>Add to cart - ${price}</button>
                 </div>
-                <button onClick={handleSubmit}>Add to cart - ${price}</button>
+            </div>
             </div>
         </div>
         </>

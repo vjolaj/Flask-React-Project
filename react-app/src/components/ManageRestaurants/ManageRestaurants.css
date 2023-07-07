@@ -1,0 +1,52 @@
+.addRestaurantButton{
+    color: white;
+        background-color: black;
+        justify-content: center;
+        margin-top: 6px;
+        height: 2.5rem;
+        width: 9rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+        font-size: 14px;
+}
+
+.black-button button{
+    color: white;
+        background-color: black;
+        justify-content: center;
+        margin-top: 6px;
+        height: 2rem;
+        width: 8rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        margin-left: 15px;
+        margin-bottom: 2rem;
+        font-size: 14px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.ManageSingleRestContainer{
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+}
+
+.manageHeader{
+    margin-left: 2rem;
+    font-family: sans-serif;
+}
+
+.name{
+    font-family: sans-serif;
+    margin-left: 16px;
+}

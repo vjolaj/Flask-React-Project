@@ -165,20 +165,5 @@ const restaurantsReducer = (state = initialState, action) => {
   }
 };
 
-// const initialState = {};
-// const restaurantsReducer = (state = initialState, action) => {
-//   let newState = {};
-
-//   switch (action.type) {
-//     case GET_ALL_RESTAURANTS:
-//         action.restaurants.forEach((restaurant) => {
-//         newState[restaurant.id] = restaurant
-//       })
-//       return newState
-//     default:
-//     return state;
-//   }
-
-// };
 
 export default restaurantsReducer;

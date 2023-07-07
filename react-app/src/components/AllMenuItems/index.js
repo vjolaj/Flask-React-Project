@@ -24,9 +24,12 @@ export default function RestaurantMenuItems() {
       {Object.values(menuItems).map((menuItem) => (
         <div className="itemContainer" key={menuItem.id}>
           <div className="single-item-container">
-            <div className="itemImageContainer">
+            <div>
            <img className="itemImage" src={menuItem.imageUrl} alt="image"/>
-          <h1 className="plus">+</h1>  
+           <div className="itemImageContainer">
+             <h1 className="plus">+</h1> 
+           </div>
+          
             </div>
           
           <h3 className="itemName">{menuItem.itemName}</h3>

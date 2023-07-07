@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useModal } from "../../context/Modal";
 import { addToCartThunk } from "../../store/ordersReducer";
 
 import './itemModal.css'
 
 const ItemModal = ({ menuItem }) => {
     const dispatch = useDispatch();
-    const { closeModal } = useModal();
     let [quantity, setQuantity] = useState(1)
     let [price, setPrice] = useState(menuItem.price * quantity)
     const [showMenu, setShowMenu] = useState(false)

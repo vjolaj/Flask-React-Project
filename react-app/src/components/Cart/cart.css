@@ -2,11 +2,12 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 18rem;
-    height: 100%;
+    width: 24rem;
+    height: 100vh;
     color: black;
     margin-top: 0;
     background-color: white;
+    z-index: 1000;
 }
 
 .hidden {
@@ -35,4 +36,23 @@
     border-radius: 20px;
     color: white;
     cursor: pointer;
+}
+
+.cart-item-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.cart-item-tile {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-item-img {
+    width: 10rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    flex-direction: row;
 }

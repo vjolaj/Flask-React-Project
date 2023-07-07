@@ -97,9 +97,9 @@ export default function RestaurantMenuItems() {
             <div className="single-item-container">
               <div>
                 <img className="itemImage" src={menuItem.imageUrl} alt="image" />
-                <ItemModal menuItem={menuItem} />
                 <div className="itemImageContainer">
-                  <h1 className="plus">+</h1>
+                <ItemModal menuItem={menuItem} />
+                  {/* <h1 className="plus">+</h1> */}
                 </div>
               </div>
               <h3 className="itemName">{menuItem.itemName}</h3>

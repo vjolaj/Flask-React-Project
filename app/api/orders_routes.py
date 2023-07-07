@@ -37,7 +37,7 @@ def remove_item_from_order(orderId):
     return order.to_dict()
 
 @orders_routes.route('/<int:orderId>/menuItem', methods=['POST'])
-@login_required
+# @login_required
 def add_item_to_order(orderId):
     """
     This route adds an item and its quantity to current order (cart)
@@ -46,10 +46,12 @@ def add_item_to_order(orderId):
     order = Order.query.get(orderId)
     menuItemId = req["menuItemId"]
     quantity = req['quantity']
+    print("***********************", menuItemId, quantity)
     menuItem = MenuItem.query.get(menuItemId)
     if not order.restaurantId:
         order.restaurantId = menuItem.restaurantId
-    item = OrderItem.query.filter(OrderItem.orderId == orderId and OrderItem.menuItemId == req['menuItemId']).first()
+    item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == menuItemId).first()
+    print(item)
 
     if item is None:
         order.menuItems.append({"item": menuItem, "amount": quantity})

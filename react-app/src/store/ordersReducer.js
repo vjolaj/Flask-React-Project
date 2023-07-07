@@ -100,9 +100,31 @@ export const checkOutCart = (id, data) => async dispatch => {
 }
 
 // export const addToCartThunk = (menuItem) => async dispatch => {
+export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch => {
+    console.log("order id ", orderId)
+    console.log("menu item id ", menuItemId)
+    console.log("quantity ", quantity)
+    const res = await fetch(`/api/orders/${orderId}/menuItem`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            menuItemId,
+            quantity
+        })
 
-//     const res = await fetch(`/api/orders/${}`)
-// }
+    });
+    const data = await res.json();
+    console.log(data)
+    if (!res.ok) {
+        console.log(data)
+    }
+
+    dispatch(setCartAction(data))
+
+    return data
+}
 
 
 const initialState = {

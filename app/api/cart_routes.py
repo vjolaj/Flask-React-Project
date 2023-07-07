@@ -25,7 +25,7 @@ def get_cart():
     """
     Gets the logged in users shopping cart
     """
-    order = Order.query.filter(Order.userId == current_user.id and Order.isCompleted == False).first()
+    order = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == False).first()
     return order.to_dict()
 
 @cart_routes.route('/<int:orderId>', methods=["POST"])

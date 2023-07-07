@@ -35,7 +35,7 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-
+		
 		dispatch(setUser(data));
 	}
 };

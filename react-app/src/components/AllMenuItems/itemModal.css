@@ -1,0 +1,15 @@
+.add-item-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40vw;
+    height: 80vh;
+    color: black;
+    margin-top: 0;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}
+

@@ -33,10 +33,6 @@ export default function RestaurantMenuItems() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
-
-  const modalClassName = "item-modal" + (showMenu ? "" : " hidden")
-
   useEffect(() => {
     dispatch(getAllMenuItemsThunk(restaurantId));
   }, [dispatch, restaurantId]);
@@ -52,7 +48,7 @@ export default function RestaurantMenuItems() {
           <div className="single-item-container">
             <div className="itemImageContainer">
            <img className="itemImage" src={menuItem.imageUrl} alt="image"/>
-          {/* <ItemModal menuItem={menuItem} />   */}
+          <ItemModal menuItem={menuItem} />
             </div>
           
           <h3 className="itemName">{menuItem.itemName}</h3>

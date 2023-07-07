@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 import './cart.css'
 
+export const openCart = () => {
+    
+}
+
 const Cart = ({ user }) => {
     const dispatch = useDispatch();
     const history = useHistory();

@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+.content-wrap {
+    min-height: 100vh;
+    padding-bottom: 10rem;
+}
+
+body {
+    margin: 0px;
+}

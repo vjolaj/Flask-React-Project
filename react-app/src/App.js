@@ -15,6 +15,7 @@ import NewRestaurant from "./components/NewRestaurant";
 import ManageRestaurants from "./components/ManageRestaurants";
 import PastOrdersPage from "./components/Orders/pastOrders";
 import EditRestaurant from "./components/EditRestaurant";
+import Footer from "./components/Footer"
 
 function App() {
   const dispatch = useDispatch();
@@ -29,46 +30,47 @@ function App() {
 
   return (
     <>
-
-     {!hideNavigation && < Navigation isLoaded={isLoaded}/>}
-      {isLoaded && (
-        <Switch>
-          <Route exact path = '/'>
-            <LandingPage/>
-          </Route>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path='/restaurants'>
-            <Main/>
-          </Route>
-          <Route exact path='/restaurants/current'>
-            <ManageRestaurants/>
-          </Route>
-          <Route exact path='/restaurants/newrestaurant'>
-            <NewRestaurant/>
-          </Route>
-          <Route exact path = "/restaurants/:restaurantId/menuitems">
-            <RestaurantMenuItems />
-          </Route>
-          <Route exact path='/restaurants/:restaurantId/update'>
-            <EditRestaurant />
-          </Route>
-          <Route exact path='/restaurants/:restaurantId'>
-            <RestaurantShow/>
-          </Route>
-          <Route exact path='/user/checkout'>
-            <CheckoutPage/>
-          </Route>
-          <Route exact path='/orders'>
-            <PastOrdersPage />
-          </Route>
-        </Switch>
-      )}
-
+      <div className="content-wrap">
+      {!hideNavigation && < Navigation isLoaded={isLoaded}/>}
+        {isLoaded && (
+          <Switch>
+            <Route exact path = '/'>
+              <LandingPage/>
+            </Route>
+            <Route path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path='/restaurants'>
+              <Main/>
+            </Route>
+            <Route exact path='/restaurants/current'>
+              <ManageRestaurants/>
+            </Route>
+            <Route exact path='/restaurants/newrestaurant'>
+              <NewRestaurant/>
+            </Route>
+            <Route exact path = "/restaurants/:restaurantId/menuitems">
+              <RestaurantMenuItems />
+            </Route>
+            <Route exact path='/restaurants/:restaurantId/update'>
+              <EditRestaurant />
+            </Route>
+            <Route exact path='/restaurants/:restaurantId'>
+              <RestaurantShow/>
+            </Route>
+            <Route exact path='/user/checkout'>
+              <CheckoutPage/>
+            </Route>
+            <Route exact path='/orders'>
+              <PastOrdersPage />
+            </Route>
+          </Switch>
+        )}
+      </div>
+      <Footer/>
 
     </>
   );

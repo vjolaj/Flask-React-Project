@@ -21,61 +21,61 @@ const ManageRestaurants = () => {
   return (
     <div className="manage-rest-container">
       <div className="manageRestaurantsHeaders">
-        <div className="manageHeader">Manage Spots</div>
+        <div className="manageHeader">Manage Restaurants</div>
         <Link to="/restaurants/newrestaurant">
           <button className="addRestaurantButton">
             Create a New Restaurant
           </button>
         </Link>
       </div>
-      <div className="rest-index-container">
+      <div className="manage-rest-index-container">
         {Object.values(restaurants).map((restaurant) => (
           <div key={restaurant.id}>
-            <div className="singleRestContainer">
-              <div>
-                <NavLink to={`/restaurants/${restaurant.id}`}>
+            <div>
+              <NavLink to={`/restaurants/${restaurant.id}`}>
+                <div className="manageRestImg">
                   <img
                     src={restaurant.imageUrl}
                     alt="img"
-                    className="restImg"
+                    className="imageOverlay"
                   />
-                </NavLink>
-              </div>
-              <h2>{restaurant.name}</h2>
-            </div>
-            <div className="manageSpot-buttons">
-              {/* <Link to={`/spots/${spot.id}/edit`}>
-            <button id="updateButton">Update</button>
-          </Link> */}
-          <div className="editButtons"></div>
-              <div>
-                <OpenModalButton
-                  buttonText="Add Menu Item"
-                  modalComponent={<NewMenuItemModal restaurant={restaurant} />}
-                />
-              </div>
-            <Link to={`/restaurants/${restaurant.id}/update`}>
-              <button className="editRestaurant">
-                Update Restaurant
-              </button>
-            </Link>
-            </div>
-            <div className="deleteRestaurantButton">
-            <OpenModalButton
-              buttonText="Delete Restaurant"
-              modalComponent={
-                <DeleteRestaurantModal restaurant={restaurant} />
-              }
-            />
+                  <div className="textOverlay">
+                    <div className="restaurantName">{restaurant.name}</div>
+                    <div className="restaurantAddress">
+                      {restaurant.address}
+                    </div>
+                    <div className="manageSpot-buttons">
+                      <div>
+                        <OpenModalButton
+                          buttonText="Add Menu Item"
+                          modalComponent={
+                            <NewMenuItemModal restaurant={restaurant} />
+                          }
+                        />
+                      </div>
+                      <Link to={`/restaurants/${restaurant.id}/update`}>
+                        <button className="editRestaurant">
+                          Update Restaurant
+                        </button>
+                      </Link>
+                      <div className="deleteRestaurantButton">
+                        <OpenModalButton
+                          buttonText="Delete Restaurant"
+                          modalComponent={
+                            <DeleteRestaurantModal restaurant={restaurant} />
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </NavLink>
             </div>
           </div>
         ))}
-
       </div>
-      
     </div>
   );
 };
-
 
 export default ManageRestaurants;

@@ -9,6 +9,7 @@ const ItemModal = ({ menuItem }) => {
     let [quantity, setQuantity] = useState(1)
     let [price, setPrice] = useState(menuItem.price * quantity)
     const [showMenu, setShowMenu] = useState(false)
+    const [errors, setErrors] = useState({})
     const modalRef = useRef()
     const order = useSelector(state => state.orders.cart)
 
@@ -43,6 +44,13 @@ const ItemModal = ({ menuItem }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (order.restaurantId !== menuItem.restaurantId) {
+          setErrors({
+            error: "You can only order from one restaurant at a time"
+          })
+          return errors
+        }
         console.log("order id ",order.id, "menu item id ", menuItem.id, "quantity ", quantity)
         const data = await dispatch(addToCartThunk(order.id, menuItem.id, quantity));
 
@@ -68,6 +76,7 @@ const ItemModal = ({ menuItem }) => {
                     <h4>{quantity}</h4>
                     <button onClick={incrementQuantity}>+</button>
                   </div>
+                  {errors && <p className="errors">{errors.errors}</p>}
                   <button id='add-to-cart-button' onClick={handleSubmit}>Add to cart - ${price}</button>
                 </div>
             </div>

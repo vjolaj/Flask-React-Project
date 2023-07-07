@@ -19,6 +19,7 @@ function NewMenuItemModal({restaurant}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const itemTypes = [
+    "",
     "Side",
     "Entree",
     "Dessert",

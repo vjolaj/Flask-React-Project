@@ -19,15 +19,7 @@ const ManageRestaurants = () => {
   if (!restaurants) return null;
 
   return (
-    <>
-      {/* {!restaurants ? (
-        <div className="manageRestaurantsHeaders">
-          <div className="manageHeader">Manage Spots</div>
-          <Link to="/restaurants/newrestaurant">
-            <button className="addRestaurantButton">Create a New Restaurant</button>
-          </Link>
-        </div>
-      ) : ( */}
+    <div className="manage-rest-container">
       <div className="manageRestaurantsHeaders">
         <div className="manageHeader">Manage Spots</div>
         <Link to="/restaurants/newrestaurant">
@@ -55,28 +47,33 @@ const ManageRestaurants = () => {
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
+          <div className="editButtons"></div>
               <div>
                 <OpenModalButton
                   buttonText="Add Menu Item"
                   modalComponent={<NewMenuItemModal restaurant={restaurant} />}
                 />
               </div>
-              <OpenModalButton
-                buttonText="Delete Restaurant"
-                modalComponent={
-                  <DeleteRestaurantModal restaurant={restaurant} />
-                }
-              />
-            </div>
             <Link to={`/restaurants/${restaurant.id}/update`}>
               <button className="editRestaurant">
-                Update Restaurant Details
+                Update Restaurant
               </button>
             </Link>
+            </div>
+            <div className="deleteRestaurantButton">
+            <OpenModalButton
+              buttonText="Delete Restaurant"
+              modalComponent={
+                <DeleteRestaurantModal restaurant={restaurant} />
+              }
+            />
+            </div>
           </div>
         ))}
+
       </div>
-    </>
+      
+    </div>
   );
 };
 

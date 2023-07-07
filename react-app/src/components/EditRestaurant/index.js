@@ -41,15 +41,16 @@ export default function EditRestaurant() {
         "$$$",
         "$$$$"
     ]
+
     useEffect(() => {
       if (restaurant) {
         setName(restaurant.name || "");
         setAddress(restaurant.address || "");
-        setCuisineType(restaurant.cuisineType || "")
-        setDescription(restaurant.description || "")
-        setPriceRange(restaurant.priceRange || "")
-        setImage(restaurant.imageUrl || "")
-      };
+        setCuisineType(restaurant.cuisineType || "");
+        setDescription(restaurant.description || "");
+        setPriceRange(restaurant.priceRange || "");
+        setImage(restaurant.imageUrl || "");
+      }
     }, [restaurant]);
 
     const handleSubmit = async (e) => {
@@ -73,14 +74,16 @@ export default function EditRestaurant() {
   
       return (
         <>
-          <form onSubmit={handleSubmit} className="addMenuItem-Form">
+        <div className="add-restaurant-form">
+          <form onSubmit={handleSubmit}>
             {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul> */}
-            <p>Edit Your Restaurant Details</p>
-            <label>
+            <div className="formHeading">Edit Your Restaurant</div>
+            <div className="individualFormContainer">
+              Edit the name of your restaurant
               <input
                 type="text"
                 value={name}
@@ -89,9 +92,9 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Name"
                 className="input"
               />
-            </label>
-            <label>
-                Enter Restaurant Address
+            </div>
+            <div className="individualFormContainer">
+                Edit the restaurant's address
               <input
                 type="text"
                 value={address}
@@ -100,9 +103,9 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Address"
                 className="input"
               />
-            </label>
-            <label>
-            Select the restaurant's cuisine type
+            </div>
+            <div className="individualFormContainer cuisine">
+            Edit the restaurant's cuisine type
             <select
               value = {cuisineType}
               onChange ={(e) => setCuisineType(e.target.value)}
@@ -116,9 +119,9 @@ export default function EditRestaurant() {
                 </option>
               ))}
             </select>
-          </label>
-          <label>
-            Select the restaurant's price range. If your entrees generally cost $1-8, select "$". If your entrees generally cost $9-15, select "$$". If your entrees generally cost $16-35, select "$$$". If your entrees generally cost more than $35, select "$$$$".
+          </div>
+          <div className="longerFormContainer">
+            Edit the restaurant's price range. If your entrees generally cost $1-10, select "$". If your entrees generally cost $11-20, select "$$". If your entrees generally cost $21-35, select "$$$". If your entrees generally cost more than $35, select "$$$$".
             <select
               value = {priceRange}
               onChange ={(e) => setPriceRange(e.target.value)}
@@ -132,9 +135,9 @@ export default function EditRestaurant() {
                 </option>
               ))}
             </select>
-          </label>
-            <label>
-            Please enter a description for your restaurant. Describe your cuisine and try to highlight what makes your restaurant unique.
+          </div>
+            <div className="longerFormContainer">
+            Edit the description for your restaurant. Describe your cuisine and try to highlight what makes your restaurant unique.
               <input
                 type="text"
                 value={description}
@@ -143,22 +146,23 @@ export default function EditRestaurant() {
                 placeholder="Restaurant Description"
                 className="input"
               />
-            </label>
+            </div>
             <div className="form-input-box">
-              <label className="form-label" htmlFor="image">
-                Post a preview image for your restaurant. This will appear on the landing page and on the individual restaurant page.
-              </label>
+              <div className="imageInputContainer longerFormContainer" htmlFor="image">
+                Post a new preview image for your restaurant. This will appear on the landing page and on the individual restaurant page.
               <input
                 id="image"
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
-              ></input>
+                ></input>
+                </div>
             </div>
             <button type="submit" className="submit-form-button">
-              Add your Restaurant
+              Edit Your Restaurant
             </button>
           </form>
+          </div>
         </>
       );
 }

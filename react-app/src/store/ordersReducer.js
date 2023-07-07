@@ -4,6 +4,7 @@ const POST_USER_ORDERS = '/user/orders/POST';
 const GET_RESTAURANT_ORDERS = '/restaurants/orders/GET';
 const ADD_TO_CART = '/user/cart/POST'
 const GET_CART = '/user/cart/GET'
+const EDIT_ORDER = '/order/edit'
 
 //action creators
 const getUserOrdersAction = orders => {
@@ -38,6 +39,13 @@ const setCartAction = cart => {
     return {
         type: GET_CART,
         cart
+    }
+}
+
+const editOrderAction = order => {
+    return {
+        type: EDIT_ORDER,
+        order
     }
 }
 
@@ -78,6 +86,19 @@ export const newCartThunk = () => async dispatch => {
     return null
 }
 
+export const checkOutCart = (id, data) => async dispatch => {
+    const res = await fetch(`/api/orders/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    const orderData = await res.json();
+    dispatch(editOrderAction(orderData))
+    return null
+}
+
 // export const addToCartThunk = (menuItem) => async dispatch => {
 
 //     const res = await fetch(`/api/orders/${}`)
@@ -114,6 +135,12 @@ const ordersReducer = (state = initialState, action) => {
                 ...state,
                 cart: action.cart
             }
+        case EDIT_ORDER:
+            let newState;
+            newState = { ...state}
+            newState.currentUserOrders = { ...state.currentUserOrders };
+            newState.currentUserOrders[action.order.id] = action.order;
+            return newState;
         default:
             return state;
     }

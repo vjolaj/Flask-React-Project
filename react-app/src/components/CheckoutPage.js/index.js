@@ -1,13 +1,49 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./CheckoutPage.css"
-import { editOrderThunk } from "../../store/ordersReducer";
+import { checkOutCart, newCartThunk } from "../../store/ordersReducer";
 
 
 export default function CheckoutPage() {
+    let dispatch = useDispatch();
+    const cart = useSelector((state) => {
+        return state.cart;
+    })
 
+    const [deliveryMethod, setDeliveryMethod] = useState(cart ? cart.deliveryMethod : "");
+    const [paymentDetails, setPaymentDetails] = useState(cart ? cart.paymentDetails : "");
+    const [address, setAddress] = useState(cart ? cart.address : "");
+
+    const [errors, setErrors] = useState({});
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let errs = {}
+        if (!deliveryMethod) errs.deliveryMethod = "Delivery method is required";
+        if (!paymentDetails) errs.paymentDetails = "Payment details are required";
+        if (!address) errs.address = "Address is required";
+
+        const payload = {
+            deliveryMethod,
+            paymentDetails,
+            address
+        }
+        let order;
+        order = await dispatch(checkOutCart(cart.id, payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors({...data.errors, ...errs})
+                }
+            })
+        if (order) {
+            await dispatch(newCartThunk());
+        }
+    }
 
     return (
         <div id='checkout-wrapper'>
@@ -17,18 +53,27 @@ export default function CheckoutPage() {
                     <div className="left-subsection">
                         <i class="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
-                            <div>delivery address</div>
-                            <input className="checkout-page-input"/>
+                            <div>Address</div>
+                            <input
+                                className="checkout-page-input"
+                                placeholder="Enter Your Address"
+                                onChange={(e) => setAddress(e.target.value)}
+                                defaultValue={address}
+                            />
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
                         <i class="fa-solid fa-person"></i>
                         <div className="space-between">
                             <div>
-                                <div>Meet at door</div>
-                                <div>Add delivery instructions</div>
+                                <div>Delivery Method</div>
                             </div>
-                            <input className="checkout-page-input"/>
+                            <input
+                                className="checkout-page-input"
+                                placeholder="e.g. Pickup/Delivery"
+                                onChange={(e) => setDeliveryMethod(e.target.value)}
+                                defaultValue={deliveryMethod}
+                            />
                         </div>
                     </div>
                 </div>
@@ -60,7 +105,12 @@ export default function CheckoutPage() {
                         <i class="fa-regular fa-credit-card"></i>
                         <div className="space-between bottom-border">
                             <div>Credit or Debit Card</div>
-                            <input className="checkout-page-input"/>
+                            <input
+                                className="checkout-page-input"
+                                placeholder="Enter payment info"
+                                onChange={(e) => setPaymentDetails(e.target.value)}
+                                defaultValue={paymentDetails}
+                            />
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -83,7 +133,7 @@ export default function CheckoutPage() {
             </div>
             <div id='checkout-right-side'>
                 <div className="right-section bottom-border">
-                    <button id='place-order-button'>Place order</button>
+                    <button id='place-order-button' onClick={handleSubmit}>Place order</button>
                     <p>If you’re not around when the delivery person arrives, they’ll leave your order at the door. By placing your order, you agree to take full responsibility for it once it’s delivered. Orders containing alcohol or other restricted items may not be eligible for leave at door and will be returned to the store if you are not available.</p>
                 </div>
                 <div className="right-section bottom-border">

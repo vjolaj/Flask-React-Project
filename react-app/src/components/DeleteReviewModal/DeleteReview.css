@@ -1,0 +1,64 @@
+.mainContainer {
+    width: 26rem;
+    height: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border:5px solid black;
+    border-radius: 15px;
+}
+
+.deleteText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.h1Delete {
+    font-weight: 600;
+    font-size: 28px;
+    height: 1.3rem;
+
+}
+
+.YN {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    gap: 8px;
+}
+
+.Ybutton {
+
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    font-weight: bold;
+    height: 2.5rem;
+}
+
+.Nbutton {
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    height: 2.5rem;
+    font-weight: bold;
+}
+
+.Ybutton:hover {
+    background-color: rgba(63, 187, 63);
+    color: white;
+    border: 2px solid black;
+
+}
+
+.Nbutton:hover {
+    border: 2px solid black;
+    background-color: rgba(63, 187, 63);
+    color: white;
+}
+
+.pDelete {
+    padding-left: 16px;
+    color:rgba(63, 187, 63, 0.864)
+}

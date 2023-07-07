@@ -38,10 +38,10 @@ export const getRestaurantReviewsThunk = (restaurantId) => async dispatch => {
     }
 };
 
-export const createRestaurantReviewThunk = (review) => async dispatch => {
-    const { restaurantId, description, rating } = review;
+export const createRestaurantReviewThunk = (review, restaurantId) => async dispatch => {
+    const { description, rating } = review;
 
-    const res = await fetch(`/api/spots/${restaurantId}/reviews`, {
+    const res = await fetch(`/api/restaurants/${restaurantId}/reviews`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ export const createRestaurantReviewThunk = (review) => async dispatch => {
 };
 
 export const deleteReviewThunk = (id, spotId) => async dispatch => {
-    const res = await fetch(`/api/reviews/${id}`, {
+    const res = await fetch(`/api/restaurants/reviews/${id}`, {
         method: 'DELETE'
     })
 
@@ -100,7 +100,7 @@ const reviewsReducer = (state = initialState, action) => {
                     ...state,
                     restaurant: {...state.restaurant}
                 };
-                delete newState.restaurant[action.id]
+                delete newState1.restaurant[action.id]
                 return newState1;
 
         default:

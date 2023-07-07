@@ -44,16 +44,25 @@
   height: 4rem;
 } */
 
-.plus-container {
+.plus-container{
   display: flex;
   justify-content: flex-end;
-  margin-right: 2rem;
-  margin-bottom: 3rem;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-family: sans-serif;
-  margin-top: 1rem;
+  margin-right: 5rem;
+}
+
+.plus-container button {
+  color: white;
+    background-color: black;
+    justify-content: center;
+    margin-top: 6px;
+    height: 2rem;
+    width: 8rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    font-size: 14px;
 }
 
 .click-here{
@@ -71,4 +80,83 @@ button:hover{
 }
 
 
+.review-container{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 2rem;
+width: 100%;
+margin-left: 3rem;
+justify-content: flex-start;
+font-family: sans-serif;
+margin-bottom: 4rem;
 
+}
+
+.single-review-container{
+  width: 32rem;
+  height: 7.5rem;
+  text-align: justify;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+.single-review-container button{
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+  margin-left: 28rem;
+  border:none;
+  border-radius: 6px;
+  height: 1.5rem;
+  width: 3.6rem;
+}
+
+.single-review-container h4{
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.single-review-container p {
+  margin: 0;
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+.fa-solid.fa-star.filled {
+  color: black;
+}
+
+.fa-solid.fa-star.empty {
+  color: lightgray;
+
+}
+
+.rating-and-reviews{
+  margin-left: 3rem;
+  font-family: sans-serif;
+}
+
+.newReview button{
+      color: white;
+      background-color: black;
+      justify-content: center;
+      margin-top: 6px;
+      height: 2rem;
+      width: 8rem;
+      border: none;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      margin-left: 2rem;
+      margin-bottom: 2rem;
+      font-size: 14px;
+}

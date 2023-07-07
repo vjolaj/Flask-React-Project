@@ -1,0 +1,44 @@
+.reviewContainer {
+    width: 23rem;
+    height: 20rem;
+    padding: 1rem;
+    border: 4px solid  black;
+    border-radius: 15px;
+    font-family: sans-serif;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.starsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem;
+}
+
+.submitReview {
+    width: 21.2rem;
+    height: 2.5rem;
+    color: white;
+    background-color: rgba(63, 187, 63, 0.864);
+    box-shadow: 1px 1px 2px 1px black;
+    font-size: 16px;
+
+}
+
+*:disabled {
+    background-color: rgba(63, 187, 63, 0.339);
+    box-shadow: none;
+    color: rgba(255, 255, 255, 0.859)
+}
+
+#modal-content{
+    border-radius: 15px;
+}

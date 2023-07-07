@@ -177,7 +177,7 @@ def get_all_reviews():
     return {"restaurant_reviews":{review.id: review.to_dict() for review in reviews}}
 
 #POST a new review
-@restaurant_routes.route("/<int:restaurantId>/reviews/new", methods=['POST'])
+@restaurant_routes.route("/<int:restaurantId>/reviews", methods=['POST'])
 @login_required
 def create_review(restaurantId):
     restaurant = Restaurant.query.get(restaurantId)
@@ -197,3 +197,16 @@ def create_review(restaurantId):
         
         return {"new_review": new_review.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@restaurant_routes.route("/reviews/<int:reviewId>", methods=['DELETE'])
+@login_required
+def delete_review(reviewId):
+    review = Review.query.get(reviewId)
+    if not review:
+        return {'error': 'Review not found'}, 404
+    if review.userId != current_user.id:
+        return {'error': 'Unauthorized'}, 403
+
+    db.session.delete(review)
+    db.session.commit()
+    return {'message': 'Review deleted successfully'}

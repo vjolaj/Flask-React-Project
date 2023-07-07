@@ -50,7 +50,7 @@ function NewMenuItemModal({restaurant}) {
             <li key={idx}>{error}</li>
           ))}
         </ul> */}
-        <p>Add a new menu item</p>
+        <h2>New item details</h2>
         <label>
           <input
             type="text"
@@ -98,8 +98,8 @@ function NewMenuItemModal({restaurant}) {
           />
         </label>
         <div className="form-input-box">
-          <label className="form-label" htmlFor="image">
-            Post Image:
+          <label className="file-upload-button" htmlFor="image">
+            Post Image: 
           </label>
           <input
             id="image"
@@ -108,8 +108,8 @@ function NewMenuItemModal({restaurant}) {
             onChange={(e) => setImage(e.target.files[0])}
           ></input>
         </div>
-        <button type="submit" className="submit-form-button">
-          Add a new menu item
+        <button type="submit" className="submit-new-item">
+          Add to the menu
         </button>
       </form>
     </>

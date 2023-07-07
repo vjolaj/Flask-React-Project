@@ -29,7 +29,7 @@ const ManageRestaurants = () => {
         </div>
       ) : ( */}
       <div className="manageRestaurantsHeaders">
-        <div className="manageHeader">Manage Spots</div>
+        <h2 className="manageHeader">Manage Spots</h2>
         <Link to="/restaurants/newrestaurant">
           <button className="addRestaurantButton">
             Create a New Restaurant
@@ -39,7 +39,7 @@ const ManageRestaurants = () => {
       <div className="rest-index-container">
         {Object.values(restaurants).map((restaurant) => (
           <div key={restaurant.id}>
-            <div className="singleRestContainer">
+            <div className="ManageSingleRestContainer">
               <div>
                 <NavLink to={`/restaurants/${restaurant.id}`}>
                   <img
@@ -49,23 +49,29 @@ const ManageRestaurants = () => {
                   />
                 </NavLink>
               </div>
-              <h2>{restaurant.name}</h2>
-            </div>
+              <h3 className="name">{restaurant.name}</h3>
+           
             <div className="manageSpot-buttons">
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
-          <div>
+          <div className="container">
+          <div className="black-button">
           <OpenModalButton
                 buttonText="Add Menu Item"
                 modalComponent={<NewMenuItemModal restaurant={restaurant} />}
               />
             </div>
-              <OpenModalButton
+            <div className="black-button">
+               <OpenModalButton
                 buttonText="Delete Restaurant"
                 modalComponent={<DeleteRestaurantModal restaurant={restaurant} />}
               />
             </div>
+             </div>
+            </div>
+ </div>
+
           </div>
         ))}
       </div>

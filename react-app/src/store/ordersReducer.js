@@ -14,27 +14,6 @@ const getUserOrdersAction = orders => {
     }
 };
 
-const addToCartAction = menuItem => {
-    return {
-        type: ADD_TO_CART,
-        menuItem
-    }
-}
-
-const postUserOrderAction = order => {
-    return {
-        type: POST_USER_ORDERS,
-        order
-    }
-};
-
-const getRestaurantsOrders = orders => {
-    return {
-        type: GET_RESTAURANT_ORDERS,
-        orders
-    }
-};
-
 const setCartAction = cart => {
     return {
         type: GET_CART,
@@ -67,10 +46,15 @@ export const getCartThunk = () => async dispatch => {
     const cartRes = await fetch("/api/cart")
 	const cartData = await cartRes.json()
 
+    console.log("checking restaurant data for cart ", cartData)
+    if (cartData.restaurantId >= 1) {
+        const restaurantRes = await fetch(`/api/restaurants/${cartData.restaurantId}`)
+        const restaurantData = await restaurantRes.json()
+        cartData.restaurant = restaurantData.restaurant_info
+
+        console.log("adding restaurant data to cart ", cartData)
+    }
     console.log(cartData)
-    const restaurantRes = await fetch(`/api/restaurants/${cartData.restaurantId}`)
-    const restaurantData = await restaurantRes.json()
-    cartData.restaurant = restaurantData.restaurant_info
 
     dispatch(setCartAction(cartData))
 
@@ -104,7 +88,6 @@ export const checkOutCart = (id, data) => async dispatch => {
     return null
 }
 
-// export const addToCartThunk = (menuItem) => async dispatch => {
 export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch => {
     console.log("order id ", orderId)
     console.log("menu item id ", menuItemId)
@@ -121,6 +104,10 @@ export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch 
 
     });
     const data = await res.json();
+
+    const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
+    const restaurantData = await restaurantRes.json()
+    data.restaurant = restaurantData.restaurant_info
     console.log(data)
     if (!res.ok) {
         console.log(data)
@@ -131,6 +118,48 @@ export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch 
     return data
 }
 
+export const updateItemQuantityThunk = (quantity, orderId, menuItemId) => async dispatch => {
+    const res = await fetch(`/api/orders/${orderId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            quantity,
+            menuItemId,
+            orderId,
+            isCompleted: false
+        })
+    });
+
+    const data = res.json();
+
+    const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
+    const restaurantData = await restaurantRes.json()
+    data.restaurant = restaurantData.restaurant_info
+
+    dispatch(setCartAction(data))
+
+    return data
+};
+
+export const deleteOrderItemThunk = (orderId, menuItemId) => async dispatch => {
+    const res = await fetch(`/api/orders/${orderId}/menuItem`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            menuItemId
+        })
+    });
+
+    const data = await res.json()
+
+    dispatch(setCartAction(data))
+
+    return data;
+}
 
 const initialState = {
     currentUserOrders: {},

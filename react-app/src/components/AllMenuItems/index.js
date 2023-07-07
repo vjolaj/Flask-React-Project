@@ -39,77 +39,73 @@ export default function RestaurantMenuItems() {
   }, [dispatch, restaurantId]);
 
   const handleItemTypeChange = (itemType) => {
-    if (itemType === filter) {
-      dispatch(removeFilter());
-    } else {
-      dispatch(receiveFilter(itemType));
-    }
+    dispatch(receiveFilter(itemType));
   };
 
   if (!menuItems) {
     return <div>Loading Menu Items...</div>;
   }
 
-  const filteredMenuItems = filter ? Object.values(menuItems).filter((menuItem) => menuItem.itemType === filter): Object.values(menuItems);
+  const filteredMenuItems = filter
+    ? Object.values(menuItems).filter((menuItem) => menuItem.itemType === filter)
+    : Object.values(menuItems);
 
   return (
     <div className="main-items">
       <div className="item-type-filter">
         <button
           onClick={() => handleItemTypeChange(null)}
-          className={filter === null ? "active" : ""}
+          className={filter === null}
         >
           All
         </button>
         <button
           onClick={() => handleItemTypeChange("Entree")}
-          className={filter === "Entree" ? "active" : ""}
+          className={filter === "Entree"}
         >
-          Entree
+          Entrees
         </button>
         <button
           onClick={() => handleItemTypeChange("Side")}
-          className={filter === "Side" ? "active" : ""}
+          className={filter === "Side"}
         >
-          Side
+          Sides
         </button>
         <button
           onClick={() => handleItemTypeChange("Dessert")}
-          className={filter === "Dessert" ? "active" : ""}
+          className={filter === "Dessert"}
         >
-          Dessert
+          Desserts
         </button>
         <button
           onClick={() => handleItemTypeChange("Drink")}
-          className={filter === "Drink" ? "active" : ""}
+          className={filter === "Drink"}
         >
-          Drink
+          Beverages
         </button>
       </div>
-       <div className="menuItemsContainer">
-      {filteredMenuItems.length === 0 ? (
-        <div className="no-items-message">
-          {filter ? `Sorry, there are no ${filter}s available at the moment.`: null}
-        </div>
-      ) : (
-        filteredMenuItems.map((menuItem) => (
-          <div className="itemContainer" key={menuItem.id}>
-            <div className="single-item-container">
-              <div>
-                <img className="itemImage" src={menuItem.imageUrl} alt="image" />
-                <ItemModal menuItem={menuItem} />
-                <div className="itemImageContainer">
-                  <h1 className="plus">+</h1>
-                </div>
-              </div>
-              <h3 className="itemName">{menuItem.itemName}</h3>
-              <div className="itemName">${menuItem.price}</div>
-            </div>
+      <div className="menuItemsContainer">
+        {filteredMenuItems.length === 0 ? (
+          <div className="no-items-message">
+            Sorry, there are no {filter}s available at the moment.
           </div>
-        ))
-      )}
-    </div>
+        ) : (
+          filteredMenuItems.map((menuItem) => (
+            <div className="itemContainer" key={menuItem.id}>
+              <div className="single-item-container">
+                <div>
+                  <img className="itemImage" src={menuItem.imageUrl} alt="image" />
+                  <div className="itemImageContainer">
+                    <ItemModal menuItem={menuItem} />
+                  </div>
+                </div>
+                <h3 className="itemName">{menuItem.itemName}</h3>
+                <div className="itemName">${menuItem.price}</div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
-

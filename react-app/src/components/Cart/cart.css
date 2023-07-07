@@ -1,12 +1,16 @@
 .cart-dropdown {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
-    width: 18rem;
-    height: 100%;
+    width: 24rem;
+    height: 100vh;
     color: black;
     margin-top: 0;
     background-color: white;
+    z-index: 1000;
+    padding: 1rem;
+    border-left: 1px solid black;
+    box-shadow: -10px 0px 1000px rgb(182, 182, 182)
 }
 
 .hidden {
@@ -16,11 +20,24 @@
 .cart-modal-details {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
 }
 
-#cart-checkout-div {
+.cart-modal-details > a {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+}
+
+.cart-price-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid gray
+}
+
+.cart-checkout-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,4 +52,78 @@
     border-radius: 20px;
     color: white;
     cursor: pointer;
+}
+
+.cart-item-list {
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+}
+
+.cart-item-tile {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.cart-item-img {
+    width: 10rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-item-quantity > button {
+    border-radius: 50%;
+    border: 1px solid gray;
+    padding: 0.45rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.cart-item-quantity > p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.cart-item-tile-left {
+    display: flex;
+}
+
+.empty-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#continue-shopping-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    height: 20px;
+    background-color: rgb(6, 193, 103);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.cart-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2rem;
+    width: 5.5rem;
+    background-color: black;
+    color: white;
 }

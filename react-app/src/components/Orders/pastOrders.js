@@ -16,7 +16,7 @@ const PastOrdersPage = () => {
 
     return (
         <div className="past-orders-div">
-            <h2>Past Orders</h2>
+            <h1>Past Orders</h1>
             <ul id="orders-list">
                 {Object.values(orders).map(order => (
                     <li key={order.id}>

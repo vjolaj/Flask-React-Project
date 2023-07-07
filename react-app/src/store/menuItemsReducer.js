@@ -18,7 +18,7 @@ export const addMenuItem = (menuItem) => {
 
 //thunks
 export const getAllMenuItemsThunk = (restaurantId) => async (dispatch) => {
-  const res = await fetch(`/api/restaurants//${restaurantId}/menu-items`);
+  const res = await fetch(`/api/restaurants/${restaurantId}/menu-items`);
 
   const data = await res.json();
   // console.log(data, '⭐️')

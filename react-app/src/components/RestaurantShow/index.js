@@ -52,11 +52,11 @@ const RestaurantShow = () => {
 
   const postReviewButton = (user, reviews, restaurant) => {
     if (user === null || user === undefined) return false; //=> Need to log in to post a review
-    // for (let review of reviews) {
-    //     if (review.userId === user.id) // =>Can't post a second review
-    //         return false;
-    // }
-    // if (user.id === restaurant.ownerId) return false;// => You can't write a review for your own spot
+    for (let review of reviews) {
+        if (review.userId === user.id) // =>Can't post a second review
+            return false;
+    }
+    if (user.id === restaurant.ownerId) return false;// => You can't write a review for your own restaurant
     return true;
   };
 

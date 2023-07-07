@@ -43,25 +43,30 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
-
-  
   const loginButton = (e) => {
     e.preventDefault();
-    history.push('/login')
+    history.push("/login");
     closeMenu();
-  }
+  };
 
   const signupButton = (e) => {
     e.preventDefault();
-    history.push('/signup')
+    history.push("/signup");
     closeMenu();
-  }
+  };
 
   const ordersRedirect = (e) => {
     e.preventDefault();
-    history.push('/orders')
-    closeMenu()
-  }
+    history.push("/orders");
+    closeMenu();
+  };
+
+  const manageRedirect = (e) => {
+    e.preventDefault();
+    history.push("/restaurants/current");
+    closeMenu();
+  };
+
   return (
     <>
       <button onClick={openMenu} className="userButton">
@@ -70,21 +75,28 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <div>
-              <div>
-                <p>Hello {user.username}</p>
-                {user.email}
-            <div><Link to="/restaurants/current">Manage Restaurants</Link></div>
-                <p onClick={ordersRedirect}>Past Orders</p>
+            <div className="userInfo">
+              <div>Hello {user.username}</div>
+              <div> {user.email} </div>
               </div>
-              <button onClick={handleLogout} className="logOut-button">Log Out</button>
+              <div className="navButtons">
+                <div onClick={manageRedirect}>Manage Restaurants</div>
+                <div onClick={ordersRedirect}>Past Orders</div>
+            </div>
+            <button onClick={handleLogout} className="logOut-button">
+              Log Out
+            </button>
           </div>
         ) : (
           <>
-         
-        <div className="menuButtons">
-          <button onClick={signupButton} className="menuSignUpButton">Sign Up</button>
-          <button onClick={loginButton} className="menuLoginButton">Log in</button>
-        </div>
+            <div className="menuButtons">
+              <button onClick={signupButton} className="menuSignUpButton">
+                Sign Up
+              </button>
+              <button onClick={loginButton} className="menuLoginButton">
+                Log in
+              </button>
+            </div>
             {/* <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}

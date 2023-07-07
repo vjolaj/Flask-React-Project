@@ -21,17 +21,17 @@ const Cart = ({ user }) => {
 
     useEffect(() => {
         if (!showMenu) return;
-    
+
         const closeMenu = (e) => {
           if (!modalRef.current || !modalRef.current.contains(e.target)) {
             setShowMenu(false);
           }
         };
-    
+
         document.addEventListener("click", closeMenu);
-    
+
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);    
+    }, [showMenu]);
 
     const closeMenu = () => setShowMenu(false);
 
@@ -49,14 +49,22 @@ const Cart = ({ user }) => {
                     <>
                     <p>Your cart from</p>
                     <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
+
                     </>
                 ) : (
                     <>
                     <h2>Add items to start a cart</h2>
                     <p>Once you add items from a restaurant or store, your cart will appear here.</p>
                     <button onClick={closeMenu}>Start shopping</button>
+                    <div id='cart-checkout-div' onClick={() => history.push('/user/checkout')}>
+                        <div>Checkout</div>
+                        <div>${(Number(cart.totalCost) || 0).toFixed(2)}</div>
+                    </div>
                     </>
-                )}                    
+
+                )}
+
+
                 </div>
             </div>
         </div>

@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFilter, receiveFilter } from "../../store/filterReducer";
 import RestaurantsIndex from "../RestaurantsIndex";
 import "./main.css"
+import { newCartThunk, getCartThunk } from "../../store/ordersReducer";
 
 const CATEGORIES = {
-  Pizza: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/pizza.png", 
+  Pizza: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/pizza.png",
   Mexican: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/mexican.png",
   FastFood: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/fastfood.png",
   Sandwich:"https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/sandwich.png",
@@ -24,7 +25,13 @@ const Main = () => {
   const restaurants = useSelector((state) => state.restaurants.allRestaurants);
   const filter = useSelector((state) => state.filter.type);
   // console.log(filter, '😃')
-
+  const cart = useSelector((state) => state.orders.cart)
+  useEffect(() => {
+      dispatch(getCartThunk());
+      if (!cart) {
+        dispatch(newCartThunk())
+      }
+  }, [dispatch]);
   const handleFilterClick = (cuisineType) => {
       dispatch(receiveFilter(cuisineType));
   };
@@ -59,7 +66,7 @@ const Main = () => {
         <div>
           <RestaurantsIndex restaurants={filteredRestaurants} />
         </div>
-        
+
       )}
     </div>
   );

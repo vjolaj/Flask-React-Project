@@ -74,7 +74,7 @@ export const getCartThunk = () => async dispatch => {
 
     dispatch(setCartAction(cartData))
 
-    return null
+    return cartData
 }
 
 export const newCartThunk = () => async dispatch => {

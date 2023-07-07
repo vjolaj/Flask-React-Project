@@ -20,7 +20,7 @@ const removeUser = () => ({
 //     }
 // };
 
-const initialState = { 
+const initialState = {
 	user: null,
 };
 
@@ -35,7 +35,7 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		
+
 		dispatch(setUser(data));
 		dispatch(getCartThunk())
 	}
@@ -56,7 +56,10 @@ export const login = (email, password) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
-		dispatch(getCartThunk())
+		const cart = await dispatch(getCartThunk())
+		if (!cart) {
+			dispatch(newCartThunk())
+		}
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();

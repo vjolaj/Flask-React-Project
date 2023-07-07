@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Route, Switch} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { removeFilter } from '../../store/filterReducer';
@@ -43,37 +43,40 @@ function Navigation({ isLoaded }){
   }
 
   const showSearchBar = location.pathname === '/restaurants';
-	
+
 	return (
 		<div className='nav'>
 			<div className='navLeft'>
 				<div className='userButton'>
 					<ProfileButton user={sessionUser} className='userButton'/>
+				</div>
+				<div className='logo'>
+					<p>
+						<NavLink exact to="/restaurants" className='logo' onClick={handleEpicEatsClick}>Epic</NavLink>
+					</p>
+					<p>
+						<NavLink exact to="/restaurants" className='Eats' onClick={handleEpicEatsClick}>Eats</NavLink>
+					</p>
+				</div>
 			</div>
-			<div className='logo'>
-				<p>
-					<NavLink exact to="/restaurants" className='logo' onClick={handleEpicEatsClick}>Epic</NavLink>
-				</p>
-				<p>
-					<NavLink exact to="/restaurants" className='Eats' onClick={handleEpicEatsClick}>Eats</NavLink>
-				</p>	
+			{showSearchBar &&
+			<div className='search-bar'>
+				<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+				<input
+					type="text"
+					placeholder="Search feature coming soon"
+				/>
 			</div>
+			}
+			<Switch>
+				<Route path="/restaurants">
+					<div className='cart' onClick={openCart}>
+						<Cart />
+					</div>
+				</Route>
+			</Switch>
 		</div>
-		{showSearchBar &&  
-		<div className='search-bar'>
-		<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-		<input
-        type="text"
-        placeholder="Search feature comming soon"
-      />
-		</div>
-		
-		}
-			<div className='cart' onClick={openCart}>
-				<Cart />
-			</div>
-		</div>
-		
+
 	);
 }
 

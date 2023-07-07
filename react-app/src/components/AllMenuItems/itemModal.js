@@ -5,8 +5,6 @@ import { addToCartThunk } from "../../store/ordersReducer";
 
 import './itemModal.css'
 
-export let cartClassName = "cart-dropdown hidden"
-
 const ItemModal = ({ menuItem }) => {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
@@ -51,7 +49,6 @@ const ItemModal = ({ menuItem }) => {
         const data = await dispatch(addToCartThunk(order.id, menuItem.id, quantity));
 
         closeMenu();
-        
     }
 
     const modalClassName = "add-item-modal" + (showMenu ? "" : " hidden");

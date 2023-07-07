@@ -1,22 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 import './cart.css'
-
-export const openCart = () => {
-    
-}
 
 const Cart = ({ user }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const modalRef = useRef();
 
-    const cart = useSelector(state => state.session.cart)
+    const cart = useSelector(state => state.orders.cart)
     const [showMenu, setShowMenu] = useState(false);
     const [restaurantName, setRestaurantName] = useState("")
-
+    console.log(cart)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -48,9 +45,18 @@ const Cart = ({ user }) => {
             <div className={cartClassName} ref={modalRef}>
                 <button><i onClick={closeMenu} class="fa-solid fa-x"></i></button>
                 <div className='cart-modal-details'>
+                {Object.values(cart).length ? (
+                    <>
+                    <p>Your cart from</p>
+                    <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
+                    </>
+                ) : (
+                    <>
                     <h2>Add items to start a cart</h2>
                     <p>Once you add items from a restaurant or store, your cart will appear here.</p>
                     <button onClick={closeMenu}>Start shopping</button>
+                    </>
+                )}                    
                 </div>
             </div>
         </div>

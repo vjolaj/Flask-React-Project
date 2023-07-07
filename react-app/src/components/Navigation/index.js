@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { removeFilter } from '../../store/filterReducer';
@@ -8,12 +8,14 @@ import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 import Cart from '../Cart';
 
+
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const cart = useSelector(state => state.session.cart)
 	const dispatch = useDispatch();
+	const location = useLocation();
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -39,6 +41,8 @@ function Navigation({ isLoaded }){
   const openCart = () => {
 	return
   }
+
+  const showSearchBar = location.pathname === '/restaurants';
 	
 	return (
 		<div className='nav'>
@@ -55,6 +59,16 @@ function Navigation({ isLoaded }){
 				</p>	
 			</div>
 		</div>
+		{showSearchBar &&  
+		<div className='search-bar'>
+		<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+		<input
+        type="text"
+        placeholder="Search feature comming soon"
+      />
+		</div>
+		
+		}
 			<div className='cart' onClick={openCart}>
 				<Cart />
 			</div>

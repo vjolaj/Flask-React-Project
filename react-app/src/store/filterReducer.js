@@ -1,6 +1,7 @@
 export const RECEIVE_FILTER = "RECEIVE_FILTER"
 export const REMOVE_FILTER = "REMOVE_FILTER"
 
+
 export const receiveFilter = filter => {
     return {
         type: RECEIVE_FILTER,
@@ -13,6 +14,7 @@ export const removeFilter = () => {
         type: REMOVE_FILTER
     }
 }
+
 
 const filterReducer = (state = {}, action) => {
     

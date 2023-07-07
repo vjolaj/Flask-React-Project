@@ -14,7 +14,7 @@ import CheckoutPage from "./components/CheckoutPage.js";
 import NewRestaurant from "./components/NewRestaurant";
 import ManageRestaurants from "./components/ManageRestaurants";
 import PastOrdersPage from "./components/Orders/pastOrders";
-
+import EditRestaurant from "./components/EditRestaurant";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +53,9 @@ function App() {
           </Route>
           <Route exact path = "/restaurants/:restaurantId/menuitems">
             <RestaurantMenuItems />
+          </Route>
+          <Route exact path='/restaurants/:restaurantId/update'>
+            <EditRestaurant />
           </Route>
           <Route exact path='/restaurants/:restaurantId'>
             <RestaurantShow/>

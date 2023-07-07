@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import "./NewMenuItemModal.css";
-import { addMenuItemThunk } from "../../store/menuItemsReducer";
+import { addMenuItemThunk, getAllMenuItemsThunk} from "../../store/menuItemsReducer";
+import {readSingleRestaurantThunk } from "../../store/restaurantsReducer";
+import { getRestaurantReviewsThunk } from "../../store/reviewsReducer";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useModal } from "../../context/Modal";
 
@@ -18,14 +20,43 @@ function NewMenuItemModal({restaurant}) {
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+  const [validationErrors, setValidationErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
   const itemTypes = [
+    "",
     "Side",
     "Entree",
     "Dessert",
     "Drink",
   ];
+
+  useEffect(() => {
+    const errorsObject = {};
+    if (!itemName) {
+        errorsObject.itemName = "Item name is required"
+    }
+    if (!price) {
+        errorsObject.price = "Price is required"
+    }
+    if (isNaN(price) || Number(price) < 0 || Number(price) > 99.99) {
+        errorsObject.price = "Item price must be a numeric value between 0.00 and 99.99"
+    }
+    if (!itemType || itemType === "") {
+        errorsObject.itemType = "Item type selection is required"
+    }
+    if (!description) {
+        errorsObject.description = "Description is required"
+    }
+    if (!image) {
+        errorsObject.image = "Image upload is required"
+    }
+
+    setValidationErrors(errorsObject)
+}, [itemName, price, itemType, description, image])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true)
     const formData = new FormData();
     formData.append("itemName", itemName);
     formData.append("price", price);
@@ -35,9 +66,16 @@ function NewMenuItemModal({restaurant}) {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
     setImageLoading(true);
+    if (Object.values(validationErrors).length) {
+      return null
+    }
+    setValidationErrors({})
     return dispatch(addMenuItemThunk(restaurant.id, formData))
     .then(() => {
         closeModal();
+        dispatch(readSingleRestaurantThunk(restaurant.id));
+    dispatch(getAllMenuItemsThunk(restaurant.id));
+    dispatch(getRestaurantReviewsThunk(restaurant.id));
         history.push(`/restaurants/${restaurant.id}`)
     })
   };
@@ -60,6 +98,7 @@ function NewMenuItemModal({restaurant}) {
             placeholder="Enter Item Name"
             className="input"
           />
+          {submitted && validationErrors.itemName && <p className="error">{validationErrors.itemName}</p>}
         </label>
         <label>
         Select the item category
@@ -76,6 +115,7 @@ function NewMenuItemModal({restaurant}) {
             </option>
           ))}
         </select>
+        {submitted && validationErrors.itemType && <p className="error">{validationErrors.itemType}</p>}
       </label>
         <label>
           <input
@@ -86,6 +126,7 @@ function NewMenuItemModal({restaurant}) {
             placeholder="Enter price"
             className="input"
           />
+          {submitted && validationErrors.price && <p className="error">{validationErrors.price}</p>}
         </label>
         <label>
           <input
@@ -96,6 +137,7 @@ function NewMenuItemModal({restaurant}) {
             placeholder="Item Description"
             className="input"
           />
+          {submitted && validationErrors.description && <p className="error">{validationErrors.description}</p>}
         </label>
         <div className="form-input-box">
           <label className="file-upload-button" htmlFor="image">
@@ -107,6 +149,7 @@ function NewMenuItemModal({restaurant}) {
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
           ></input>
+          {submitted && validationErrors.image && <p className="error">{validationErrors.image}</p>}
         </div>
         <button type="submit" className="submit-new-item">
           Add to the menu

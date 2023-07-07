@@ -68,7 +68,6 @@ export const createRestaurantThunk = (restaurant) => async (dispatch) => {
 
     if (res.ok) {
       const { resRestaurant } = await res.json();
-      console.log("NEW RESTAURANT ITEM DATA", resRestaurant);
       dispatch(readSingleRestaurantAction(resRestaurant));
     } else {
       const errorMessage = await res.text();
@@ -79,35 +78,23 @@ export const createRestaurantThunk = (restaurant) => async (dispatch) => {
   }
 };
 
-export const editRestaurantThunk = (restaurant) => async (dispatch) => {
-  const {
-    name,
-    address,
-    cuisine_type,
-    price_range,
-    imageUrl,
-    rating,
-    description,
-  } = restaurant;
+export const editRestaurantThunk = (restaurant, restaurantId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/restaurants/${restaurantId}`, {
+      method: "PUT",
+      body: restaurant,
+    });
 
-  const res = await fetch("/api/restaurants", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      address,
-      cuisine_type,
-      price_range,
-      imageUrl,
-      rating,
-      description,
-    }),
-  });
-
-  const data = await res.json();
-  return data;
+    if (res.ok) {
+      const { resUpdatedRestaurant } = await res.json();
+      dispatch(readSingleRestaurantAction(resUpdatedRestaurant));
+    } else {
+      const errorMessage = await res.text();
+      throw new Error(errorMessage);
+    }
+  } catch (error) {
+    console.log("Error updating restaurant:", error.message);
+  }
 };
 
 export const getUserRestaurantsThunk = () => async (dispatch) => {

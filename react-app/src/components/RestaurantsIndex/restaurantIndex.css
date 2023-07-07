@@ -2,6 +2,7 @@
   width: 19rem;
   height: 12rem;
   border-radius: 1rem;
+  object-fit: cover;
 }
 
 .rest-index-container {
@@ -23,7 +24,6 @@
   width: 18rem;
   text-decoration: none;
   font-family: sans-serif;
-  
 }
 
 .main-name{
@@ -37,3 +37,6 @@
   margin-top: 2px;
   font-size: 15.5px;
 }
+
+
+

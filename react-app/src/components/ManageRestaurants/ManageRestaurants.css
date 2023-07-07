@@ -46,7 +46,70 @@ justify-content: flex-start;
     font-family: sans-serif;
 }
 
-.name{
-    font-family: sans-serif;
-    margin-left: 16px;
+  .manageRestaurantsHeaders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .manageHeader {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+  }
+.addRestaurantButton {
+    border-top: 15px;
+    padding: 10px;
+    background-color: #e4e6e4;
+    opacity: 0.9;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.addRestaurantButton:hover {
+    opacity: 1.0;
+} 
+
+.rest-index-container {
+    margin-top: 1.5rem;
+    margin-bottom: 4rem
+}
+
+.manageSpot-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.manageSpot-buttons button{
+    border-top: 15px;
+    padding: 10px;
+    background-color: #e4e6e4;
+    opacity: 0.8;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.manageSpot-buttons button:hover{
+    opacity: 1.0;
+}
+
+.deleteRestaurantButton button {
+    margin-top: 10px;
+    width: 100%;
+    border-top: 15px;
+    padding: 10px;
+    background-color: #ebc1c1;
+    opacity: 0.9;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.deleteRestaurantButton button:hover {
+    opacity: 1.0
 }

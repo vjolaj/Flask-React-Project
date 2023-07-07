@@ -19,15 +19,7 @@ const ManageRestaurants = () => {
   if (!restaurants) return null;
 
   return (
-    <>
-      {/* {!restaurants ? (
-        <div className="manageRestaurantsHeaders">
-          <div className="manageHeader">Manage Spots</div>
-          <Link to="/restaurants/newrestaurant">
-            <button className="addRestaurantButton">Create a New Restaurant</button>
-          </Link>
-        </div>
-      ) : ( */}
+    <div className="manage-rest-container">
       <div className="manageRestaurantsHeaders">
         <h2 className="manageHeader">Manage Spots</h2>
         <Link to="/restaurants/newrestaurant">
@@ -55,18 +47,28 @@ const ManageRestaurants = () => {
               {/* <Link to={`/spots/${spot.id}/edit`}>
             <button id="updateButton">Update</button>
           </Link> */}
-          <div className="container">
+          <div className="editButtons"></div>
+              <div className="container">
           <div className="black-button">
-          <OpenModalButton
-                buttonText="Add Menu Item"
-                modalComponent={<NewMenuItemModal restaurant={restaurant} />}
-              />
+                <OpenModalButton
+                  buttonText="Add Menu Item"
+                  modalComponent={<NewMenuItemModal restaurant={restaurant} />}
+                />
+              </div>
+            <Link to={`/restaurants/${restaurant.id}/update`}>
+              <button className="editRestaurant">
+                Update Restaurant
+              </button>
+            </Link>
             </div>
+            <div className="deleteRestaurantButton">
             <div className="black-button">
-               <OpenModalButton
-                buttonText="Delete Restaurant"
-                modalComponent={<DeleteRestaurantModal restaurant={restaurant} />}
-              />
+             <OpenModalButton
+              buttonText="Delete Restaurant"
+              modalComponent={
+                <DeleteRestaurantModal restaurant={restaurant} />
+              }
+            />
             </div>
              </div>
             </div>
@@ -74,8 +76,10 @@ const ManageRestaurants = () => {
 
           </div>
         ))}
+
       </div>
-    </>
+      
+    </div>
   );
 };
 

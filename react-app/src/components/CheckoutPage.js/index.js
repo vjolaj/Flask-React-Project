@@ -1,22 +1,29 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./CheckoutPage.css"
-import { checkOutCart, newCartThunk } from "../../store/ordersReducer";
+import { checkOutCart, getCartThunk, newCartThunk } from "../../store/ordersReducer";
 
 
 export default function CheckoutPage() {
     let dispatch = useDispatch();
+    let history = useHistory();
     const cart = useSelector((state) => {
-        return state.cart;
+        return state.orders.cart;
     })
 
     const [deliveryMethod, setDeliveryMethod] = useState(cart ? cart.deliveryMethod : "");
     const [paymentDetails, setPaymentDetails] = useState(cart ? cart.paymentDetails : "");
     const [address, setAddress] = useState(cart ? cart.address : "");
 
+    const [tip, setTip] = useState(0)
+
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        dispatch(getCartThunk());
+    }, [dispatch]);
 
 
     const handleSubmit = async (e) => {
@@ -34,14 +41,9 @@ export default function CheckoutPage() {
         }
         let order;
         order = await dispatch(checkOutCart(cart.id, payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) {
-                    setErrors({...data.errors, ...errs})
-                }
-            })
+
         if (order) {
-            await dispatch(newCartThunk());
+            order = await dispatch(newCartThunk());
         }
     }
 
@@ -53,7 +55,7 @@ export default function CheckoutPage() {
                     <div className="left-subsection">
                         <i class="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
-                            <div>Address</div>
+                            <div>Address: {address}</div>
                             <input
                                 className="checkout-page-input"
                                 placeholder="Enter Your Address"
@@ -66,7 +68,7 @@ export default function CheckoutPage() {
                         <i class="fa-solid fa-person"></i>
                         <div className="space-between">
                             <div>
-                                <div>Delivery Method</div>
+                                <div>Delivery Method: {deliveryMethod}</div>
                             </div>
                             <input
                                 className="checkout-page-input"
@@ -80,20 +82,20 @@ export default function CheckoutPage() {
                 <div className="left-section">
                     <h3>Delivery estimate</h3>
                     <div className="left-subsection">
-                        <input type="checkbox"/>
+                        <input type="radio" name="delivery-time"/>
                         <div className="space-between bottom-border">
                             <div>Priority</div>
                             <div>+$1.99</div>
                         </div>
                     </div>
                     <div className="left-subsection">
-                        <input type="checkbox"/>
+                        <input type="radio" name="delivery-time"/>
                         <div className="space-between bottom-border">
                             <div>Standard</div>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
-                        <input type="checkbox"/>
+                        <input type="radio" name="delivery-time"/>
                         <div>
                             <div>Schedule</div>
                         </div>
@@ -117,14 +119,17 @@ export default function CheckoutPage() {
                         <i class="fa-solid fa-tag"></i>
                         <div className="space-between">
                             <div>Add promo code</div>
-                            <input className="checkout-page-input"/>
+                            <input
+                                className="checkout-page-input"
+                                placeholder="Enter promo code"
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="left-section">
                     <div className="space-between">
                         <h3>Your items</h3>
-                        <button className="checkout-page-button">
+                        <button className="checkout-page-button" onClick={() => history.push('/restaurants')}>
                             <i class="fa-solid fa-plus"></i> Add items
                         </button>
                     </div>
@@ -142,14 +147,14 @@ export default function CheckoutPage() {
                             <h4>Subtotal</h4>
                             <i class="fa-solid fa-circle-info"></i>
                         </div>
-                        <h4>order.totalCost</h4>
+                        <h4>${Number(cart.totalCost).toFixed(2)}</h4>
                     </div>
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Taxes & Other Fees</h4>
                             <i class="fa-solid fa-circle-info"></i>
                         </div>
-                        <h4>order.totalCost + some other stuff</h4>
+                        <h4>${Number((cart.totalCost * 1.1) + 3.18).toFixed(2)}</h4>
                     </div>
                 </div>
                 <div className="right-section bottom-border">
@@ -158,21 +163,41 @@ export default function CheckoutPage() {
                             <h4>Add a tip</h4>
                             <i class="fa-solid fa-circle-info"></i>
                         </div>
-                        <h4>tip amount</h4>
+                        <h4>${Number(tip).toFixed(2)}</h4>
                     </div>
                     <p>100% of your tip goes to your courier. Tips are based on your order total of (insert total) before any discounts or promotions.</p>
                     <div id='tip-buttons'>
-                        <button className="checkout-page-button">$2.00</button>
-                        <button className="checkout-page-button">$3.00</button>
-                        <button className="checkout-page-button">$4.00</button>
-                        <button className="checkout-page-button">$5.00</button>
-                        <input className="checkout-page-button"/>
+                        <button
+                            className="checkout-page-button"
+                            value={2.00}
+                            onClick={(e) => setTip(e.target.value)}
+                        >$2.00</button>
+                        <button
+                            className="checkout-page-button"
+                            value={3.00}
+                            onClick={(e) => setTip(e.target.value)}
+                        >$3.00</button>
+                        <button
+                            className="checkout-page-button"
+                            value={4.00}
+                            onClick={(e) => setTip(e.target.value)}
+                        >$4.00</button>
+                        <button
+                            className="checkout-page-button"
+                            value={5.00}
+                            onClick={(e) => setTip(e.target.value)}
+                        >$5.00</button>
+                        <input
+                            className="checkout-page-button"
+                            placeholder="Other"
+                            onChange={(e) => setTip(e.target.value)}
+                        />
                     </div>
                 </div>
                 <div className="right-section">
                     <div className="space-between">
                         <h3>Total</h3>
-                        <h3>insert total</h3>
+                        <h3>${((cart.totalCost * 1.1) + 3.18 + Number(tip)).toFixed(2)}</h3>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import RestaurantMenuItems from "../AllMenuItems";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readSingleRestaurantThunk } from "../../store/restaurantsReducer";
 import { getAllMenuItemsThunk } from "../../store/menuItemsReducer";
 import NewMenuItemModal from "../NewMenuItemModal";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import {getRestaurantReviewsThunk} from "../../store/reviewsReducer";
 import "./restaurantShow.css";
 import OpenModalButton from "../OpenModalButton";
@@ -23,6 +22,7 @@ const RestaurantShow = () => {
   const menuItems = useSelector((state) => state.menuItems.allMenuItems);
   let reviews = useSelector((state) => state.reviews.reviews);
   reviews = Object.values(reviews);
+
 
   // Calculate total number of reviews
   const totalReviews = reviews.length;

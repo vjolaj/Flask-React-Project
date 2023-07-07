@@ -9,7 +9,7 @@ const ItemModal = ({ menuItem }) => {
     let [quantity, setQuantity] = useState(1)
     let [price, setPrice] = useState(menuItem.price * quantity)
     const [showMenu, setShowMenu] = useState(false)
-    const [errors, setErrors] = useState({})
+    let [errors, setErrors] = useState({})
     const modalRef = useRef()
     const order = useSelector(state => state.orders.cart)
 
@@ -49,6 +49,7 @@ const ItemModal = ({ menuItem }) => {
           setErrors({
             error: "You can only order from one restaurant at a time"
           })
+          console.log(errors)
           return errors
         }
         console.log("order id ",order.id, "menu item id ", menuItem.id, "quantity ", quantity)
@@ -70,13 +71,13 @@ const ItemModal = ({ menuItem }) => {
                 <h2>{menuItem.itemName}</h2>
                 <img className="item-image" src={menuItem.imageUrl} alt="image"/>
                 <p>{menuItem.description}</p>
+                  {errors && <p className="errors">{errors.error}</p>}
                 <div className="item-modal-bottom ">
                   <div className="cart-item-quantity">
                     <button onClick={decrementQuantity}>-</button>
                     <h4>{quantity}</h4>
                     <button onClick={incrementQuantity}>+</button>
                   </div>
-                  {errors && <p className="errors">{errors.errors}</p>}
                   <button id='add-to-cart-button' onClick={handleSubmit}>Add to cart - ${price}</button>
                 </div>
             </div>

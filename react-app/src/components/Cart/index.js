@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Link } from 'react-router-dom';
 
 import './cart.css'
+import { getCartThunk } from '../../store/ordersReducer';
 
 const Cart = ({ user }) => {
     const dispatch = useDispatch();
@@ -12,7 +13,6 @@ const Cart = ({ user }) => {
 
     const cart = useSelector(state => state.orders.cart)
     const [showMenu, setShowMenu] = useState(false);
-    const [restaurantName, setRestaurantName] = useState("")
     console.log(cart)
     const openMenu = () => {
         if (showMenu) return;
@@ -30,6 +30,8 @@ const Cart = ({ user }) => {
 
         document.addEventListener("click", closeMenu);
 
+        dispatch(getCartThunk())
+
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
@@ -45,11 +47,33 @@ const Cart = ({ user }) => {
             <div className={cartClassName} ref={modalRef}>
                 <button><i onClick={closeMenu} class="fa-solid fa-x"></i></button>
                 <div className='cart-modal-details'>
-                {Object.values(cart).length ? (
+                {cart.Items ? (
                     <>
                     <p>Your cart from</p>
                     <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
-
+                    <div className="cart-price details">
+                        <p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p>
+                        <p>Subtotal:${cart.totalCost}</p>
+                    </div>
+                    <ul className='cart-item-list'>
+                        {Object.values(cart.Items).map(item => {
+                            <li key={item.id}>
+                                <div className='cart-item-tile'>
+                                    <div className='item-img-div'>
+                                        <img className='cart-item-img' src={item.imageUrl} alt='image' />
+                                    </div>
+                                    <div className='cart-item-details'>
+                                        <h6>{item.name}</h6>
+                                        <p>${item.price}</p>
+                                    </div>
+                                    <div className='cart-item-quantity'>
+                                        <button onClick={decrementQuantity}>-</button>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </li>
+                        })}
+                    </ul>
                     </>
                 ) : (
                     <>

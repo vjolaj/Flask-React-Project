@@ -1,4 +1,7 @@
+import { getAllMenuItemsThunk } from "./menuItemsReducer";
 import { getCartThunk, newCartThunk } from "./ordersReducer";
+import { getAllRestaurantsThunk, readSingleRestaurantThunk } from "./restaurantsReducer";
+import { getRestaurantReviewsThunk } from "./reviewsReducer";
 
 // constants
 const SET_USER = "session/SET_USER";
@@ -38,6 +41,10 @@ export const authenticate = () => async (dispatch) => {
 
 		dispatch(setUser(data));
 		dispatch(getCartThunk())
+		dispatch(readSingleRestaurantThunk())
+		dispatch(getAllRestaurantsThunk())
+		dispatch(getRestaurantReviewsThunk())
+		dispatch(getAllMenuItemsThunk())
 	}
 };
 

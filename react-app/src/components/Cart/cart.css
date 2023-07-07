@@ -1,5 +1,5 @@
 .cart-dropdown {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 24rem;
@@ -8,6 +8,8 @@
     margin-top: 0;
     background-color: white;
     z-index: 1000;
+    padding: 1rem;
+    border-left: 1px solid black
 }
 
 .hidden {
@@ -17,8 +19,21 @@
 .cart-modal-details {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
+}
+
+.cart-modal-details > a {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+}
+
+.cart-price-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid gray
 }
 
 #cart-checkout-div {
@@ -41,11 +56,15 @@
 .cart-item-list {
     list-style-type: none;
     padding-left: 0;
+    width: 100%;
 }
 
 .cart-item-tile {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
 }
 
 .cart-item-img {
@@ -55,4 +74,20 @@
 .cart-item-quantity {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.cart-item-quantity > button {
+    border-radius: 50%;
+    border: 1px solid gray;
+    padding: 0.45rem;
+}
+
+.cart-item-quantity > p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.cart-item-tile-left {
+    display: flex;
 }

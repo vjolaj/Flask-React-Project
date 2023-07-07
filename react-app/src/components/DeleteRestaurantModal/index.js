@@ -29,17 +29,22 @@ function DeleteRestaurantModal ({restaurant}) {
       };
 
     return (
-        <div className="deleteRestaurant">
-            <div className="deleteHeader">Confirm Delete</div>
-            <div className="deleteText">Are you sure you want to remove this spot from your listings?</div>
-            <div>
+        <div className="mainContainer">
+            <div className="deleteText">
+            <h1 className="h1Delete">Confirm Delete</h1>
+            <p className="pDelete">Are you sure you want to remove this restaurant ?</p>  
+            </div>
+        
+            <div className="YN">
                 <button
+                className="Ybutton"
                 id="yesDelete"
                 onClick={handleSubmit}
                 >
                     Yes (Delete Restaurant)
                 </button>
                 <button
+                className="Nbutton"
                 id="noDelete"
                 onClick={((e) => {
                   closeModal();

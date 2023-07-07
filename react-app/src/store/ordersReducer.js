@@ -67,6 +67,11 @@ export const getCartThunk = () => async dispatch => {
     const cartRes = await fetch("/api/cart")
 	const cartData = await cartRes.json()
 
+    console.log(cartData)
+    const restaurantRes = await fetch(`/api/restaurants/${cartData.restaurantId}`)
+    const restaurantData = await restaurantRes.json()
+    cartData.restaurant = restaurantData.restaurant_info
+
     dispatch(setCartAction(cartData))
 
     return null

@@ -14,27 +14,6 @@ const getUserOrdersAction = orders => {
     }
 };
 
-const addToCartAction = menuItem => {
-    return {
-        type: ADD_TO_CART,
-        menuItem
-    }
-}
-
-const postUserOrderAction = order => {
-    return {
-        type: POST_USER_ORDERS,
-        order
-    }
-};
-
-const getRestaurantsOrders = orders => {
-    return {
-        type: GET_RESTAURANT_ORDERS,
-        orders
-    }
-};
-
 const setCartAction = cart => {
     return {
         type: GET_CART,
@@ -139,6 +118,44 @@ export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch 
     return data
 }
 
+export const updateItemQuantityThunk = (quantity, orderId, menuItemId) => async dispatch => {
+    const res = await fetch(`/api/orders/${orderId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            quantity,
+            menuItemId,
+            orderId,
+            isCompleted: false
+        })
+    });
+
+    const data = res.json();
+
+    dispatch(setCartAction(data))
+
+    return data
+};
+
+export const deleteOrderItemThunk = (orderId, menuItemId) => async dispatch => {
+    const res = await fetch(`/api/orders/${orderId}/menuItem`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            menuItemId
+        })
+    });
+
+    const data = await res.json()
+
+    dispatch(setCartAction(data))
+
+    return data;
+}
 
 const initialState = {
     currentUserOrders: {},

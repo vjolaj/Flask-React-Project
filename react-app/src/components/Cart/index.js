@@ -57,9 +57,9 @@ const Cart = ({ user }) => {
                     <>
                     <p>Your cart from</p>
                     <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
-                    <div className="cart-price details">
-                        <p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p>
-                        <p>Subtotal:${cart.totalCost}</p>
+                    <div className="cart-price-details">
+                        <div><p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p></div>
+                        <div><p>Subtotal:${cart.totalCost}</p></div>
                     </div>
                     <ul className='cart-item-list'>
                         {Object.values(cart.Items).map(item => (

@@ -35,6 +35,9 @@ function NewMenuItemModal({restaurant}) {
     if (!itemName) {
         errorsObject.itemName = "Item name is required"
     }
+    if (itemName.length > 255) {
+      errorsObject.itemName = "Item name can't be longer than 255 characters."
+  }
     if (!price) {
         errorsObject.price = "Price is required"
     }
@@ -47,6 +50,9 @@ function NewMenuItemModal({restaurant}) {
     if (!description) {
         errorsObject.description = "Description is required"
     }
+    if (description.length > 255) {
+      errorsObject.description = "Item description can't be longer than 255 characters."
+  }
     if (!image) {
         errorsObject.image = "Image upload is required"
     }

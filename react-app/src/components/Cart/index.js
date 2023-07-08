@@ -47,9 +47,11 @@ const Cart = ({ user }) => {
     console.log("These are your cart items ", cart.Items)
     return (
         <div className='cart-modal'>
-            <button onClick={openMenu} className='cart-button'>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </button>
+            <div className='cart-button'>
+                <button onClick={openMenu} className='cart-button'>
+                <i class="fa-solid fa-cart-shopping"></i><p>{cart.totalItems} item{cart.totalItems === 1 ? "" : "s"}</p>
+                </button>
+            </div>
             <div className={cartClassName} ref={modalRef}>
                 <button><i onClick={closeMenu} class="fa-solid fa-x"></i></button>
                 {cart.Items ? <div className='cart-modal-details'>
@@ -57,9 +59,9 @@ const Cart = ({ user }) => {
                     <>
                     <p>Your cart from</p>
                     <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
-                    <div className="cart-price details">
-                        <p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p>
-                        <p>Subtotal:${cart.totalCost}</p>
+                    <div className="cart-price-details">
+                        <div><p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p></div>
+                        <div><p>Subtotal:${cart.totalCost}</p></div>
                     </div>
                     <ul className='cart-item-list'>
                         {Object.values(cart.Items).map(item => (
@@ -68,17 +70,17 @@ const Cart = ({ user }) => {
                             </li>
                         ))}
                     </ul>
-                    <div id='cart-checkout-div' onClick={() => history.push('/user/checkout')}>
+                    <div className='cart-checkout-div' onClick={() => history.push('/user/checkout')}>
                         <div>Checkout</div>
                         <div>${(Number(cart.totalCost) || 0).toFixed(2)}</div>
                     </div>
                     </>
                 ) : (
-                    <>
+                    <div className='empty-cart'>
                     <h2>Add items to start a cart</h2>
                     <p>Once you add items from a restaurant or store, your cart will appear here.</p>
-                    <button onClick={closeMenu}>Start shopping</button>
-                    </>
+                    <button id='continue-shopping-button' onClick={closeMenu}>Start shopping</button>
+                    </div>
                 )}
                 </div> : (
                     <h1>Loading</h1>

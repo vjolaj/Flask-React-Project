@@ -73,7 +73,7 @@ def edit_order(orderId):
 
     if isCompleted:
         order.deliveryMethod = req["deliveryMethod"]
-        order.paymentDetails = ["paymentDetails"]
+        order.paymentDetails = req["paymentDetails"]
         order.isCompleted = True
         order.address = req["address"]
         order.orderedAt = db.func.now()

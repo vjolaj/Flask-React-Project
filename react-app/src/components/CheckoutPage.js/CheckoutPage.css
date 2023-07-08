@@ -61,11 +61,16 @@
     margin: 0px 50px 0px 80px;
 }
 #place-order-button {
+    width: 100%
+}
+
+#place-order-button button {
     background-color: rgb(4, 145, 77);
     color: white;
     font-size: 18px;
     height: 50px;
     border: none;
+    width: 100%;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -119,4 +124,17 @@
 .checkout-right-side h4 {
     display: flex;
     margin: 0px;
+}
+
+#successful-box {
+    height: 13rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.red {
+    color: red;
 }

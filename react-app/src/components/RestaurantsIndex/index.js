@@ -51,7 +51,7 @@ const RestaurantsIndex = ({ restaurants }) => {
         </div>
         <p className="price">Price Range</p>
         <div className="dollar-buttoms">
-          
+
           <button
             onClick={() => handlePriceRangeChange("$")}
             className={selectedPriceRange === "$" ? "active" : ""}
@@ -98,8 +98,3 @@ const RestaurantsIndex = ({ restaurants }) => {
 };
 
 export default RestaurantsIndex;
-
-
-
-
-

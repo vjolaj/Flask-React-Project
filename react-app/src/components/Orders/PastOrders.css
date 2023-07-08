@@ -1,0 +1,88 @@
+.past-orders-div {
+    padding: 0px 2rem;
+}
+
+#orders-list {
+    list-style-type: none;
+    padding: 20px 0px;
+}
+
+.order-tile {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    border-bottom: 1px grey solid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%
+}
+
+.order-image {
+    display: flex;
+    height: 150px;
+    width: 300px;
+    object-fit: cover;
+    margin: 0px;
+}
+
+.order-image > img {
+    height: 150px;
+    width: 300px;
+}
+
+.order-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.order-info > h3 {
+    margin: 0px
+}
+
+.order-info > p {
+    font-size: 14px;
+}
+
+.order-info > ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+
+.order-content button {
+    height: 55px;
+    width: 300px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.order-item-desc {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.order-item-desc h4 {
+    margin: 0px;
+}
+
+.order-item-quantity {
+    border: 1px solid grey;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -76,16 +76,23 @@ export const newCartThunk = () => async dispatch => {
 }
 
 export const checkOutCart = (id, data) => async dispatch => {
+    console.log(data)
     const res = await fetch(`/api/orders/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            isCompleted: data.isCompleted,
+            address: data.address,
+            paymentDetails: data.paymentDetails,
+            deliveryMethod: data.deliveryMethod
+        })
     });
+    console.log("HERE")
     const orderData = await res.json();
     dispatch(editOrderAction(orderData))
-    return null
+    return orderData
 }
 
 export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch => {
@@ -156,8 +163,14 @@ export const deleteOrderItemThunk = (orderId, menuItemId) => async dispatch => {
 
     const data = await res.json()
 
-    dispatch(setCartAction(data))
+    if (Object.keys(data.Items).length !== 0) {
+        const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
+        const restaurantData = await restaurantRes.json()
+        data.restaurant = restaurantData.restaurant_info
+    }
 
+    dispatch(setCartAction(data))
+    
     return data;
 }
 

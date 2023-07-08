@@ -59,7 +59,7 @@ const Main = () => {
           </button>
         ))}
       </div>
-      
+
       {showNoRestaurantsMessage ? (
         <div className="apologize">
           <p className="apologize">We apologize, but there are currently no restaurants available for this category.</p>
@@ -75,6 +75,3 @@ const Main = () => {
 };
 
 export default Main;
-
-
-

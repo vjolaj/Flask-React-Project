@@ -77,6 +77,7 @@ export const newCartThunk = () => async dispatch => {
         }
     });
     const cartData = await cartRes.json();
+    console.log("****fetching new cart*****",cartData)
 
     dispatch(setCartAction(cartData))
 
@@ -84,7 +85,7 @@ export const newCartThunk = () => async dispatch => {
 }
 
 export const checkOutCart = (id, data) => async dispatch => {
-    console.log(data)
+    console.log("******checking out cart to db*******", data)
     const res = await fetch(`/api/orders/${id}`, {
         method: "PUT",
         headers: {
@@ -97,10 +98,20 @@ export const checkOutCart = (id, data) => async dispatch => {
             deliveryMethod: data.deliveryMethod
         })
     });
-    console.log("HERE")
-    const orderData = await res.json();
-    dispatch(editOrderAction(orderData))
-    return orderData
+    const resData = await res.json()
+    console.log("HERE", resData)
+
+    const cartRes = await fetch("/api/cart/new-order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const cartData = await cartRes.json();
+
+    dispatch(setCartAction(cartData))
+
+    return null
 }
 
 export const addToCartThunk = (orderId, menuItemId, quantity) => async dispatch => {

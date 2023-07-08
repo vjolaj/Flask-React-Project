@@ -7,7 +7,7 @@ import CartItemTile from './cartItemTile';
 import './cart.css'
 import { getCartThunk } from '../../store/ordersReducer';
 
-const Cart = ({ user }) => {
+const Cart = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const modalRef = useRef();
@@ -43,8 +43,8 @@ const Cart = ({ user }) => {
     const closeMenu = () => setShowMenu(false);
 
     const cartClassName = "cart-dropdown" + (showMenu ? "" : " hidden");
-    console.log("this is your cart ", cart)
-    console.log("These are your cart items ", cart.Items)
+    // console.log("this is your cart ", cart)
+    // console.log("These are your cart items ", cart.Items)
     return (
         <div className='cart-modal'>
             <div className='cart-button'>

@@ -106,6 +106,7 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
+		console.log("****Creating new user cart")
 		dispatch(newCartThunk())
 		return null;
 	} else if (response.status < 500) {

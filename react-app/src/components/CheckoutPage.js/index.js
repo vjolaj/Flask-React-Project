@@ -15,9 +15,9 @@ export default function CheckoutPage() {
         return state.orders.cart;
     })
 
-    const [deliveryMethod, setDeliveryMethod] = useState(cart ? cart.deliveryMethod : "");
-    const [paymentDetails, setPaymentDetails] = useState(cart ? cart.paymentDetails : "");
-    const [address, setAddress] = useState(cart ? cart.address : "");
+    const [deliveryMethod, setDeliveryMethod] = useState("");
+    const [paymentDetails, setPaymentDetails] = useState("");
+    const [address, setAddress] = useState("");
 
     const [tip, setTip] = useState(0)
     const [deliveryTime, setDeliveryTime] = useState("")
@@ -40,7 +40,7 @@ export default function CheckoutPage() {
         else if (address.length > 50) errs.address = "Address must be less than 50 characters"
         if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
 
-        if (errs) {
+        if (Object.values(errs).length) {
             setErrors(errs)
         }
         else {
@@ -51,10 +51,13 @@ export default function CheckoutPage() {
                 isCompleted: true
             }
             let order;
+            console.log("**********dispatching checkout*********", payload)
             order = await dispatch(checkOutCart(cart.id, payload))
+            const data = await order.json()
+            console.log("*********reutrn from dispatch checkout". data)
 
             if (order) {
-                order = await dispatch(newCartThunk());
+                const newOrder = await dispatch(newCartThunk());
             }
         }
 

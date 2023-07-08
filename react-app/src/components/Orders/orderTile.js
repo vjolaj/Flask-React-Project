@@ -4,6 +4,7 @@ import './PastOrders.css'
 
 const OrderTile = ({ orderData }) => {
     const [restaurant, setRestaurant] = useState({})
+    console.log(orderData)
 
     const getRestaurantInfo = async () => {
         const res = await fetch(`/api/restaurants/${orderData.restaurantId}`)

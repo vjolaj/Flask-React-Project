@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import './LoginForm.css';
+import { getCartThunk } from "../../store/ordersReducer";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+      // dispatch(getCartThunk())
     } else {
       history.push("/restaurants")
     }

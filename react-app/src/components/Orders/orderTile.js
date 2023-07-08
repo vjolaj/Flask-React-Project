@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import './PastOrders.css'
 
 const OrderTile = ({ orderData }) => {
     const [restaurant, setRestaurant] = useState({})
     console.log(orderData)
+    const history = useHistory()
 
     const getRestaurantInfo = async () => {
         const res = await fetch(`/api/restaurants/${orderData.restaurantId}`)
@@ -13,6 +15,14 @@ const OrderTile = ({ orderData }) => {
 
         setRestaurant(data.restaurant_info)
     }
+
+    const convertDate = (date) => {
+        const newDate = new Date(date)
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        const convertedDate = newDate.toLocaleString('en-US', options);
+        return convertedDate
+    }
+
 
     useEffect(() => {
         getRestaurantInfo()
@@ -28,7 +38,12 @@ const OrderTile = ({ orderData }) => {
             <div className='order-content'>
                 <div className='order-info'>
                     <h3>{restaurant.name}</h3>
-                    <p>{orderData.totalItems} items for ${orderData.totalCost} · {orderData.orderedAt} · View receipt</p>
+                    {orderData.totalItems === 1 ? (
+                    <p>{orderData.totalItems} item for ${Number(orderData.totalPrice).toFixed(2)} · {convertDate(orderData.orderedAt)}</p>
+
+                    ): (
+                        <p>{orderData.totalItems} items for ${Number(orderData.totalPrice).toFixed(2)} · {convertDate(orderData.orderedAt)}</p>
+                    )}
                     <ul>
                         {Object.values(orderData.Items).map(item => (
                             <li className='order-item-desc' key={item.id}>
@@ -41,7 +56,7 @@ const OrderTile = ({ orderData }) => {
                         ))}
                     </ul>
                 </div>
-                <button>View Store</button>
+                <button onClick={() => history.push(`/restaurants/${restaurant.id}`)}>View Store</button>
             </div>
         </div>
     )

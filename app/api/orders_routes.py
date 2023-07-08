@@ -11,7 +11,7 @@ def get_users_orders():
     """
     print('backend hit, requesting...')
     print(current_user)
-    orders = Order.query.filter(Order.userId == current_user.id and Order.isCompleted == True).all()
+    orders = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
 
     return {
         "users_orders": {
@@ -77,6 +77,7 @@ def edit_order(orderId):
         order.isCompleted = True
         order.address = req["address"]
         order.orderedAt = db.func.now()
+        order.totalPrice = req['totalPrice']
     else:
         item = OrderItem.query.filter(OrderItem.orderId == req['orderId']).filter(OrderItem.menuItemId == req['menuItemId']).first()
 

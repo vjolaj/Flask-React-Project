@@ -45,15 +45,17 @@ const ItemModal = ({ menuItem }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (order.restaurantId !== menuItem.restaurantId) {
-          setErrors({
-            error: "You can only order from one restaurant at a time"
-          })
-          console.log(errors)
-          return errors
-        }
-        console.log("order id ",order.id, "menu item id ", menuItem.id, "quantity ", quantity)
-        const data = await dispatch(addToCartThunk(order.id, menuItem.id, quantity));
+        if (order.restaurantId === menuItem.restaurantId || order.restaurantId === null ) {
+          const data = await dispatch(addToCartThunk(order.id, menuItem.id, quantity));
+
+          closeMenu();
+      }
+      else {
+        setErrors({
+        error: "You can only order from one restaurant at a time"
+      })
+      return errors
+    }
 
         closeMenu();
     }

@@ -5,6 +5,7 @@ const GET_RESTAURANT_ORDERS = '/restaurants/orders/GET';
 const ADD_TO_CART = '/user/cart/POST'
 const GET_CART = '/user/cart/GET'
 const EDIT_ORDER = '/order/edit'
+const UPDATE_CART_ITEM = '/cart/item/PUT'
 
 //action creators
 const getUserOrdersAction = orders => {
@@ -25,6 +26,13 @@ const editOrderAction = order => {
     return {
         type: EDIT_ORDER,
         order
+    }
+}
+
+const updateCartItemsAction = itemData => {
+    return {
+        type: UPDATE_CART_ITEM,
+        itemData
     }
 }
 
@@ -139,13 +147,15 @@ export const updateItemQuantityThunk = (quantity, orderId, menuItemId) => async 
         })
     });
 
-    const data = res.json();
+    const data = await res.json();
 
-    const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
-    const restaurantData = await restaurantRes.json()
-    data.restaurant = restaurantData.restaurant_info
+    // const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)
+    // const restaurantData = await restaurantRes.json()
+    // data.restaurant = restaurantData.restaurant_info
 
-    dispatch(setCartAction(data))
+    // dispatch(setCartAction(data))
+    console.log(data)
+    dispatch(updateCartItemsAction(data.Items[menuItemId]))
 
     return data
 };
@@ -210,6 +220,17 @@ const ordersReducer = (state = initialState, action) => {
             newState.currentUserOrders = { ...state.currentUserOrders };
             newState.currentUserOrders[action.order.id] = action.order;
             return newState;
+        case UPDATE_CART_ITEM:
+            return {
+                ...state,
+                cart: {
+                    ...state.cart,
+                    Items: {
+                        ...state.cart.Items,
+                        [action.itemData.id]: action.itemData 
+                    }
+                }
+            }
         default:
             return state;
     }

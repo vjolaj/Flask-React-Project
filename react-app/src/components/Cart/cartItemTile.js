@@ -4,7 +4,8 @@ import { deleteOrderItemThunk, getCartThunk, updateItemQuantityThunk } from "../
 
 const CartItemTile = ({ itemData, orderId }) => {
     const dispatch = useDispatch()
-    let [quantity, setQuantity] = useState(itemData.quantity)
+    // let [quantity, setQuantity] = useState(itemData.quantity)
+    let quantity = useSelector(state => state.orders.cart.Items[itemData.id].quantity)
     let [price, setPrice] = useState(itemData.price * quantity)
     console.log("this is your item data ", itemData)
 
@@ -13,13 +14,13 @@ const CartItemTile = ({ itemData, orderId }) => {
     // }, [dispatch, quantity])
 
     const incrementQuantity = () => {
-        setQuantity(quantity += 1)
+        quantity += 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
         dispatch(getCartThunk())
     }
       
     const decrementQuantity = () => {
-        setQuantity(quantity -= 1)
+        quantity -= 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
         dispatch(getCartThunk())
     }

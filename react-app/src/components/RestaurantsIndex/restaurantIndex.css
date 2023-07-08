@@ -14,6 +14,8 @@
   margin-top: 3.5rem;
   gap: 35px;
   /* border: 1px solid yellow; */ 
+  justify-content: flex-start;
+  margin-left: 3rem;
  
 }
 
@@ -101,6 +103,9 @@ margin: 0;
 
 .item-type-filter-main h2{
   margin-bottom: 5rem;
+  width: 12rem;
+  margin-right: 0;
+  padding-right: 0;
 }
 
 
@@ -110,6 +115,7 @@ font-family: sans-serif;
 font-size: 21px;
 font-weight: 500;
 margin-bottom: 0;
+width: 5rem;
 }
 
 .clear{

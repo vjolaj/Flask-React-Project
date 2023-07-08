@@ -46,7 +46,7 @@ def seed_restaurants():
         address = "234 Scenic Gulf",
         cuisineType = "FastFood",
         priceRange = "$",
-        imgageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/14aecf3db7eea1dd2fe67a004a272ae2/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
+        imageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/14aecf3db7eea1dd2fe67a004a272ae2/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
         description = "Chick-fil-A is an American fast food restaurant chain and the largest chain specializing in chicken sandwiches."
     )
 
@@ -56,7 +56,7 @@ def seed_restaurants():
         address = "786 5th Ave",
         cuisineType = "FastFood",
         priceRange = "$",
-        imgageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/dee68afc57b7e5967d7aec211bb4effa/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
+        imageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/dee68afc57b7e5967d7aec211bb4effa/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
         description = "Taco Bell is a subsidiary of Yum!"
     )
 
@@ -66,7 +66,7 @@ def seed_restaurants():
         address = "673 Ocean Drive",
         cuisineType = "FastFood",
         priceRange = "$",
-        imgageUrl = "https://www.brightonmarina.co.uk/wp-content/uploads/2020/11/FG-generic-web.png",
+        imageUrl = "https://www.brightonmarina.co.uk/wp-content/uploads/2020/11/FG-generic-web.png",
         description = "American fast food chain focused on hamburgers, hot dogs, and french fries."
     )
 
@@ -76,7 +76,7 @@ def seed_restaurants():
         address = "786 6th Avenue",
         cuisineType = "FastFood",
         priceRange = "$$",
-        imgageUrl = "https://www.tastingtable.com/img/gallery/free-shake-shack-postmates-delivery/image-import.jpg",
+        imageUrl = "https://www.tastingtable.com/img/gallery/free-shake-shack-postmates-delivery/image-import.jpg",
         description = "Shake Shack is an American fast casual restaurant chain based in New York City."
     )
 
@@ -107,7 +107,7 @@ def seed_restaurants():
         address = "672 Ocean Drive",
         cuisineType = "FastFood",
         priceRange = "$",
-        imgageUrl = "https://whatnowphoenix.com/wp-content/uploads/sites/7/2023/01/In-N-Out-Burger-Files-Proposal-With-the-City-of-Mesa.jpg",
+        imageUrl = "https://whatnowphoenix.com/wp-content/uploads/sites/7/2023/01/In-N-Out-Burger-Files-Proposal-With-the-City-of-Mesa.jpg",
         description = "In-N-Out Burger is an American regional chain of fast food restaurants with locations primarily in California"
     )
 
@@ -160,7 +160,7 @@ def seed_restaurants():
         address = "432 5th Avenue",
         cuisineType = "Pizza",
         priceRange = "$",
-        imgageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/928567ed0e575277315d1929edc427bc/132976946f0604ab7f405a880c4eb56e.jpeg",
+        imageUrl = "https://tb-static.uber.com/prod/image-proc/processed_images/928567ed0e575277315d1929edc427bc/132976946f0604ab7f405a880c4eb56e.jpeg",
         description = "Best American Pizza"
     )
 
@@ -170,7 +170,7 @@ def seed_restaurants():
         address = "256 Ocean Drive",
         cuisineType = "Pizza",
         priceRange = "$$",
-        imgageUrl = "https://www.papajohns.com/crispy-parm-pizza/img/crispy-parm-hero.jpg",
+        imageUrl = "https://www.papajohns.com/crispy-parm-pizza/img/crispy-parm-hero.jpg",
         description = "Best American Pizza"
     )
 
@@ -180,7 +180,7 @@ def seed_restaurants():
         address = "563 56th Street",
         cuisineType = "Pizza",
         priceRange = "$$$",
-        imgageUrl = "https://townsquare.media/site/675/files/2023/01/attachment-grimaldis.jpg?w=980&q=75",
+        imageUrl = "https://townsquare.media/site/675/files/2023/01/attachment-grimaldis.jpg?w=980&q=75",
         description = "Casual, Brooklyn-based pizzeria chain serving brick-oven pies & calzones, plus wine & beer."
     )
 
@@ -190,7 +190,7 @@ def seed_restaurants():
         address = "432 Main Ave",
         cuisineType = "Sandwich",
         priceRange = "$",
-        imgageUrl = "https://imageproxy.wolt.com/venue/6049c80b5e17b192228d7c27/8b14dbba-965d-11ed-81ff-22360be22887_8717d940_7231_11ed_8e97_26dde300d060_wolt_cover_1440x810px.jpg",
+        imageUrl = "https://imageproxy.wolt.com/venue/6049c80b5e17b192228d7c27/8b14dbba-965d-11ed-81ff-22360be22887_8717d940_7231_11ed_8e97_26dde300d060_wolt_cover_1440x810px.jpg",
         description = "American multinational fast food restaurant franchise that specializes in submarine sandwiches, wraps, salads and drinks"
     )
 
@@ -221,7 +221,7 @@ def seed_restaurants():
         address = "652 5th Av",
         cuisineType = "Sandwich",
         priceRange = "$$$",
-        imgageUrl = "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/07/16/13/sub-cult-1607.jpg?width=640&auto=webp&quality=100&crop=1500%3A1000%2Csmart",
+        imageUrl = "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/07/16/13/sub-cult-1607.jpg?width=640&auto=webp&quality=100&crop=1500%3A1000%2Csmart",
         description = "When hunger hits, there are few substitutes for a sub: if you need your sandwich to go long, Sub Cult’s super-sized American snacks hit the spot."
     )
 

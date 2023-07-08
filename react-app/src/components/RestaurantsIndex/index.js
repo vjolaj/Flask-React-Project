@@ -20,7 +20,7 @@ const RestaurantsIndex = ({ restaurants }) => {
     return fees[Math.floor(Math.random() * fees.length)];
   };
 
-  
+
   return (
     <div className="rest-index-container">
       {restaurants.map((restaurant) => (
@@ -33,7 +33,7 @@ const RestaurantsIndex = ({ restaurants }) => {
             </div>
             <p className="main-name">{restaurant.name}</p>
             <p className="delivery-fee-main">{getRandomDeliveryFee()} Delivery Fee</p>
-            
+
           </div>
         </div>
       ))}

@@ -25,13 +25,6 @@ const Main = () => {
   const restaurants = useSelector((state) => state.restaurants.allRestaurants);
   const filter = useSelector((state) => state.filter.type);
   // console.log(filter, '😃')
-  const cart = useSelector((state) => state.orders.cart)
-  useEffect(() => {
-      dispatch(getCartThunk());
-      if (!cart) {
-        dispatch(newCartThunk())
-      }
-  }, [dispatch]);
   const handleFilterClick = (cuisineType) => {
       dispatch(receiveFilter(cuisineType));
   };

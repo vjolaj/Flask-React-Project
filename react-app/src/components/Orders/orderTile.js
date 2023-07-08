@@ -30,7 +30,7 @@ const OrderTile = ({ orderData }) => {
                             <li key={item.id}>
                                 <div>{item.quantity}</div>
                                 <div>
-                                    <h4>{item.name}</h4>
+                                    <h4>{item.itemName}</h4>
                                     <p>{item.description}</p>
                                 </div>
                             </li>

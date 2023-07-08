@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./CheckoutPage.css"
 import { checkOutCart, getCartThunk, newCartThunk } from "../../store/ordersReducer";
+import OpenModalButton from "../OpenModalButton";
+import CheckOutModal from "./checkoutModal";
 
 
 export default function CheckoutPage() {
@@ -18,6 +20,7 @@ export default function CheckoutPage() {
     const [address, setAddress] = useState(cart ? cart.address : "");
 
     const [tip, setTip] = useState(0)
+    const [deliveryTime, setDeliveryTime] = useState("")
 
     const [errors, setErrors] = useState({});
 
@@ -26,26 +29,50 @@ export default function CheckoutPage() {
     }, [dispatch]);
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
 
         let errs = {}
         if (!deliveryMethod) errs.deliveryMethod = "Delivery method is required";
+        else if (deliveryMethod.length > 50) errs.deliveryMethod = "Delivery method must be less than 50 characters";
         if (!paymentDetails) errs.paymentDetails = "Payment details are required";
+        else if (paymentDetails.length > 50) errs.paymentDetails = "Payment Details must be less than 50 characters";
         if (!address) errs.address = "Address is required";
+        else if (address.length > 50) errs.address = "Address must be less than 50 characters"
+        if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
 
-        const payload = {
-            deliveryMethod,
-            paymentDetails,
-            address
+        if (errs) {
+            setErrors(errs)
         }
-        let order;
-        order = await dispatch(checkOutCart(cart.id, payload))
+        else {
+            const payload = {
+                deliveryMethod,
+                paymentDetails,
+                address,
+                isCompleted: true
+            }
+            let order;
+            order = await dispatch(checkOutCart(cart.id, payload))
 
-        if (order) {
-            order = await dispatch(newCartThunk());
+            if (order) {
+                order = await dispatch(newCartThunk());
+            }
         }
+
     }
+
+    useEffect(() => {
+        let errs = {}
+        if (!deliveryMethod) errs.deliveryMethod = "Delivery method is required";
+        else if (deliveryMethod.length > 50) errs.deliveryMethod = "Delivery method must be less than 50 characters";
+        if (!paymentDetails) errs.paymentDetails = "Payment details are required";
+        else if (paymentDetails.length > 50) errs.paymentDetails = "Payment Details must be less than 50 characters";
+        if (!address) errs.address = "Address is required";
+        else if (address.length > 50) errs.address = "Address must be less than 50 characters"
+        if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
+
+        setErrors(errs)
+        console.log(errors)
+    }, [deliveryMethod, paymentDetails, address, deliveryTime])
 
     return (
         <div id='checkout-wrapper'>
@@ -62,6 +89,9 @@ export default function CheckoutPage() {
                                 onChange={(e) => setAddress(e.target.value)}
                                 defaultValue={address}
                             />
+                            {errors.address && (
+                                <p className="red">{errors.address}</p>
+                            )}
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -76,28 +106,28 @@ export default function CheckoutPage() {
                                 onChange={(e) => setDeliveryMethod(e.target.value)}
                                 defaultValue={deliveryMethod}
                             />
+                            {errors.deliveryMethod && (
+                                <p className="red">{errors.deliveryMethod}</p>
+                            )}
                         </div>
                     </div>
                 </div>
                 <div className="left-section">
                     <h3>Delivery estimate</h3>
+                    {errors.deliveryTime && (
+                        <p className="red">{errors.deliveryTime}</p>
+                    )}
                     <div className="left-subsection">
-                        <input type="radio" name="delivery-time"/>
+                        <input type="radio" name="delivery-time" value="Priority" onClick={(e) => setDeliveryTime(e.target.value)}/>
                         <div className="space-between bottom-border">
                             <div>Priority</div>
                             <div>+$1.99</div>
                         </div>
                     </div>
-                    <div className="left-subsection">
-                        <input type="radio" name="delivery-time"/>
-                        <div className="space-between bottom-border">
-                            <div>Standard</div>
-                        </div>
-                    </div>
                     <div className="left-subsection bottom-border">
-                        <input type="radio" name="delivery-time"/>
-                        <div>
-                            <div>Schedule</div>
+                        <input type="radio" name="delivery-time" value="Standard" onClick={(e) => setDeliveryTime(e.target.value)}/>
+                        <div className="space-between">
+                            <div>Standard</div>
                         </div>
                     </div>
                 </div>
@@ -113,6 +143,9 @@ export default function CheckoutPage() {
                                 onChange={(e) => setPaymentDetails(e.target.value)}
                                 defaultValue={paymentDetails}
                             />
+                            {errors.paymentDetails && (
+                                <p className="red">{errors.paymentDetails}</p>
+                            )}
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -138,7 +171,24 @@ export default function CheckoutPage() {
             </div>
             <div id='checkout-right-side'>
                 <div className="right-section bottom-border">
-                    <button id='place-order-button' onClick={handleSubmit}>Place order</button>
+                    {/* <button
+                        id="place-order-button"
+                        onClick={handleSubmit}
+                    >
+                        Place Order
+                    </button> */}
+                    <div id="place-order-button">
+                        <OpenModalButton
+                                        id="place-order-button"
+                                        buttonText="Place Order"
+                                        onButtonClick={handleSubmit}
+                                        onModalClose={() => history.push('/orders')}
+                                        errors={Boolean(Object.values(errors).length)}
+                                        modalComponent={
+                                            <CheckOutModal/>
+                                        }
+                        ></OpenModalButton>
+                    </div>
                     <p>If you’re not around when the delivery person arrives, they’ll leave your order at the door. By placing your order, you agree to take full responsibility for it once it’s delivered. Orders containing alcohol or other restricted items may not be eligible for leave at door and will be returned to the store if you are not available.</p>
                 </div>
                 <div className="right-section bottom-border">
@@ -188,6 +238,8 @@ export default function CheckoutPage() {
                             onClick={(e) => setTip(e.target.value)}
                         >$5.00</button>
                         <input
+                            type='number'
+                            min='0'
                             className="checkout-page-button"
                             placeholder="Other"
                             onChange={(e) => setTip(e.target.value)}

@@ -56,6 +56,19 @@ def seed_restaurants():
         imageUrl = "https://d1ralsognjng37.cloudfront.net/9ba8dac9-f3d0-4de0-92e1-f9331f040936",
         description = "Experience the true taste of Mexico at La Cantina Mexicana. From mouthwatering tacos to zesty guacamole, their menu showcases the rich and authentic flavors of Mexican cuisine."
     )
+
+    # restaurant7 = Restaurant(
+    #     ownerId = 2,
+    #     name = "Chick-fill-A",
+    #     address = "234 Scenic Gulf",
+    #     cuisineType = "FastFood",
+    #     priceRange = "",
+    #     # imgageUrl = "",
+    #     description = 
+    # )
+
+
+
     db.session.add(restaurant1)
     db.session.add(restaurant2)
     db.session.add(restaurant3)

@@ -49,7 +49,7 @@ const ItemModal = ({ menuItem }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (order.restaurantId === menuItem.restaurantId || order.restaurantId === null ) {
+        if (order.restaurantId === menuItem.restaurantId || order.restaurantId === null || order.restaurantId === 0 ) {
           const data = await dispatch(addToCartThunk(order.id, menuItem.id, quantity));
 
           closeMenu();

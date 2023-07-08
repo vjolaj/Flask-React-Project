@@ -27,7 +27,7 @@ def seed_menu_items():
         price = 2.49,
         itemType = "Side",
         description = "Golden, crispy, and perfectly salted fries.",
-        imageUrl = "https://static.wikia.nocookie.net/legendsofthemultiuniverse/images/8/85/Rs_1024x759-160414152941-rs_1024x759-130926124115-1024-mcdonalds-fries-092613.jpg/revision/latest?cb=20200102171019"
+        imageUrl = "https://acclaimmag.com/wp-content/uploads/2014/07/FriesCova.jpg"
     )
 
     menuItem4 = MenuItem(
@@ -36,7 +36,7 @@ def seed_menu_items():
         price = 3.99,
         itemType = "Dessert",
         description = "Soft serve ice cream blended with your choice of mix-ins, like Oreo or M&M's.",
-        imageUrl = "https://static.wikia.nocookie.net/ronaldmcdonald/images/0/0a/7008a0028716c9cad1d4bec614663c27.jpg/revision/latest?cb=20190601014324"
+        imageUrl = "https://hips.hearstapps.com/hmg-prod/images/screen-shot-2019-08-26-at-1-02-16-pm-1566838950.png"
     )
 
     menuItem5 = MenuItem(

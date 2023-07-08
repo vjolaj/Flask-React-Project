@@ -24,9 +24,6 @@ const Main = () => {
   const dispatch = useDispatch();
   const restaurants = useSelector((state) => state.restaurants.allRestaurants);
   const filter = useSelector((state) => state.filter.type);
-<<<<<<< HEAD
-  // console.log(filter, '😃')
-=======
   const cart = useSelector((state) => state.orders.cart);
 
   useEffect(() => {
@@ -36,7 +33,6 @@ const Main = () => {
     }
   }, [dispatch]);
 
->>>>>>> f6b5bd0c4e60a7d32656ea57de4508e9c3230b3f
   const handleFilterClick = (cuisineType) => {
     if (filter === cuisineType) {
       dispatch(removeFilter());
@@ -63,7 +59,7 @@ const Main = () => {
           </button>
         ))}
       </div>
-      
+
       {showNoRestaurantsMessage ? (
         <div className="apologize">
           <p className="apologize">We apologize, but there are currently no restaurants available for this category.</p>
@@ -79,6 +75,3 @@ const Main = () => {
 };
 
 export default Main;
-
-
-

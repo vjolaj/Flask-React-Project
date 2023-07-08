@@ -21,23 +21,6 @@ const RestaurantsIndex = ({ restaurants }) => {
     return fees[Math.floor(Math.random() * fees.length)];
   };
 
-<<<<<<< HEAD
-
-  return (
-    <div className="rest-index-container">
-      {restaurants.map((restaurant) => (
-        <div key={restaurant.id}>
-          <div className="singleRestContainer">
-            <div>
-              <NavLink to={`/restaurants/${restaurant.id}`}>
-                <img src={restaurant.imageUrl} alt="img" className="restImg" />
-              </NavLink>
-            </div>
-            <p className="main-name">{restaurant.name}</p>
-            <p className="delivery-fee-main">{getRandomDeliveryFee()} Delivery Fee</p>
-
-          </div>
-=======
     const handlePriceRangeChange = (priceRange) => {
     if (selectedPriceRange === priceRange) {
       setSelectedPriceRange(null);
@@ -65,11 +48,10 @@ const RestaurantsIndex = ({ restaurants }) => {
           <button onClick={handleAll} className={selectedPriceRange === null}>
             <p className="clear">Clear all</p>
           </button>
->>>>>>> f6b5bd0c4e60a7d32656ea57de4508e9c3230b3f
         </div>
         <p className="price">Price Range</p>
         <div className="dollar-buttoms">
-          
+
           <button
             onClick={() => handlePriceRangeChange("$")}
             className={selectedPriceRange === "$" ? "active" : ""}
@@ -116,8 +98,3 @@ const RestaurantsIndex = ({ restaurants }) => {
 };
 
 export default RestaurantsIndex;
-
-
-
-
-

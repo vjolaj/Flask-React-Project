@@ -44,7 +44,7 @@ const RestaurantShow = () => {
     dispatch(getRestaurantReviewsThunk(restaurantId));
   }, [dispatch, restaurantId]);
 
-  if (!restaurant || !menuItems || !reviews) return null;
+  if (!restaurant || !menuItems || !reviews) return "Loading...";
 
   const filteredMenuItems = Object.values(menuItems).filter(
     (menuItem) => menuItem.restaurantId === restaurantId

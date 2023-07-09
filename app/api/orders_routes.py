@@ -11,8 +11,9 @@ def get_users_orders():
     """
     print('backend hit, requesting...')
     print(current_user)
-    orders = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
-
+    # orders = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
+    orders = Order.query.order_by(Order.orderedAt).filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
+    print(orders)
     return {
         "users_orders": {
             order.id: order.to_dict() for order in orders

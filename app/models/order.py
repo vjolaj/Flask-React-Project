@@ -16,6 +16,7 @@ class Order(db.Model):
     paymentDetails = db.Column(db.String(255))
     address = db.Column(db.String(255))
     orderedAt = db.Column(db.DateTime)
+    totalPrice = db.Column(db.Numeric)
 
     user = db.relationship("User", back_populates="orders")
     restaurant = db.relationship("Restaurant", back_populates="orders")
@@ -55,4 +56,5 @@ class Order(db.Model):
             'Items' : items,
             'totalItems' : sum([item['quantity'] for item in items.values()]),
             'totalCost' : sum([item['price'] * item['quantity'] for item in items.values()]),
+            'totalPrice': self.totalPrice
         }

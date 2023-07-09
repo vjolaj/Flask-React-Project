@@ -18,8 +18,10 @@ export default function CheckoutPage() {
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [paymentDetails, setPaymentDetails] = useState("");
     const [address, setAddress] = useState("");
-
     const [tip, setTip] = useState(0)
+    const [fees, setFees] = useState(Number(((cart.totalCost) * 1.1) + 3.18) - cart.totalCost)
+    const [totalPrice, setTotalPrice] = useState(0)
+
     const [deliveryTime, setDeliveryTime] = useState("")
 
     const [errors, setErrors] = useState({});
@@ -28,6 +30,10 @@ export default function CheckoutPage() {
         dispatch(getCartThunk());
     }, [dispatch]);
 
+    
+    useEffect(() =>{ 
+        setTotalPrice((Number(cart.totalCost) + fees + Number(tip)).toFixed(2))
+    }, [tip])
 
     const handleSubmit = async () => {
 
@@ -48,13 +54,14 @@ export default function CheckoutPage() {
                 deliveryMethod,
                 paymentDetails,
                 address,
-                isCompleted: true
+                isCompleted: true,
+                totalPrice
             }
             let order;
             console.log("**********dispatching checkout*********", payload)
             order = await dispatch(checkOutCart(cart.id, payload))
-            const data = await order.json()
-            console.log("*********reutrn from dispatch checkout". data)
+            // const data = await order.json()
+            // console.log("*********reutrn from dispatch checkout", data)
 
             if (order) {
                 const newOrder = await dispatch(newCartThunk());
@@ -207,7 +214,7 @@ export default function CheckoutPage() {
                             <h4>Taxes & Other Fees</h4>
                             <i class="fa-solid fa-circle-info"></i>
                         </div>
-                        <h4>${Number((cart.totalCost * 1.1) + 3.18).toFixed(2)}</h4>
+                        <h4>${(Number((cart.totalCost * 1.1) + 3.18) - cart.totalCost).toFixed(2)}</h4>
                     </div>
                 </div>
                 <div className="right-section bottom-border">

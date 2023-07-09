@@ -95,7 +95,8 @@ export const checkOutCart = (id, data) => async dispatch => {
             isCompleted: data.isCompleted,
             address: data.address,
             paymentDetails: data.paymentDetails,
-            deliveryMethod: data.deliveryMethod
+            deliveryMethod: data.deliveryMethod,
+            totalPrice: data.totalPrice
         })
     });
     const resData = await res.json()

@@ -82,7 +82,17 @@ export const editRestaurantThunk = (restaurant, restaurantId) => async (dispatch
   try {
     const res = await fetch(`/api/restaurants/${restaurantId}`, {
       method: "PUT",
-      body: restaurant,
+      headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name: restaurant.name,
+        address: restaurant.address,
+        cuisineType: restaurant.cuisineType,
+        priceRange: restaurant.priceRange,
+        imageUrl: restaurant.imageUrl,
+        description: restaurant.description
+    })
     });
 
     if (res.ok) {

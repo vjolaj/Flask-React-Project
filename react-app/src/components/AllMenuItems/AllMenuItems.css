@@ -131,3 +131,20 @@
     background-color: lightgray;
 }
 
+.no-items-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 17rem;
+    padding-top: 4rem;
+}
+
+.no-items-message img{
+    width: 17rem;
+    padding-left: 5rem;
+}
+
+.no-items-message p {
+    font-size: 20px;
+    
+}

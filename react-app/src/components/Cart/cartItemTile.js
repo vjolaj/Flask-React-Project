@@ -12,13 +12,13 @@ const CartItemTile = ({ itemData, orderId }) => {
     const incrementQuantity = () => {
         quantity += 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
-        dispatch(getCartThunk())
+        // dispatch(getCartThunk())
     }
       
     const decrementQuantity = () => {
         quantity -= 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
-        dispatch(getCartThunk())
+        // dispatch(getCartThunk())
     }
 
     const deleteItem = () => {

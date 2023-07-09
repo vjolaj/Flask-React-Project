@@ -91,9 +91,9 @@ export default function CheckoutPage() {
     }
 
     const helperSetTip = (value) => {
-        if (Number(tip) === Number(value)) setTip(null)
+        if (Number(tip) === Number(value)) setTip("")
+        else if (Number(value) < 0) setTip("")
         else setTip(value)
-        if (Number(value) < 0) errors = {tip: "Can't give a negative tip"}
     }
 
     if (!cart.restaurant) return null
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
                             className="checkout-page-button active"
                             placeholder="Other"
                             onChange={(e) => helperSetTip(e.target.value)}
-                            value={tip && ""}
+                            value={tip}
                         />
                     </div>
                 </div>

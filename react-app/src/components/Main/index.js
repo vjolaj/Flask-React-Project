@@ -5,7 +5,7 @@ import { removeFilter, receiveFilter } from "../../store/filterReducer";
 import RestaurantsIndex from "../RestaurantsIndex";
 import "./main.css";
 import { newCartThunk, getCartThunk } from "../../store/ordersReducer";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, useHistory } from "react-router-dom";
 
 const CATEGORIES = {
   Pizza: "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/pizza.png",
@@ -25,6 +25,7 @@ const Main = () => {
   const restaurants = useSelector((state) => state.restaurants.allRestaurants);
   const filter = useSelector((state) => state.filter.type);
   const cart = useSelector((state) => state.orders.cart);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getCartThunk());
@@ -41,7 +42,9 @@ const Main = () => {
     }
   };
 
-  const filteredRestaurants = filter ? Object.values(restaurants).filter((restaurant) => restaurant.cuisineType === filter): Object.values(restaurants);
+  const filteredRestaurants = filter
+    ? Object.values(restaurants).filter((restaurant) => restaurant.cuisineType === filter)
+    : Object.values(restaurants);
 
   const showNoRestaurantsMessage = filter && filteredRestaurants.length === 0;
 
@@ -62,12 +65,18 @@ const Main = () => {
 
       {showNoRestaurantsMessage ? (
         <div className="apologize">
-          <p className="apologize">We apologize, but there are currently no restaurants available for this category.</p>
-          <img src="https://www.cambridge.org/elt/blog/wp-content/uploads/2019/07/Sad-Face-Emoji.png" alt="sad-face" className="sadFace" />
+          <p className="apologize">
+            We apologize, but there are currently no restaurants available for this category.
+          </p>
+          <img
+            src="https://www.cambridge.org/elt/blog/wp-content/uploads/2019/07/Sad-Face-Emoji.png"
+            alt="sad-face"
+            className="sadFace"
+          />
         </div>
       ) : (
         <div>
-          <RestaurantsIndex restaurants={filteredRestaurants}  />
+          <RestaurantsIndex restaurants={filteredRestaurants} />
         </div>
       )}
     </div>
@@ -75,3 +84,4 @@ const Main = () => {
 };
 
 export default Main;
+

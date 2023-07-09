@@ -23,7 +23,7 @@ function Footer() {
                         </div>
                     </div>
                     <div className='developer'>
-                        <img src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/chinese.png"/>
+                        <img src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/pizza.png"/>
                         <div>
                             <h3>Genesis Mendes</h3>
                             <a href="https://github.com/GenesisM8">GitHub</a>

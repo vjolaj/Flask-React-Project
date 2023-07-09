@@ -49,7 +49,7 @@ function LoginFormPage() {
 
   return (
     <>
-   <div className='logIn-nav'>
+   <div exact to="/" className='logIn-nav'>
 				<p>
 					<NavLink exact to="/" className='Epic-logIn-Nav'>Epic</NavLink>
 				</p>

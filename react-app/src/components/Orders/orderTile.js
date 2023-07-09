@@ -32,8 +32,8 @@ const OrderTile = ({ orderData }) => {
     // console.log(restaurant)
     return (
         <div className='order-tile'>
-            <div className='order-image'>
-                <img src={restaurant.imageUrl}/>
+            <div>
+                <img className='order-image' src={restaurant.imageUrl}/>
             </div>
             <div className='order-content'>
                 <div className='order-info'>

@@ -10,7 +10,8 @@
     z-index: 1000;
     padding: 1rem;
     border-left: 1px solid black;
-    box-shadow: -10px 0px 1000px rgb(182, 182, 182)
+    box-shadow: -10px 0px 1000px rgb(182, 182, 182);
+    overflow: scroll
 }
 
 .hidden {

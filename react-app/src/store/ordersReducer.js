@@ -184,6 +184,7 @@ export const deleteOrderItemThunk = (orderId, menuItemId) => async dispatch => {
     });
 
     const data = await res.json()
+    console.log(data)
 
     if (Object.keys(data.Items).length !== 0) {
         const restaurantRes = await fetch(`/api/restaurants/${data.restaurantId}`)

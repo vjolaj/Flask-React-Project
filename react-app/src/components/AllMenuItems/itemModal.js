@@ -57,11 +57,11 @@ const ItemModal = ({ menuItem }) => {
       else {
         setErrors({
         error: "You can only order from one restaurant at a time"
-      })
-      return errors
-    }
+        })
+        return errors
+      }
 
-        closeMenu();
+      closeMenu();
     }
 
     const modalClassName = "add-item-modal" + (showMenu ? "" : " hidden");

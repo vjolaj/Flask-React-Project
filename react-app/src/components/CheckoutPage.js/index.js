@@ -6,6 +6,7 @@ import "./CheckoutPage.css"
 import { checkOutCart, getCartThunk, newCartThunk } from "../../store/ordersReducer";
 import OpenModalButton from "../OpenModalButton";
 import CheckOutModal from "./checkoutModal";
+import CheckoutItemTile from "./checkoutItemTile";
 
 
 export default function CheckoutPage() {
@@ -14,15 +15,17 @@ export default function CheckoutPage() {
     const cart = useSelector((state) => {
         return state.orders.cart;
     })
+    console.log("this is your restaurant ", cart.restaurant)
 
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [paymentDetails, setPaymentDetails] = useState("");
     const [address, setAddress] = useState("");
     const [tip, setTip] = useState(0)
     const [fees, setFees] = useState(Number(((cart.totalCost) * 1.1) + 3.18) - cart.totalCost)
+    const [deliveryTime, setDeliveryTime] = useState("")
+    const [priorityPrice, setPriorityPrice] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
 
-    const [deliveryTime, setDeliveryTime] = useState("")
 
     const [errors, setErrors] = useState({});
 
@@ -32,45 +35,12 @@ export default function CheckoutPage() {
 
     
     useEffect(() =>{ 
-        setTotalPrice((Number(cart.totalCost) + fees + Number(tip)).toFixed(2))
-    }, [tip])
+        if (deliveryTime === "Priority") setPriorityPrice(1.99)
+        else if (deliveryTime === "Standard") setPriorityPrice(0)
+        setTotalPrice((Number(cart.totalCost) + Number(priorityPrice) +  fees + Number(tip)).toFixed(2))
+    }, [tip, deliveryTime])
 
-    const handleSubmit = async () => {
-
-        let errs = {}
-        if (!deliveryMethod) errs.deliveryMethod = "Delivery method is required";
-        else if (deliveryMethod.length > 50) errs.deliveryMethod = "Delivery method must be less than 50 characters";
-        if (!paymentDetails) errs.paymentDetails = "Payment details are required";
-        else if (paymentDetails.length > 50) errs.paymentDetails = "Payment Details must be less than 50 characters";
-        if (!address) errs.address = "Address is required";
-        else if (address.length > 50) errs.address = "Address must be less than 50 characters"
-        if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
-
-        if (Object.values(errs).length) {
-            setErrors(errs)
-        }
-        else {
-            const payload = {
-                deliveryMethod,
-                paymentDetails,
-                address,
-                isCompleted: true,
-                totalPrice
-            }
-            let order;
-            console.log("**********dispatching checkout*********", payload)
-            order = await dispatch(checkOutCart(cart.id, payload))
-            // const data = await order.json()
-            // console.log("*********reutrn from dispatch checkout", data)
-
-            if (order) {
-                const newOrder = await dispatch(newCartThunk());
-            }
-        }
-
-    }
-
-    useEffect(() => {
+    const validate = () => {
         let errs = {}
         if (!deliveryMethod) errs.deliveryMethod = "Delivery method is required";
         else if (deliveryMethod.length > 50) errs.deliveryMethod = "Delivery method must be less than 50 characters";
@@ -82,26 +52,53 @@ export default function CheckoutPage() {
 
         setErrors(errs)
         console.log(errors)
-    }, [deliveryMethod, paymentDetails, address, deliveryTime])
+    }
+
+    const handleSubmit = async () => {
+        setErrors({})
+        validate()
+
+        if (Object.keys(errors).length !== 0) {
+            return errors
+        }
+        else {
+            const payload = {
+                deliveryMethod,
+                paymentDetails,
+                address,
+                isCompleted: true,
+                totalPrice
+            }
+            let order;
+            order = await dispatch(checkOutCart(cart.id, payload))
+
+            if (order) {
+                const newOrder = await dispatch(newCartThunk());
+            }
+        }
+
+    }
+
+    if (!cart) return null
 
     return (
         <div id='checkout-wrapper'>
             <div id='checkout-left-side'>
                 <div className="left-section">
-                    <h2>Restaurant Name</h2>
+                    <h2>{cart.restaurant.name}</h2>
                     <div className="left-subsection">
                         <i class="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
                             <div>Address: {address}</div>
+                            {errors.address && (
+                                <p className="red">{errors.address}</p>
+                            )}
                             <input
                                 className="checkout-page-input"
                                 placeholder="Enter Your Address"
                                 onChange={(e) => setAddress(e.target.value)}
                                 defaultValue={address}
                             />
-                            {errors.address && (
-                                <p className="red">{errors.address}</p>
-                            )}
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -110,15 +107,20 @@ export default function CheckoutPage() {
                             <div>
                                 <div>Delivery Method: {deliveryMethod}</div>
                             </div>
-                            <input
-                                className="checkout-page-input"
-                                placeholder="e.g. Pickup/Delivery"
-                                onChange={(e) => setDeliveryMethod(e.target.value)}
-                                defaultValue={deliveryMethod}
-                            />
-                            {errors.deliveryMethod && (
-                                <p className="red">{errors.deliveryMethod}</p>
-                            )}
+                            <div className="left-subsection">
+                                <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
+                                setDeliveryTime(e.target.value)}/>
+                            <div className="space-between bottom-border">
+                            <label for='delivery-time'>Pickup</label>
+                        </div>
+                    </div>
+                    <div className="left-subsection bottom-border">
+                        <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
+                            setDeliveryTime(e.target.value)} checked/>
+                        <div className="space-between">
+                            <label for='delivery-time'>Delivery</label>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -128,16 +130,18 @@ export default function CheckoutPage() {
                         <p className="red">{errors.deliveryTime}</p>
                     )}
                     <div className="left-subsection">
-                        <input type="radio" name="delivery-time" value="Priority" onClick={(e) => setDeliveryTime(e.target.value)}/>
+                        <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
+                            setDeliveryTime(e.target.value)}/>
                         <div className="space-between bottom-border">
-                            <div>Priority</div>
+                            <label for='delivery-time'>Priority</label>
                             <div>+$1.99</div>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
-                        <input type="radio" name="delivery-time" value="Standard" onClick={(e) => setDeliveryTime(e.target.value)}/>
+                        <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
+                            setDeliveryTime(e.target.value)} checked/>
                         <div className="space-between">
-                            <div>Standard</div>
+                            <label for='delivery-time'>Standard</label>
                         </div>
                     </div>
                 </div>
@@ -146,16 +150,14 @@ export default function CheckoutPage() {
                     <div className="left-subsection">
                         <i class="fa-regular fa-credit-card"></i>
                         <div className="space-between bottom-border">
-                            <div>Credit or Debit Card</div>
-                            <input
-                                className="checkout-page-input"
-                                placeholder="Enter payment info"
-                                onChange={(e) => setPaymentDetails(e.target.value)}
-                                defaultValue={paymentDetails}
-                            />
-                            {errors.paymentDetails && (
-                                <p className="red">{errors.paymentDetails}</p>
-                            )}
+                            <label for="payment-details">Payment Type: </label>
+
+                            <select name="payment-type" id='payment-type' onChange={(e) => setPaymentDetails(e.target.value)}>
+                                <option value="">--Please choose an option--</option>
+                                <option value="PayPal">PayPal</option>
+                                <option value="Visa">Visa</option>
+                                <option value="MasterCard">MasterCard</option>
+                            </select>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -176,7 +178,11 @@ export default function CheckoutPage() {
                             <i class="fa-solid fa-plus"></i> Add items
                         </button>
                     </div>
-                    <div>insert items</div>
+                    <div>
+                        {Object.values(cart.Items).map(item => (
+                            <CheckoutItemTile itemData={item} />
+                        ))}
+                    </div>
                 </div>
             </div>
             <div id='checkout-right-side'>
@@ -192,8 +198,8 @@ export default function CheckoutPage() {
                                         id="place-order-button"
                                         buttonText="Place Order"
                                         onButtonClick={handleSubmit}
-                                        onModalClose={() => history.push('/orders')}
-                                        errors={Boolean(Object.values(errors).length)}
+                                        onModalClose={() => history.push('/restaurants')}
+                                        errors={Boolean(Object.keys(errors).length)}
                                         modalComponent={
                                             <CheckOutModal/>
                                         }

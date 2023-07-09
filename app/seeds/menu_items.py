@@ -44,7 +44,7 @@ def seed_menu_items():
         restaurantId = 1,
         price = 4.49,
         itemType = "Entree",
-        description = "Delicious bite-sized pieces of tender and juicy chicken, coated in a crispy golden breading. Perfectly seasoned and served with your choice of dipping sauces, McDonald's Chicken Nuggets are a classic favorite loved by kids and adults alike.",
+        description = "Delicious bite-sized pieces of tender and juicy chicken, coated in a crispy golden breading.",
         imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-20-chicken-mcnuggets:1-3-product-tile-desktop?wid=829&hei=515&dpr=off"
     )
 

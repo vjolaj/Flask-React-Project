@@ -88,7 +88,7 @@ def seed_restaurants():
         cuisineType = "Mexican",
         priceRange = "$$",
         imageUrl = "https://duyt4h9nfnj50.cloudfront.net/resized/16f61060f98ded0e3991ebeae0225766-w2880-dc.jpg",
-        description = "El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city. Offering a diverse menu of authentic Mexican dishes, from sizzling fajitas to flavorful enchiladas, it promises a fiesta of flavors."
+        description = "El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city."
     )
 
     restaurant10 = Restaurant(
@@ -98,7 +98,7 @@ def seed_restaurants():
         cuisineType = "Mexican",
         priceRange = "$",
         imageUrl = "https://d1ralsognjng37.cloudfront.net/9ba8dac9-f3d0-4de0-92e1-f9331f040936",
-        description = "Experience the true taste of Mexico at La Cantina Mexicana. From mouthwatering tacos to zesty guacamole, their menu showcases the rich and authentic flavors of Mexican cuisine."
+        description = "Experience the true taste of Mexico at La Cantina Mexicana. From mouthwatering tacos to zesty guacamole."
     )   
 
     restaurant11 = Restaurant(
@@ -118,7 +118,7 @@ def seed_restaurants():
         cuisineType="Mexican",
         priceRange="$$$$",
         imageUrl = "https://duyt4h9nfnj50.cloudfront.net/resized/d1772bc1acf58b56d18ca48c9ec15c3f-w2880-b4.jpg",
-        description="El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city. Offering a diverse menu of authentic Mexican dishes, from sizzling fajitas to flavorful enchiladas, it promises a fiesta of flavors."
+        description="El Sol Mexicano is a vibrant Mexican restaurant located in the heart of the city."
     )
 
 
@@ -129,7 +129,7 @@ def seed_restaurants():
         cuisineType="Asian",
         priceRange="$$$",
         imageUrl = "https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,w_480,h_270/restaurant/7aae154e-be0b-467b-bee2-2a1db9de7cd1/c0768c5c-826f-4652-b41e-6c83908d8487.jpg",
-        description="Sakura Sushi Bar offers an extensive selection of fresh and delicious sushi rolls, sashimi, and Japanese specialties. With a cozy atmosphere and skilled sushi chefs, it's the perfect place to satisfy your sushi cravings."
+        description="Sakura Sushi Bar offers an extensive selection of fresh and delicious sushi rolls, sashimi, and Japanese specialties."
     )
 
 
@@ -140,7 +140,7 @@ def seed_restaurants():
         cuisineType="Asian",
         priceRange="$",
         imageUrl = "https://www.whitsundaymenu.com.au/wp-content/uploads/2022/05/alley-cat-may-2022-31.jpg",
-        description="Ming's Chinese Restaurant offers a wide range of traditional Chinese dishes, including savory stir-fries, flavorful noodles, and delicious dim sum. With a welcoming atmosphere, it's the perfect spot for a satisfying Chinese meal."
+        description="Ming's Chinese Restaurant offers a wide range of traditional Chinese dishes, including savory stir-fries, flavorful noodles, and delicious dim sum."
     )
 
 
@@ -151,7 +151,7 @@ def seed_restaurants():
         cuisineType="Asian",
         priceRange="$$",
         imageUrl = "https://media1.agfg.com.au/images/listing/74539/hero-400.jpg",
-        description="Taste of India brings the rich and diverse flavors of Indian cuisine to your table. From aromatic curries to tandoori specialties and naan bread, each dish is prepared with authentic Indian spices and love for food."
+        description="Taste of India brings the rich and diverse flavors of Indian cuisine to your table."
     )
 
     restaurant16 = Restaurant(
@@ -201,7 +201,7 @@ def seed_restaurants():
         cuisineType="Sandwich",
         priceRange="$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/2b5027ab-2f8e-4a04-8240-2aa9a48150cc.jpeg",
-        description="The Sandwich Spot offers a variety of freshly made sandwiches with high-quality ingredients. From classic deli-style sandwiches to gourmet creations, you'll find something to satisfy your sandwich cravings at this cozy spot."
+        description="The Sandwich Spot offers a variety of freshly made sandwiches with high-quality ingredients."
     )
 
     restaurant21 = Restaurant(
@@ -242,7 +242,7 @@ def seed_restaurants():
         cuisineType="American",
         priceRange="$$",
         imageUrl="https://www.telegraph.co.uk/multimedia/archive/03352/bbqblues_3352294b.jpg?imwidth=680",
-        description="BBQ Shack is a renowned American barbecue restaurant known for its tender smoked meats and flavorful sauces. From ribs and pulled pork to brisket and smoked chicken, they serve up authentic barbecue dishes that will satisfy any meat lover."
+        description="BBQ Shack is a renowned American barbecue restaurant known for its tender smoked meats and flavorful sauces."
     )
 
     restaurant25 = Restaurant(
@@ -262,7 +262,7 @@ def seed_restaurants():
         cuisineType="American",
         priceRange="$",
         imageUrl="https://vhr-public-oregon.s3.us-west-2.amazonaws.com/poi_image/thumbnail/DYARDcC4wreUWQnbI3Rnr9NcpLbVuqV3",
-        description="Diner Deluxe is a charming retro-style diner that captures the essence of classic American comfort food. From hearty breakfast options to juicy burgers and homemade pies, they serve up delicious dishes that will transport you back in time."
+        description="Diner Deluxe is a charming retro-style diner that captures the essence of classic American comfort food."
     )
 
     restaurant27 = Restaurant(
@@ -272,7 +272,7 @@ def seed_restaurants():
         cuisineType="American",
         priceRange="$$$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/079dbde2-71ff-4e38-985e-8f505c562585.jpeg",
-        description="Premium American steakhouse that offers top-quality cuts of beef cooked to perfection. With an elegant ambiance and an extensive wine list, it's the ideal place for steak enthusiasts looking for a memorable dining experience."
+        description="Premium American steakhouse that offers top-quality cuts of beef cooked to perfection."
     )
 
 
@@ -283,7 +283,7 @@ def seed_restaurants():
         cuisineType="Chinese",
         priceRange="$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/48492e64-53f8-4a92-93d2-fd025fbc4c03.jpeg",
-        description="Golden Dragon is a popular Chinese restaurant known for its authentic flavors and extensive menu. From traditional favorites like General Tso's chicken and fried rice to dim sum and Peking duck, they offer a wide range of dishes that will satisfy your Chinese food cravings."
+        description="Golden Dragon is a popular Chinese restaurant known for its authentic flavors and extensive menu."
     )
 
     restaurant29 = Restaurant(
@@ -293,7 +293,7 @@ def seed_restaurants():
         cuisineType="Chinese",
         priceRange="$$$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/50df9974-b277-43d9-886e-dc8cddcdca31.jpeg",
-        description="Szechuan Palace specializes in Szechuan cuisine, known for its bold and spicy flavors. With dishes like Kung Pao chicken, Mapo tofu, and Szechuan hot pot, they deliver an authentic taste of Szechuan in every bite."
+        description="Szechuan Palace specializes in Szechuan cuisine, known for its bold and spicy flavors."
     )
 
     restaurant30 = Restaurant(
@@ -303,7 +303,7 @@ def seed_restaurants():
         cuisineType="Chinese",
         priceRange="$$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/4a5b2ec9-db83-4ea7-bad0-10f62f78eb14.jpeg",
-        description="Dragon Wok offers a wide selection of Chinese stir-fry dishes made with fresh ingredients and flavorful sauces. With customizable options and a variety of protein choices, you can create your own delicious combination that suits your taste."
+        description="Dragon Wok offers a wide selection of Chinese stir-fry dishes made with fresh ingredients and flavorful sauces."
     )
 
     restaurant31 = Restaurant(
@@ -313,7 +313,7 @@ def seed_restaurants():
         cuisineType="Chinese",
         priceRange="$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/03b6c2cb-6f39-4291-9e41-1f909dc09036",
-        description="Peking Garden is a charming Chinese restaurant that specializes in Beijing-style cuisine. From crispy Peking duck and steamed dumplings to hand-pulled noodles and traditional desserts, they serve up a delightful culinary experience rooted in Chinese tradition."
+        description="Peking Garden is a charming Chinese restaurant that specializes in Beijing-style cuisine. "
     )
 
     restaurant32 = Restaurant(
@@ -323,7 +323,7 @@ def seed_restaurants():
         cuisineType="Italian",
         priceRange="$$",
         imageUrl="https://www.tastingtable.com/img/gallery/20-italian-dishes-you-need-to-try-at-least-once/l-intro-1643403830.jpg",
-        description="Cozy Italian restaurant that offers a delightful selection of classic Italian dishes. From homemade pasta and wood-fired pizza to delectable seafood and authentic desserts, they bring the flavors of Italy to your table."
+        description="Cozy Italian restaurant that offers a delightful selection of classic Italian dishes."
     )
 
     restaurant33 = Restaurant(
@@ -333,7 +333,7 @@ def seed_restaurants():
         cuisineType="Italian",
         priceRange="$",
         imageUrl="https://images.squarespace-cdn.com/content/v1/5e484ab628c78d6f7e602d73/1599248222831-ZMHAFYJT9T3IXH3IVGKY/What-to-eat-in-Italy.png",
-        description="Pasta Paradise is a casual Italian eatery that celebrates the simplicity and comfort of Italian cuisine. With a variety of pasta dishes, from creamy carbonara to hearty Bolognese, they offer a taste of Italy that will satisfy any pasta lover."
+        description="Pasta Paradise is a casual Italian eatery that celebrates the simplicity and comfort of Italian cuisine."
     )
 
 
@@ -344,7 +344,7 @@ def seed_restaurants():
         cuisineType="Sushi",
         priceRange="$$",
         imageUrl="https://d1ralsognjng37.cloudfront.net/b68bc980-98f3-437d-aac2-492e0cbaccea.jpeg",
-        description="Sakura Sushi is a popular sushi restaurant known for its fresh and beautifully crafted sushi rolls. From traditional nigiri to creative specialty rolls, they offer a wide selection of sushi options that are sure to satisfy sushi lovers of all kinds."
+        description="Sakura Sushi is a popular sushi restaurant known for its fresh and beautifully crafted sushi rolls."
     )
 
     restaurant35 = Restaurant(
@@ -354,7 +354,7 @@ def seed_restaurants():
         cuisineType="Sushi",
         priceRange="$$$",
         imageUrl="https://duyt4h9nfnj50.cloudfront.net/resized/f8d2019583140bab86b5dff8db74a22c-w2880-9e.jpg",
-        description="Sushi Heaven is a high-end sushi restaurant that offers an elevated dining experience. With a focus on premium ingredients and expert sushi chefs, they create exquisite sushi creations that showcase the artistry and precision of Japanese cuisine."
+        description="Sushi Heaven is a high-end sushi restaurant that offers an elevated dining experience."
     )
 
     restaurant36 = Restaurant(
@@ -364,7 +364,7 @@ def seed_restaurants():
         cuisineType="Sushi",
         priceRange="$$$$",
         imageUrl="https://duyt4h9nfnj50.cloudfront.net/resized/36ead037fb04be3ff38ad1ba5b63cb43-w2880-0c.jpg",
-        description="Zen Sushi Bar is a casual and relaxed sushi spot that delivers on taste and quality. They pride themselves on serving fresh and flavorful sushi rolls, sashimi, and Japanese-inspired dishes in a welcoming atmosphere."
+        description="Zen Sushi Bar is a casual and relaxed sushi spot that delivers on taste and quality."
     )
 
     restaurant37 = Restaurant(
@@ -374,7 +374,7 @@ def seed_restaurants():
         cuisineType="Healthy",
         priceRange="$$",
         imageUrl="https://i.ytimg.com/vi/AYG1REWFYmY/maxresdefault.jpg",
-        description="Green Leaf Bistro is a popular healthy restaurant that specializes in fresh, organic, and nutritious dishes. They offer a variety of salads, grain bowls, smoothies, and plant-based options made with locally sourced ingredients, ensuring a delicious and wholesome dining experience."
+        description="Green Leaf Bistro is a popular healthy restaurant that specializes in fresh, organic, and nutritious dishes."
     )
 
     restaurant38 = Restaurant(
@@ -384,7 +384,7 @@ def seed_restaurants():
         cuisineType="Healthy",
         priceRange="$",
         imageUrl="https://cdn.squaremeal.co.uk/article/9484/images/healthy-london-ve-kitchen_01122021110525.jpg?w=1200",
-        description="Fit Kitchen is a dedicated healthy eatery that caters to health-conscious individuals. Their menu features balanced meals, protein-packed options, and customizable dishes designed to support a healthy lifestyle. With their focus on nutrition and flavor, you can enjoy guilt-free dining."
+        description="Fit Kitchen is a dedicated healthy eatery that caters to health-conscious individuals."
     )
 
     restaurant39 = Restaurant(
@@ -394,7 +394,7 @@ def seed_restaurants():
         cuisineType="Healthy",
         priceRange="$$$",
         imageUrl="https://tb-static.uber.com/prod/image-proc/processed_images/fa97d8601a03d3ac5cab878982fd98a8/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
-        description="Fresh Fusion is a vibrant and innovative healthy restaurant that offers a fusion of flavors and culinary styles. Their menu incorporates fresh produce, lean proteins, and wholesome ingredients to create flavorful and nutritious dishes that cater to a variety of dietary preferences."
+        description="Fresh Fusion is a vibrant and innovative healthy restaurant that offers a fusion of flavors and culinary styles."
     )
 
     db.session.add(restaurant1)

@@ -87,7 +87,8 @@ export default function RestaurantMenuItems() {
       <div className="menuItemsContainer">
         {filteredMenuItems.length === 0 ? (
           <div className="no-items-message">
-            Sorry, there are no {filter}s available at the moment.
+            <img src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/f601b8be1064c30a.svg" alt="sorry-img"/>
+            <p> Sorry We didn't find a match for {filter} items </p>
           </div>
         ) : (
           filteredMenuItems.map((menuItem) => (
@@ -109,3 +110,5 @@ export default function RestaurantMenuItems() {
     </div>
   );
 }
+
+

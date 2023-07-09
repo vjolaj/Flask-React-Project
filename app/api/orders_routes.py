@@ -48,7 +48,7 @@ def add_item_to_order(orderId):
     quantity = req['quantity']
     print("***********************", menuItemId, quantity)
     menuItem = MenuItem.query.get(menuItemId)
-    if not order.restaurantId:
+    if not order.restaurantId or order.restaurantId == 0:
         order.restaurantId = menuItem.restaurantId
     item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == menuItemId).first()
     print(item)

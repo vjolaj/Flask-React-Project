@@ -17,7 +17,7 @@ def seed_restaurants():
         address = "224 Drive",
         cuisineType= "Asian",
         priceRange = "$$",
-        imageUrl = "https://d1ralsognjng37.cloudfront.net/6a3412c1-fe49-44ce-b1c6-7229f4a94f45.jpeg",
+        imageUrl = "https://content.pymnts.com/wp-content/uploads/2020/02/PF-Changs-Food-Delivery-Apps.jpg",
         description = "P.F. Chang’s is a renowned Asian restaurant offering a fusion of flavors and a stylish dining experience."
     )
     restaurant3 = Restaurant(

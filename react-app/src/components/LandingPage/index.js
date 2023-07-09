@@ -45,7 +45,7 @@ const LandingPage = () => {
         </div>
         <div id='landing-text'>
           <h1 className="orderFood">Order food to your door</h1>
-          <button id='find-food' onClick={() => history.push('/restaurants')}>Find Food</button>
+          <button id='find-food' onClick={() => history.push('/login')}>Find Food</button>
         </div>
         <img
           className="main-bg"

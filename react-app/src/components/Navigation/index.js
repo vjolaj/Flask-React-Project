@@ -5,7 +5,7 @@ import ProfileButton from "./ProfileButton";
 import { removeFilter } from "../../store/filterReducer";
 // import OpenModalButton from "../OpenModalButton";
 import { useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Cart from "../Cart";
 
 import "./Navigation.css";
@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
   const cart = useSelector((state) => state.session.cart);
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -71,13 +72,16 @@ function Navigation({ isLoaded }) {
           <input type="text" placeholder="Search feature coming soon" />
         </div>
       )}
+      <div className="right-side-buttons">
       <Switch>
         <Route path="/restaurants">
+        <button className="cart-button orders-nav-button" onClick={() => history.push('/orders')}>Past Orders</button>
           <div className="cart" onClick={openCart}>
             <Cart />
           </div>
         </Route>
       </Switch>
+    </div>
     </div>
   );
 }

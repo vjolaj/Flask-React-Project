@@ -186,3 +186,9 @@ padding-left: 15px;
   font-size: 2.7rem;
   font-weight: 900;
 }
+
+.right-side-buttons{
+  display: flex;
+  gap: 1rem;
+  /* justify-content: space-evenly */
+}

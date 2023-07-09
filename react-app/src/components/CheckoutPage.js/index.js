@@ -156,15 +156,16 @@ export default function CheckoutPage() {
                             <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
                                 setDeliveryTime(e.target.value)}/>
                             <div className="space-between">
-                                <label htmlFor='delivery-time'>Priority</label>
-                                <div>+$1.99</div>
+                                <label htmlFor='delivery-time'>Standard</label>
+                                {/* <div>+$1.99</div> */}
                             </div>
                         </div>
                         <div className="left-subsection bottom-border">
                             <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
                                 setDeliveryTime(e.target.value)} />
                             <div className="space-between">
-                                <label htmlFor='delivery-time'>Standard</label>
+                                <label htmlFor='delivery-time'>Priority</label>
+                                <div>+$1.99</div>
                             </div>
                         </div>
                     </fieldset>
@@ -264,14 +265,6 @@ export default function CheckoutPage() {
                             value={5.00}
                             onClick={(e) => helperSetTip(e.target.value)}
                         >$5.00</button>
-                        <input
-                            type='number'
-                            min='0'
-                            className="checkout-page-button active"
-                            placeholder="Other"
-                            onChange={(e) => helperSetTip(e.target.value)}
-                            value={tip && ""}
-                        />
                     </div>
                 </div>
                 <div className="right-section">

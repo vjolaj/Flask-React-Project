@@ -36,18 +36,22 @@ const ManageRestaurants = () => {
         {Object.values(restaurants).map((restaurant) => (
           <div key={restaurant.id}>
             <div>
-              <NavLink to={`/restaurants/${restaurant.id}`}>
                 <div className="manageRestImg">
+              <NavLink to={`/restaurants/${restaurant.id}`}>
                   <img
                     src={restaurant.imageUrl}
                     alt="img"
                     className="imageOverlay"
                   />
+                </NavLink>
                   <div className="textOverlay">
+                  <Link to={`/restaurants/${restaurant.id}`}>
                     <div className="restaurantName">{restaurant.name}</div>
                     <div className="restaurantAddress">
                       {restaurant.address}
                     </div>
+                        
+                      </Link>
                     <div className="manageSpot-buttons">
                       <div>
                         <OpenModalButton
@@ -73,7 +77,6 @@ const ManageRestaurants = () => {
                     </div>
                   </div>
                 </div>
-              </NavLink>
             </div>
           </div>
         ))}

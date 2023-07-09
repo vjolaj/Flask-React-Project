@@ -1109,7 +1109,7 @@ def seed_menu_items():
         restaurantId = 16,
         price = 5.99,
         itemType = "Side",
-        description = "Nobody does breadsticks like the Hut. Crispy-on-the-outside, soft-on-the-inside, and seasoned with garlic and parmesan, they're perfect with pizza or pasta. Comes with a cup of our delicious marinara!",
+        description = "Nobody does breadsticks like the Hut.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127486662205767720/Screenshot_2023-07-09_at_2.28.56_AM.png"
     )
 
@@ -1127,7 +1127,7 @@ def seed_menu_items():
         restaurantId = 16,
         price = 21.59,
         itemType = "Entree",
-        description = "We took your favorite food and put it on a pizza. With tangy buffalo sauce, tender chicken and banana peppers, this beautiful masterpiece tastes like a football game feels.",
+        description = "We took your favorite food and put it on a pizza.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127487747494514758/cover_image.jpg.760x400_q85_crop_upscale.jpg"
     )
 
@@ -1136,7 +1136,7 @@ def seed_menu_items():
         restaurantId = 16,
         price = 8.39,
         itemType = "Dessert",
-        description = "10 mini cinnamon rolls, topped with signature cream cheese frosting, are the perfect way to end pizza night. Or you can eat 'em first. Don't worry, we won't tell.",
+        description = "10 mini cinnamon rolls, topped with signature cream cheese frosting, are the perfect way to end pizza night.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127488686217502792/dessert.cinnabon-mini-rolls.7e98475ca6dd067f5b6e327ab0d9a788.1.jpg"
     )
 
@@ -1145,7 +1145,7 @@ def seed_menu_items():
         restaurantId = 16,
         price = 8.99,
         itemType = "Dessert",
-        description = "Chocolate, chocolate, and more chocolate. Dig into this rich, decadent brownie made with semi-sweet chocolate, dark chocolate and cocoa. Did we mention there's chocolate?",
+        description = "Chocolate, chocolate, and more chocolate.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127488685961658439/20-1555339742.jpg"
     )
 
@@ -1154,7 +1154,7 @@ def seed_menu_items():
         restaurantId = 17,
         price = 8.99,
         itemType = "Side",
-        description = "Original fresh dough covered with Special Garlic sauce, topped with mounds of real cheese made from mozzarella, then baked to a cheesy, gooey goodness. Served with original pizza sauce for dipping!",
+        description = "Original fresh dough covered with Special Garlic sauce.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127486661836677231/Screenshot_2023-07-09_at_2.28.25_AM.png"
     )
 
@@ -1172,7 +1172,7 @@ def seed_menu_items():
         restaurantId = 17,
         price = 14.49,
         itemType = "Entree",
-        description = "Just when you think our pepperoni pizza couldn’t get any tastier, we craft the ultimate masterpiece. Our original fresh dough is covered with signature pizza sauce, 30% more pepperoni than our traditional pie, a blend of Parmesan and Romano, and real cheese made from mozzarella, all sprinkled with classic Italian seasoning.",
+        description = "Just when you think our pepperoni pizza couldn’t get any tastier, we craft the ultimate masterpiece.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127487747263840396/1628637276856.jpeg"
     )
 
@@ -1181,7 +1181,7 @@ def seed_menu_items():
         restaurantId = 17,
         price = 8.49,
         itemType = "Entree",
-        description = "No crust – just an oven-baked bowl of creamy alfredo and garlic parmesan sauces and juicy grilled chicken complemented by spinach, mushrooms, onions, and tomatoes, and topped with a melty three cheese blend and Italian seasoning. *Italian Seasoning contains gluten",
+        description = "No crust – just an oven-baked bowl of creamy alfredo and garlic parmesan sauces and juicy grilled chicken.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127489965224374312/papajon_bowl.webp"
     )
 
@@ -1190,7 +1190,7 @@ def seed_menu_items():
         restaurantId = 17,
         price = 6.49,
         itemType = "Dessert",
-        description = "Eight sweet bites of OREO® Cookie wrapped in our original fresh dough and drizzled in icing. Baked fresh and served with cream cheese icing dipping sauce on the side.",
+        description = "Eight sweet bites of OREO® Cookie wrapped in our original fresh dough and drizzled in icing.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127490530356502528/papajohn_oreo.jpeg"
     )
 
@@ -1325,7 +1325,7 @@ def seed_menu_items():
         restaurantId = 19,
         price = 9.99,
         itemType = "Entree",
-        description = "When you’re looking to spice things up, do it with Frank’s RedHot® and buffalo chicken. Our Buffalo Chicken Footlong is made with everyone’s favorite hot sauce – Frank’s RedHot® and topped with peppercorn ranch. Try it with lettuce, tomatoes and cucumbers!",
+        description = "When you’re looking to spice things up, do it with Frank’s RedHot® and buffalo chicken.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127496407402676254/subway_1.jpeg"
     )
 
@@ -1343,7 +1343,7 @@ def seed_menu_items():
         restaurantId = 19,
         price = 0.89,
         itemType = "Dessert",
-        description = "One bite of our Chocolate Chip Cookie and you may just find the sudden urge to order 2, 3… maybe 6. It has semi-sweet chocolate chips, vanilla and other natural flavors folded into buttery cookie dough. It’s waiting to be devoured, just don’t say we didn’t warn you!",
+        description = "One bite of our Chocolate Chip Cookie and you may just find the sudden urge to order 2, 3… maybe 6.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127496801138770030/Single-Serve-Chocolate-Chip-Cookie-5-735x1103.webp"
     )
 
@@ -1361,7 +1361,7 @@ def seed_menu_items():
         restaurantId = 19,
         price = 2.69,
         itemType = "Drink",
-        description = "As delicious as our sandwiches are, they are even better when paired with the perfect side and drink or even adding a little something extra. With such a variety to choose from, there's truly something for every taste.",
+        description = "As delicious as our sandwiches are, they are even better when paired with the perfect side and drink.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127491259766939689/water.webp"
     )
 
@@ -1744,7 +1744,7 @@ def seed_menu_items():
         restaurantId = 25,
         price = 11.19,
         itemType = "Dessert",
-        description = "Layers of Cinnabon cinnamon cheesecake and vanilla crunch cake topped with signature cream cheese frosting, caramel and glazed pecans. Served with vanilla bean ice cream.",
+        description = "Layers of Cinnabon cinnamon cheesecake and vanilla crunch cake topped with signature cream cheese frosting.",
         imageUrl = "https://cdn.discordapp.com/attachments/1116216556800716822/1127665146630783109/cheesecake.jpeg"
     )
 
@@ -2281,7 +2281,7 @@ def seed_menu_items():
             restaurantId = 33,
             price = 13.99,
             itemType = "Entree",
-            description = "A blend of fresh cream, butter, and parmesan cheese. Includes salad, ricotta cheese rolled in pasta and topped with melted mozzarella. Includes salad, garlic knots, and parmesan cheese.",
+            description = "A blend of fresh cream, butter, and parmesan cheese. Includes salad, ricotta cheese rolled in pasta and topped with melted mozzarella.",
             imageUrl = "https://www.allrecipes.com/thmb/LjXULjH7Yd_BeLLTLOlyaDx-xzE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/19402-Quick-And-Easy-Alfredo-Sauce-mfs_002-df1c96e0f9514d2191d0d8ce4c8a9745.jpg"
         )
     menu33item3 = MenuItem(
@@ -2541,7 +2541,7 @@ def seed_menu_items():
             restaurantId = 37,
             price = 15.45,
             itemType = "Entree",
-            description = "Perfectly seasoned and pan seared garlic butter shrimp, tender chunks of our slow braised pork belly. Choose your base, toppings, optional add-ons, and sauces.",
+            description = "Perfectly seasoned and pan seared garlic butter shrimp, tender chunks of our slow braised pork belly.",
             imageUrl = "https://popmenucloud.com/cdn-cgi/image/width%3D1920%2Cheight%3D1920%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/qvioyhnc/c8fef2d7-0e99-4d1c-ba5a-40a35f627468.jpg"
         )
     menu37item2 = MenuItem(

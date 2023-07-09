@@ -196,7 +196,7 @@ def seed_restaurants():
 
     restaurant20 = Restaurant(
         ownerId=2,
-        name="Jimmy Jhon's",
+        name="Jimmy John's",
         address="123 Main Street",
         cuisineType="Sandwich",
         priceRange="$$",
@@ -206,12 +206,12 @@ def seed_restaurants():
 
     restaurant21 = Restaurant(
         ownerId=2,
-        name="Subway Fresh",
-        address="456 Elm Street",
+        name="Potbelly Sandwich Works",
+        address="30 Rockefeller Plaza Ste L3",
         cuisineType="Sandwich",
         priceRange="$",
-        imageUrl="https://images.squarespace-cdn.com/content/v1/583709cad1758eee1e6907a5/1501471366979-02G8A6TNWK13BW8WFCT0/TSC-cover-photo-2017.jpg?format=2500w",
-        description="Subway Fresh is a popular chain known for its customizable submarine sandwiches. Choose from a variety of bread, meats, cheeses, and toppings to create your perfect sandwich on the go."
+        imageUrl="https://cdn.discordapp.com/attachments/1116216556800716822/1127654941239037992/potbelly.jpeg",
+        description="Retro-style counter-serve chain known for made-to-order toasted sandwiches, salads & baked goods."
     )
 
 

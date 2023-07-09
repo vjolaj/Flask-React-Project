@@ -18,6 +18,8 @@ import EditRestaurant from "./components/EditRestaurant";
 import Footer from "./components/Footer"
 import CheckOutModal from "./components/CheckoutPage.js/checkoutModal";
 
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -71,6 +73,7 @@ function App() {
             <Route exact path='/finalizing-checkout'>
               <CheckOutModal />
             </Route>
+            <Redirect to='/restaurants' />
           </Switch>
         )}
       </div>

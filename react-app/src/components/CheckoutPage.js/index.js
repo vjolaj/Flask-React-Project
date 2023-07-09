@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./CheckoutPage.css"
 import { checkOutCart, getCartThunk, newCartThunk } from "../../store/ordersReducer";
-import OpenModalButton from "../OpenModalButton";
 import CheckOutModal from "./checkoutModal";
 import CheckoutItemTile from "./checkoutItemTile";
 
@@ -15,30 +14,27 @@ export default function CheckoutPage() {
     const cart = useSelector((state) => {
         return state.orders.cart;
     })
-    console.log("this is your restaurant ", cart.restaurant)
 
     const [deliveryMethod, setDeliveryMethod] = useState("");
     const [paymentDetails, setPaymentDetails] = useState("");
     const [address, setAddress] = useState("");
-    const [tip, setTip] = useState(0)
-    const [fees, setFees] = useState(Number(((cart.totalCost) * 1.1) + 3.18) - cart.totalCost)
+    const [tip, setTip] = useState("")
+    const [fees, setFees] = useState(Number(((cart.totalCost) * 1.1) + 3.18) - Number(cart.totalCost))
     const [deliveryTime, setDeliveryTime] = useState("")
     const [priorityPrice, setPriorityPrice] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
-
-
-    const [errors, setErrors] = useState({});
+    let [errors, setErrors] = useState({})
 
     useEffect(() => {
         dispatch(getCartThunk());
     }, [dispatch]);
 
-    
     useEffect(() =>{ 
+        setFees(Number(((cart.totalCost) * 1.1) + 3.18) - Number(cart.totalCost))
         if (deliveryTime === "Priority") setPriorityPrice(1.99)
         else if (deliveryTime === "Standard") setPriorityPrice(0)
-        setTotalPrice((Number(cart.totalCost) + Number(priorityPrice) +  fees + Number(tip)).toFixed(2))
-    }, [tip, deliveryTime])
+        setTotalPrice((Number(cart.totalCost) + Number(priorityPrice) + Number(fees) + Number(tip)).toFixed(2))
+    }, [tip, deliveryTime, cart, errors])
 
     const validate = () => {
         let errs = {}
@@ -50,16 +46,23 @@ export default function CheckoutPage() {
         else if (address.length > 50) errs.address = "Address must be less than 50 characters"
         if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
 
-        setErrors(errs)
-        console.log(errors)
+        errors = errs
+        console.log("****VALIDATING*****",errs, errors)
+        if (Object.keys(errs).length !== 0) {
+            return {validated: false,
+            errs}
+        } else return {validated: true}
     }
 
     const handleSubmit = async () => {
         setErrors({})
-        validate()
 
-        if (Object.keys(errors).length !== 0) {
-            return errors
+        const {validated, errs} = validate()
+
+        if (!validated) {
+            console.log("******WE HAVE ERRORS********", errors)
+            setErrors({...errs})
+            return errs
         }
         else {
             const payload = {
@@ -75,6 +78,7 @@ export default function CheckoutPage() {
             if (order) {
                 const newOrder = await dispatch(newCartThunk());
             }
+            history.push('/finalizing-checkout')
         }
     }
 
@@ -87,9 +91,9 @@ export default function CheckoutPage() {
     }
 
     const helperSetTip = (value) => {
-        if (Number(value) < 0) setErrors({tip: "Can't give a negative tip"})
-        if (Number(tip) === Number(value)) setTip(0)
+        if (Number(tip) === Number(value)) setTip(null)
         else setTip(value)
+        if (Number(value) < 0) errors = {tip: "Can't give a negative tip"}
     }
 
     if (!cart.restaurant) return null
@@ -100,39 +104,42 @@ export default function CheckoutPage() {
                 <div className="left-section">
                     <h2>{cart.restaurant.name}</h2>
                     <div className="left-subsection">
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i className="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
-                            <div>Address: {address}</div>
+                            <div>Address: </div>
                             {errors.address && (
                                 <p className="red">{errors.address}</p>
                             )}
                             <input
                                 className="checkout-page-input"
                                 placeholder="Enter Your Address"
-                                onChange={(e) => setAddress(e.target.value)}
+                                onChange={(e) => {
+                                    setAddress(e.target.value)
+                                }}
                                 defaultValue={address}
                             />
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
-                        <i class="fa-solid fa-person"></i>
+                        <i className="fa-solid fa-person"></i>
                         <div className="space-between">
                             <div>
-                                <div>Delivery Method: {deliveryMethod}</div>
+                                <div>Delivery Method: </div>
                             </div>
-                            <fieldset name='delivery-method' className="fieldset">
-                                <div className="left-subsection">
-                                    <input type="radio" name="delivery-method" value="Priority" onChange={(e) => 
-                                    setDeliveryTime(e.target.value)}/>
-                                    <div className="space-between bottom-border">
-                                        <label for='delivery-time'>Pickup</label>
+                            {errors.deliveryMethod && (<p className="red">{errors.deliveryMethod}</p>)}
+                            <fieldset name='delivery-method' className="fieldset-delivery">
+                                <div className="left-subsection delivery-choices">
+                                    <input type="radio" name="delivery-method" value="Pickup" onChange={(e) => 
+                                    setDeliveryMethod(e.target.value)}/>
+                                    <div className="space-between">
+                                        <label htmlFor='delivery-method'>Pickup</label>
                                     </div>
                                 </div>
-                                <div className="left-subsection bottom-border">
-                                    <input type="radio" name="delivery-method" value="Standard" onChange={(e) => 
-                                        setDeliveryTime(e.target.value)} checked/>
+                                <div className="left-subsection">
+                                    <input type="radio" name="delivery-method" value="Delivery" onChange={(e) => setDeliveryMethod(e.target.value)
+                                    } />
                                     <div className="space-between">
-                                        <label for='delivery-time'>Delivery</label>
+                                        <label htmlFor='delivery-method'>Delivery</label>
                                     </div>
                                 </div>
                             </fieldset>
@@ -144,12 +151,12 @@ export default function CheckoutPage() {
                     {errors.deliveryTime && (
                         <p className="red">{errors.deliveryTime}</p>
                     )}
-                    <fieldset name='delivery-estimate' className="fieldset">
-                        <div className="left-subsection">
+                    <fieldset name='delivery-estimate' className="fieldset-priority">
+                        <div className="left-subsection bottom-border">
                             <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
                                 setDeliveryTime(e.target.value)}/>
-                            <div className="space-between bottom-border">
-                                <label for='delivery-time'>Priority</label>
+                            <div className="space-between">
+                                <label htmlFor='delivery-time'>Priority</label>
                                 <div>+$1.99</div>
                             </div>
                         </div>
@@ -157,7 +164,7 @@ export default function CheckoutPage() {
                             <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
                                 setDeliveryTime(e.target.value)} />
                             <div className="space-between">
-                                <label for='delivery-time'>Standard</label>
+                                <label htmlFor='delivery-time'>Standard</label>
                             </div>
                         </div>
                     </fieldset>
@@ -165,10 +172,10 @@ export default function CheckoutPage() {
                 <div className="left-section">
                     <h3>Payment</h3>
                     <div className="left-subsection">
-                        <i class="fa-regular fa-credit-card"></i>
+                        <i className="fa-regular fa-credit-card"></i>
                         <div className="space-between bottom-border">
-                            <label for="payment-details">Payment Type: </label>
-
+                            <label htmlFor="payment-details">Payment Type: </label>
+                            {errors.paymentDetails && (<p className="red">{errors.paymentDetails}</p>)}
                             <select name="payment-type" id='payment-type' onChange={(e) => setPaymentDetails(e.target.value)}>
                                 <option value="">--Please choose an option--</option>
                                 <option value="PayPal">PayPal</option>
@@ -178,7 +185,7 @@ export default function CheckoutPage() {
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
-                        <i class="fa-solid fa-tag"></i>
+                        <i className="fa-solid fa-tag"></i>
                         <div className="space-between">
                             <div>Add promo code</div>
                             <input
@@ -192,35 +199,22 @@ export default function CheckoutPage() {
                     <div className="space-between">
                         <h3>Your items</h3>
                         <button className="checkout-page-button" onClick={() => history.push('/restaurants')}>
-                            <i class="fa-solid fa-plus"></i> Add items
+                            <i className="fa-solid fa-plus"></i> Add items
                         </button>
                     </div>
                     <div>
                         {Object.values(cart.Items).map(item => (
-                            <CheckoutItemTile itemData={item} />
+                            <div key={item.id}>
+                                <CheckoutItemTile itemData={item} />
+                            </div>
                         ))}
                     </div>
                 </div>
             </div>
             <div id='checkout-right-side'>
                 <div className="right-section bottom-border">
-                    {/* <button
-                        id="place-order-button"
-                        onClick={handleSubmit}
-                    >
-                        Place Order
-                    </button> */}
                     <div id="place-order-button">
-                        <OpenModalButton
-                                        id="place-order-button"
-                                        buttonText="Place Order"
-                                        onButtonClick={handleSubmit}
-                                        onModalClose={() => history.push('/restaurants')}
-                                        errors={Boolean(Object.keys(errors).length)}
-                                        modalComponent={
-                                            <CheckOutModal/>
-                                        }
-                        ></OpenModalButton>
+                        <button onClick={handleSubmit}>Place Order</button>                                      
                     </div>
                     <p>If you’re not around when the delivery person arrives, they’ll leave your order at the door. By placing your order, you agree to take full responsibility for it once it’s delivered. Orders containing alcohol or other restricted items may not be eligible for leave at door and will be returned to the store if you are not available.</p>
                 </div>
@@ -228,14 +222,14 @@ export default function CheckoutPage() {
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Subtotal</h4>
-                            <i class="fa-solid fa-circle-info"></i>
+                            <i className="fa-solid fa-circle-info"></i>
                         </div>
                         <h4>${Number(cart.totalCost).toFixed(2)}</h4>
                     </div>
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Taxes & Other Fees</h4>
-                            <i class="fa-solid fa-circle-info"></i>
+                            <i name="fa-solid fa-circle-info"></i>
                         </div>
                         <h4>${(Number((cart.totalCost * 1.1) + 3.18) - cart.totalCost).toFixed(2)}</h4>
                     </div>
@@ -244,7 +238,7 @@ export default function CheckoutPage() {
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Add a tip</h4>
-                            <i class="fa-solid fa-circle-info"></i>
+                            <i className="fa-solid fa-circle-info"></i>
                         </div>
                         <h4>${Number(tip).toFixed(2)}</h4>
                     </div>
@@ -276,14 +270,14 @@ export default function CheckoutPage() {
                             className="checkout-page-button active"
                             placeholder="Other"
                             onChange={(e) => helperSetTip(e.target.value)}
-                            value={tip || errors.tip}
+                            value={tip && ""}
                         />
                     </div>
                 </div>
                 <div className="right-section">
                     <div className="space-between">
                         <h3>Total</h3>
-                        <h3>${((cart.totalCost * 1.1) + 3.18 + Number(tip)).toFixed(2)}</h3>
+                        <h3>${totalPrice}</h3>
                     </div>
                 </div>
             </div>

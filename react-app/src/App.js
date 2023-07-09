@@ -16,6 +16,7 @@ import ManageRestaurants from "./components/ManageRestaurants";
 import PastOrdersPage from "./components/Orders/pastOrders";
 import EditRestaurant from "./components/EditRestaurant";
 import Footer from "./components/Footer"
+import CheckOutModal from "./components/CheckoutPage.js/checkoutModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +67,9 @@ function App() {
             </Route>
             <Route exact path='/orders'>
               <PastOrdersPage />
+            </Route>
+            <Route exact path='/finalizing-checkout'>
+              <CheckOutModal />
             </Route>
           </Switch>
         )}

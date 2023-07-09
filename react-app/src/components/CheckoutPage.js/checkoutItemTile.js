@@ -6,7 +6,7 @@ const CheckoutItemTile = ({ itemData }) => {
     const dispatch = useDispatch()
     let quantity = useSelector(state => state.orders.cart.Items[itemData.id].quantity)
     let [price, setPrice] = useState(itemData.price * quantity)
-    console.log("this is your item data ", itemData)
+    // console.log("this is your item data ", itemData)
 
     return (
         <div className='cart-item-tile'>

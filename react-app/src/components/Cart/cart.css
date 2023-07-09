@@ -76,7 +76,8 @@
     height: 10rem;
 }
 .cart-item-img {
-    width: 10rem;
+    width: 9rem;
+    height: 9rem;
 }
 
 .cart-item-quantity {
@@ -138,5 +139,10 @@
 
 .cart-button i {
     font-size: 1.1rem;
+    padding-left: 7px;
+}
+
+.cart-item-details p{
+    font-size: 15px;
     padding-left: 6px;
 }

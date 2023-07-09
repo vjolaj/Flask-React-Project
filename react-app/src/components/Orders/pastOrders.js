@@ -23,7 +23,7 @@ const PastOrdersPage = () => {
                     <li key={order.id}>
                         <OrderTile orderData={order} />
                     </li>
-                ))}
+                )).reverse()}
             </ul>
         </div>
     )

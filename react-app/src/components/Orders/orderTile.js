@@ -50,7 +50,6 @@ const OrderTile = ({ orderData }) => {
                                 <div className='order-item-quantity'>{item.quantity}</div>
                                 <div>
                                     <h4>{item.itemName}</h4>
-                                    <p>{item.description}</p>
                                 </div>
                             </li>
                         ))}

@@ -93,7 +93,10 @@ function LoginFormPage() {
         <button type="submit" className="logIn-form-button">Continue</button>
         <p className="or">or</p>
         <button type="button" onClick={demoUser} className="logIn-form-button">Continue with Demo User</button>
-       
+        <NavLink exact to="/signup" className="logIn-form-button">
+         Sign up
+        </NavLink>
+        
       </form>
      
     </>

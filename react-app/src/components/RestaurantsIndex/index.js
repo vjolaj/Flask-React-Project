@@ -21,7 +21,7 @@ const RestaurantsIndex = ({ restaurants }) => {
     return fees[Math.floor(Math.random() * fees.length)];
   };
 
-    const handlePriceRangeChange = (priceRange) => {
+  const handlePriceRangeChange = (priceRange) => {
     if (selectedPriceRange === priceRange) {
       setSelectedPriceRange(null);
       dispatch(removeFilter());
@@ -51,7 +51,6 @@ const RestaurantsIndex = ({ restaurants }) => {
         </div>
         <p className="price">Price Range</p>
         <div className="dollar-buttoms">
-
           <button
             onClick={() => handlePriceRangeChange("$")}
             className={selectedPriceRange === "$" ? "active" : ""}
@@ -80,7 +79,7 @@ const RestaurantsIndex = ({ restaurants }) => {
       </div>
       <div className="rest-index-container">
         {filteredRestaurants.map((restaurant) => (
-          <div key={restaurant.id}>
+          <div key={restaurant.id} onClick={handleAll}>
             <div className="singleRestContainer">
               <div>
                 <NavLink to={`/restaurants/${restaurant.id}`}>
@@ -98,3 +97,4 @@ const RestaurantsIndex = ({ restaurants }) => {
 };
 
 export default RestaurantsIndex;
+

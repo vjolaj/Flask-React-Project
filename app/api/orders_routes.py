@@ -32,7 +32,7 @@ def remove_item_from_order(orderId):
     db.session.commit()
     order = Order.query.get(orderId)
     if len(order.menuItems) == 0:
-        order.restaurantId = 0
+        order.restaurantId = None
         db.session.commit()
 
     return order.to_dict()

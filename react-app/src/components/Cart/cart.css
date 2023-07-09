@@ -9,7 +9,7 @@
     background-color: white;
     z-index: 1000;
     padding: 1rem;
-    border-left: 1px solid black;
+    border-left: 3px solid black;
     box-shadow: -10px 0px 1000px rgb(182, 182, 182);
     overflow: scroll
 }
@@ -129,8 +129,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 2rem;
-    width: 5.5rem;
+    border-radius: 2.2rem;
+    width: 6.3rem;
     background-color: black;
     color: white;
+    border: none;
+}
+
+.cart-button i {
+    font-size: 1.1rem;
+    padding-left: 6px;
 }

@@ -26,7 +26,6 @@
     top: 0px;
 }
 
-
 .bottom-border {
     border-bottom: 2px rgb(219, 219, 219) solid;
     padding: 15px 0px;
@@ -103,6 +102,15 @@
     background-color: rgb(221, 221, 221);
 }
 
+.checkout-page-button-active{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 15px;
+}
+
 .checkout-page-button:hover {
     background-color: rgb(201, 201, 201);
     cursor: pointer;
@@ -137,4 +145,8 @@
 
 .red {
     color: red;
+}
+
+.fieldset {
+    border: none;
 }

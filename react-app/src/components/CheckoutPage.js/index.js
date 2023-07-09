@@ -76,10 +76,23 @@ export default function CheckoutPage() {
                 const newOrder = await dispatch(newCartThunk());
             }
         }
-
     }
 
-    if (!cart) return null
+    const tipClassName = (value) => {
+        if (Number(tip) === value) {
+            return "checkout-page-button-active"
+        } else {
+            return "checkout-page-button"
+        } 
+    }
+
+    const helperSetTip = (value) => {
+        if (Number(value) < 0) setErrors({tip: "Can't give a negative tip"})
+        if (Number(tip) === Number(value)) setTip(0)
+        else setTip(value)
+    }
+
+    if (!cart.restaurant) return null
 
     return (
         <div id='checkout-wrapper'>
@@ -107,20 +120,22 @@ export default function CheckoutPage() {
                             <div>
                                 <div>Delivery Method: {deliveryMethod}</div>
                             </div>
-                            <div className="left-subsection">
-                                <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
-                                setDeliveryTime(e.target.value)}/>
-                            <div className="space-between bottom-border">
-                            <label for='delivery-time'>Pickup</label>
-                        </div>
-                    </div>
-                    <div className="left-subsection bottom-border">
-                        <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
-                            setDeliveryTime(e.target.value)} checked/>
-                        <div className="space-between">
-                            <label for='delivery-time'>Delivery</label>
-                        </div>
-                    </div>
+                            <fieldset name='delivery-method' className="fieldset">
+                                <div className="left-subsection">
+                                    <input type="radio" name="delivery-method" value="Priority" onChange={(e) => 
+                                    setDeliveryTime(e.target.value)}/>
+                                    <div className="space-between bottom-border">
+                                        <label for='delivery-time'>Pickup</label>
+                                    </div>
+                                </div>
+                                <div className="left-subsection bottom-border">
+                                    <input type="radio" name="delivery-method" value="Standard" onChange={(e) => 
+                                        setDeliveryTime(e.target.value)} checked/>
+                                    <div className="space-between">
+                                        <label for='delivery-time'>Delivery</label>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -129,21 +144,23 @@ export default function CheckoutPage() {
                     {errors.deliveryTime && (
                         <p className="red">{errors.deliveryTime}</p>
                     )}
-                    <div className="left-subsection">
-                        <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
-                            setDeliveryTime(e.target.value)}/>
-                        <div className="space-between bottom-border">
-                            <label for='delivery-time'>Priority</label>
-                            <div>+$1.99</div>
+                    <fieldset name='delivery-estimate' className="fieldset">
+                        <div className="left-subsection">
+                            <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
+                                setDeliveryTime(e.target.value)}/>
+                            <div className="space-between bottom-border">
+                                <label for='delivery-time'>Priority</label>
+                                <div>+$1.99</div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="left-subsection bottom-border">
-                        <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
-                            setDeliveryTime(e.target.value)} checked/>
-                        <div className="space-between">
-                            <label for='delivery-time'>Standard</label>
+                        <div className="left-subsection bottom-border">
+                            <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
+                                setDeliveryTime(e.target.value)} />
+                            <div className="space-between">
+                                <label for='delivery-time'>Standard</label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </div>
                 <div className="left-section">
                     <h3>Payment</h3>
@@ -234,31 +251,32 @@ export default function CheckoutPage() {
                     <p>100% of your tip goes to your courier. Tips are based on your order total of (insert total) before any discounts or promotions.</p>
                     <div id='tip-buttons'>
                         <button
-                            className="checkout-page-button"
+                            className={tipClassName(2.00)}
                             value={2.00}
-                            onClick={(e) => setTip(e.target.value)}
+                            onClick={(e) => helperSetTip(e.target.value)}
                         >$2.00</button>
                         <button
-                            className="checkout-page-button"
+                            className={tipClassName(3.00)}
                             value={3.00}
-                            onClick={(e) => setTip(e.target.value)}
+                            onClick={(e) => helperSetTip(e.target.value)}
                         >$3.00</button>
                         <button
-                            className="checkout-page-button"
+                            className={tipClassName(4.00)}
                             value={4.00}
-                            onClick={(e) => setTip(e.target.value)}
+                            onClick={(e) => helperSetTip(e.target.value)}
                         >$4.00</button>
                         <button
-                            className="checkout-page-button"
+                            className={tipClassName(5.00)}
                             value={5.00}
-                            onClick={(e) => setTip(e.target.value)}
+                            onClick={(e) => helperSetTip(e.target.value)}
                         >$5.00</button>
                         <input
                             type='number'
                             min='0'
-                            className="checkout-page-button"
+                            className="checkout-page-button active"
                             placeholder="Other"
-                            onChange={(e) => setTip(e.target.value)}
+                            onChange={(e) => helperSetTip(e.target.value)}
+                            value={tip || errors.tip}
                         />
                     </div>
                 </div>

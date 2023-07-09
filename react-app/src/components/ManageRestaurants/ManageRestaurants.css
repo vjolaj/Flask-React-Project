@@ -1,57 +1,6 @@
-/* .addRestaurantButton{
-    color: white;
-        background-color: black;
-        justify-content: center;
-        margin-top: 6px;
-        height: 2.5rem;
-        width: 9rem;
-        border: none;
-        display: flex;
-        align-items: center;
-        border-radius: 6px;
-        margin-left: 2rem;
-        margin-bottom: 2rem;
-        font-size: 14px;
-} */
-
-/* .black-button button{
-    color: white;
-        background-color: black;
-        justify-content: center;
-        margin-top: 6px;
-        height: 2rem;
-        width: 8rem;
-        border: none;
-        display: flex;
-        align-items: center;
-        border-radius: 6px;
-        margin-left: 15px;
-        margin-bottom: 2rem;
-        font-size: 14px;
-} */
-
-/* .container{
-    display: flex;
-    flex-direction: row;
-}
-
-.ManageSingleRestContainer{
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-}
-
-.manageHeader{
-    margin-left: 2rem;
-    font-family: sans-serif;
-} */
 
 
-  .manageRestaurantsHeaders {
-   margin-left: 26px
-  }
-
-  .manageHeader {
+.manageHeader {
     margin-bottom: 10px;
     font-size: 1.3em;
     font-family: sans-serif;
@@ -66,6 +15,7 @@ justify-content: flex-start;
     border: none;
     font-size: 0.8rem;
     font-weight: 510;
+    margin-bottom: 40px;
 }
 
 
@@ -80,19 +30,17 @@ justify-content: flex-start;
 
 .manageSpot-buttons {
     display: flex;
-    /* justify-content: space-evenly; */
-    /* width: 100%; */
     gap: 15px;
+    margin-top: 20px;
 }
 
 .manageSpot-buttons button{
-    /* flex-grow: 1; */
     padding-left: 5px;
     border-top: 15px;
     padding: 10px;
     background-color: #000000;
     color: white;
-    opacity: 0.8;
+    opacity: 0.9;
     border-radius: 5px;
     border: none;
     font-size: 0.8rem;
@@ -105,20 +53,63 @@ justify-content: flex-start;
     display: flex;
     justify-content: center;
 }
-.deleteRestaurantButton button {
-    margin-top: 10px;
-    width: 89%;
-    border-top: 15px;
-    padding: 10px;
-    background-color: #fc6464;
-    color: white;
-    opacity: 0.9;
-    border-radius: 5px;
-    border: none;
-    font-size: 0.8rem;
-    font-weight: 510;
-}
 
-.deleteRestaurantButton button:hover {
-    opacity: 1.0
-}
+.manageRestImg {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .imageOverlay {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .textOverlay {
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background: linear-gradient(180deg, #00000088 30%, #ffffff44 100%);
+  }
+  
+  .textOverlay a:visited {
+    color: white
+  }
+
+  .textOverlay a {
+    text-decoration: none;
+  }
+
+
+  .restaurantName {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .restaurantAddress {
+    font-size: 16px;
+  }
+
+  .manage-rest-container {
+    width: 95%;
+    margin: auto;
+    /* margin-right: 30px; */
+  }
+
+  .manage-rest-index-container {
+    width: 100%;
+  }

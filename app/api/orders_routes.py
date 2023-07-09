@@ -11,8 +11,9 @@ def get_users_orders():
     """
     print('backend hit, requesting...')
     print(current_user)
-    orders = Order.query.filter(Order.userId == current_user.id and Order.isCompleted == True).all()
-
+    # orders = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
+    orders = Order.query.order_by(Order.orderedAt).filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
+    print(orders)
     return {
         "users_orders": {
             order.id: order.to_dict() for order in orders
@@ -25,14 +26,14 @@ def remove_item_from_order(orderId):
     req = request.get_json()
     # menuItemId = req["menuItemId"]
     # menuItem = MenuItem.query.get(menuItemId)
-    item = OrderItem.query.filter(OrderItem.orderId == orderId and OrderItem.menuItemId == req['menuItemId']).first()
+    item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == req['menuItemId']).first()
 
     db.session.delete(item)
     db.session.commit()
     order = Order.query.get(orderId)
     if len(order.menuItems) == 0:
         order.restaurantId = 0
-        db.session.commit
+        db.session.commit()
 
     return order.to_dict()
 
@@ -48,7 +49,7 @@ def add_item_to_order(orderId):
     quantity = req['quantity']
     print("***********************", menuItemId, quantity)
     menuItem = MenuItem.query.get(menuItemId)
-    if not order.restaurantId:
+    if not order.restaurantId or order.restaurantId == 0:
         order.restaurantId = menuItem.restaurantId
     item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == menuItemId).first()
     print(item)
@@ -64,23 +65,24 @@ def add_item_to_order(orderId):
 @login_required
 def edit_order(orderId):
     """
-    This route will finalize orders
+    This route will finalize orders if isCompleted is passed through, else it will update quantity of items
     """
     order = Order.query.get(orderId)
     req = request.get_json()
 
-    new_delivery_method = req["deliveryMethod"]
-    new_paymentDetails = req["paymentDetails"]
-    new_address = req["address"]
+    isCompleted = req['isCompleted']
 
-    if new_delivery_method:
-        order.deliveryMethod = new_delivery_method
-    if new_paymentDetails:
-        order.paymentDetails = new_paymentDetails
-    if new_address:
-        order.address = new_address
-    order.isCompleted = True
-    order.orderedAt = db.func.now()
+    if isCompleted:
+        order.deliveryMethod = req["deliveryMethod"]
+        order.paymentDetails = req["paymentDetails"]
+        order.isCompleted = True
+        order.address = req["address"]
+        order.orderedAt = db.func.now()
+        order.totalPrice = req['totalPrice']
+    else:
+        item = OrderItem.query.filter(OrderItem.orderId == req['orderId']).filter(OrderItem.menuItemId == req['menuItemId']).first()
+
+        item.quantity = req['quantity']
 
     db.session.commit()
     return order.to_dict()

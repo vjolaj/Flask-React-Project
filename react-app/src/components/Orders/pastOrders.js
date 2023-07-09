@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserOrdersThunk } from '../../store/ordersReducer';
 import OrderTile from './orderTile';
+import './PastOrders.css'
 
 
 const PastOrdersPage = () => {
@@ -16,13 +17,13 @@ const PastOrdersPage = () => {
 
     return (
         <div className="past-orders-div">
-            <h2>Past Orders</h2>
+            <h1>Past Orders</h1>
             <ul id="orders-list">
                 {Object.values(orders).map(order => (
                     <li key={order.id}>
                         <OrderTile orderData={order} />
                     </li>
-                ))}
+                )).reverse()}
             </ul>
         </div>
     )

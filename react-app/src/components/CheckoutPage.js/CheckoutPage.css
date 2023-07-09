@@ -26,7 +26,6 @@
     top: 0px;
 }
 
-
 .bottom-border {
     border-bottom: 2px rgb(219, 219, 219) solid;
     padding: 15px 0px;
@@ -39,6 +38,10 @@
     justify-content: space-between;
 }
 
+.fieldset-delivery {
+    display: flex;
+    gap: 1rem;
+}
 
 .left-section {
     display: flex;
@@ -61,11 +64,16 @@
     margin: 0px 50px 0px 80px;
 }
 #place-order-button {
+    width: 100%
+}
+
+#place-order-button button {
     background-color: rgb(4, 145, 77);
     color: white;
     font-size: 18px;
     height: 50px;
     border: none;
+    width: 100%;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -98,6 +106,15 @@
     background-color: rgb(221, 221, 221);
 }
 
+.checkout-page-button-active{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 15px;
+}
+
 .checkout-page-button:hover {
     background-color: rgb(201, 201, 201);
     cursor: pointer;
@@ -119,4 +136,30 @@
 .checkout-right-side h4 {
     display: flex;
     margin: 0px;
+}
+
+#successful-box {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.red {
+    color: red;
+}
+
+.fieldset-delivery {
+    border: none;
+}
+
+.fieldset-priority {
+    border: none;
 }

@@ -17,9 +17,10 @@ export default function EditRestaurant() {
     const [priceRange, setPriceRange] = useState("")
     const [description, setDescription] = useState("")
     const [image, setImage] = useState(null);
-    const [imageLoading, setImageLoading] = useState(false);
     const [validationErrors, setValidationErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
+    const [imageUrl, setImageUrl] = useState(restaurant?.imageUrl || "");
+
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -49,8 +50,14 @@ export default function EditRestaurant() {
       if (!name) {
           errorsObject.name = "Name is required"
       }
+      if (name.length > 255) {
+         errorsObject.name = "Name can't be longer than 255 characters."
+      }
       if (!address) {
           errorsObject.address = "Address is required"
+      }
+      if (address.length > 255) {
+        errorsObject.address = "Address can't be longer than 255 characters."
       }
       if (!priceRange || priceRange === "") {
           errorsObject.priceRange = "Price range selection is required"
@@ -61,12 +68,13 @@ export default function EditRestaurant() {
       if (!description) {
           errorsObject.description = "Description is required"
       }
-      if (!image) {
-          errorsObject.image = "Image upload is required"
+      if (description.length > 255) {
+        errorsObject.description = "Description can't be longer than 255 characters."
       }
   
       setValidationErrors(errorsObject)
   }, [name, address, priceRange, cuisineType, description, image])
+  
 
     useEffect(() => {
       if (restaurant) {
@@ -75,42 +83,37 @@ export default function EditRestaurant() {
         setCuisineType(restaurant.cuisineType || "");
         setDescription(restaurant.description || "");
         setPriceRange(restaurant.priceRange || "");
-        setImage(restaurant.imageUrl.filename || "");
+        setImage(restaurant.imageUrl); 
       }
     }, [restaurant]);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       setSubmitted(true)
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("address", address);
-      formData.append("cuisineType", cuisineType);
-      formData.append("priceRange", priceRange);
-      formData.append("imageUrl", image);
-      formData.append("description", description);
-      // aws uploads can be a bit slow—displaying
-      // some sort of loading message is a good idea
-      setImageLoading(true);
-      if (Object.values(validationErrors).length) {
-        return null
-      }
-      setValidationErrors({})
-        return dispatch(editRestaurantThunk(formData, restaurantId)).then(() => {
-          dispatch(getUserRestaurantsThunk());
-            history.push(`/restaurants/current`);
-          });
+      const newRestaurant = {
+        name,
+        address,
+        cuisineType,
+        description,
+        priceRange,
+        imageUrl
       };
+
+      if (Object.values(validationErrors).length) {
+        return null;
+      }
+      setValidationErrors({});
+    
+      return dispatch(editRestaurantThunk(newRestaurant, restaurantId)).then(() => {
+        dispatch(getUserRestaurantsThunk());
+        history.push(`/restaurants/current`);
+      });
+    };
   
       return (
         <>
         <div className="add-restaurant-form">
           <form onSubmit={handleSubmit}>
-            {/* <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul> */}
             <div className="formHeading">Edit Your Restaurant</div>
             <div className="individualFormContainer">
               Edit the name of your restaurant
@@ -182,23 +185,14 @@ export default function EditRestaurant() {
               />
               {submitted && validationErrors.description && <p className="error">{validationErrors.description}</p>}
             </div>
-            <div className="form-input-box">
-              <div className="imageInputContainer longerFormContainer" htmlFor="image">
-                Post a new preview image for your restaurant. This will appear on the landing page and on the individual restaurant page.
-              <input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={(e) => setImage(e.target.files[0])}
-                ></input>
-                {submitted && validationErrors.image && <p className="error">{validationErrors.image}</p>}
-  
-                </div>
-            </div>
             <button type="submit" className="submit-form-button">
               Edit Your Restaurant
             </button>
+            <button type="submit" className="cancel-form-button" onClick={() => history.push(`/restaurants/current`)}>
+              Cancel Editing Restaurant
+            </button>
           </form>
+          
           </div>
         </>
       );

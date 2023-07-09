@@ -40,11 +40,13 @@ const LandingPage = () => {
           <div>
             <button onClick={loginButton} className="whiteLogIn"><i class="fa-solid fa-user"></i> Log in</button>
           </div>
-           
+
           <button onClick={signupButton} className="blackSignUp">Sign Up</button>
         </div>
-
-        <h1 className="orderFood">Order food to your Door</h1>
+        <div id='landing-text'>
+          <h1 className="orderFood">Order food to your door</h1>
+          <button id='find-food' onClick={() => history.push('/login')}>Find Food</button>
+        </div>
         <img
           className="main-bg"
           src="https://oobreats.s3.amazonaws.com/splash6.webp"

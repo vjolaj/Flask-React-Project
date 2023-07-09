@@ -18,12 +18,7 @@ function DeleteRestaurantModal ({restaurant}) {
         .then(() => {
           closeModal();
           dispatch(getUserRestaurantsThunk())
-        //   })
-        //   .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) {
-        //       setErrors(data.errors);
-        //     }
+          history.push('/restaurants/current')
         }
           );
       };

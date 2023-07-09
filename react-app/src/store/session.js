@@ -64,9 +64,6 @@ export const login = (email, password) => async (dispatch) => {
 		const data = await response.json();
 		dispatch(setUser(data));
 		const cart = await dispatch(getCartThunk())
-		if (!cart) {
-			dispatch(newCartThunk())
-		}
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();
@@ -109,6 +106,7 @@ export const signUp = (username, email, password, firstName, lastName, phoneNumb
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
+		console.log("****Creating new user cart")
 		dispatch(newCartThunk())
 		return null;
 	} else if (response.status < 500) {

@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 def seed_order():
     order1 = Order(
        userId = 1,
-       restaurantId = 1,
+       restaurantId = 0,
        isCompleted= False,
        deliveryMethod = "delivery",
        paymentDetails = "PayPal",
@@ -13,7 +13,7 @@ def seed_order():
 
     order2 = Order(
         userId = 2,
-        restaurantId = 1,
+        restaurantId = 0,
         isCompleted = False,
         deliveryMethod = "delivery",
         paymentDetails = "Credit Card",
@@ -22,7 +22,7 @@ def seed_order():
 
     order3 = Order(
         userId = 3,
-        restaurantId = 2,
+        restaurantId = 0,
         isCompleted = False,
         deliveryMethod = "pickup",
         paymentDetails = "Cash",

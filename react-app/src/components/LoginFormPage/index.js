@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import './LoginForm.css';
+import { getCartThunk } from "../../store/ordersReducer";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+      // dispatch(getCartThunk())
     } else {
       history.push("/restaurants")
     }
@@ -47,7 +49,7 @@ function LoginFormPage() {
 
   return (
     <>
-   <div className='logIn-nav'>
+   <div exact to="/" className='logIn-nav'>
 				<p>
 					<NavLink exact to="/" className='Epic-logIn-Nav'>Epic</NavLink>
 				</p>
@@ -91,7 +93,10 @@ function LoginFormPage() {
         <button type="submit" className="logIn-form-button">Continue</button>
         <p className="or">or</p>
         <button type="button" onClick={demoUser} className="logIn-form-button">Continue with Demo User</button>
-       
+        <NavLink exact to="/signup" className="logIn-form-button">
+         Sign up
+        </NavLink>
+        
       </form>
      
     </>

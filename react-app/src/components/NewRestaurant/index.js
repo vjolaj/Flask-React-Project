@@ -44,8 +44,14 @@ export default function NewRestaurant() {
     if (!name) {
         errorsObject.name = "Name is required"
     }
+    if (name.length > 255) {
+       errorsObject.name = "Name can't be longer than 255 characters."
+    }
     if (!address) {
         errorsObject.address = "Address is required"
+    }
+    if (address.length > 255) {
+      errorsObject.address = "Address can't be longer than 255 characters."
     }
     if (!priceRange || priceRange === "") {
         errorsObject.priceRange = "Price range selection is required"
@@ -55,6 +61,9 @@ export default function NewRestaurant() {
     }
     if (!description) {
         errorsObject.description = "Description is required"
+    }
+    if (description.length > 255) {
+      errorsObject.description = "Description can't be longer than 255 characters."
     }
     if (!image) {
         errorsObject.image = "Image upload is required"

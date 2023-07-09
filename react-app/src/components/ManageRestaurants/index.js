@@ -9,12 +9,16 @@ import NewMenuItemModal from "../NewMenuItemModal";
 
 const ManageRestaurants = () => {
   const dispatch = useDispatch();
-  const restaurants = useSelector((state) => state.restaurants.allRestaurants);
-  console.log(restaurants);
+  const sessionUser = useSelector(state => state.session.user);
+  const rest = useSelector((state) => state.restaurants.allRestaurants);
 
   useEffect(() => {
     dispatch(getUserRestaurantsThunk());
   }, [dispatch]);
+
+  const restaurants = Object.values(rest).filter(
+    (rest) => rest.ownerId === sessionUser.id
+  );
 
   if (!restaurants) return null;
 

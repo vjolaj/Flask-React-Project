@@ -32,7 +32,7 @@ const CartItemTile = ({ itemData, orderId }) => {
                 <img className='cart-item-img' src={itemData.imageUrl} alt='image' />
             </div>
             <div className='cart-item-details'>
-                <h6>{itemData.itemName}</h6>
+                <p>{itemData.itemName}</p>
                 <p>${itemData.price}</p>
             </div>
             </div>

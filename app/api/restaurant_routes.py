@@ -23,9 +23,7 @@ def get_single_restaurant(restaurantId):
     """
     This route will return a restaurant by restaurant Id.
     """
-    print("getting restaurant")
     restaurant_info = Restaurant.query.get(restaurantId)
-    print(restaurant_info.to_dict())
     return {"restaurant_info": restaurant_info.to_dict()}
 
 
@@ -156,7 +154,6 @@ def edit_menu_items(restaurantId):
         
         return {"new_menu_item": new_menu_item.to_dict()}
     if form.errors:
-    # print("🥲", errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
    
     # return {"restaurant_menu_items": {menuItem.id: menuItem.to_dict() for menuItem in restaurant_menu_items}}

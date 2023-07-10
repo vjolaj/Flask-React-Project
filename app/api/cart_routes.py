@@ -9,12 +9,10 @@ def new_order():
     """
     Creates an empty order to be used as the new shopping cart
     """
-    print('Creating new cart for ', current_user)
     cart = Order(
         userId = current_user.id,
         isCompleted = False
     )
-    print(cart)
     db.session.add(cart)
     db.session.commit()
 

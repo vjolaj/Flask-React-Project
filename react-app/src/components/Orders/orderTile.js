@@ -5,7 +5,6 @@ import './PastOrders.css'
 
 const OrderTile = ({ orderData }) => {
     const [restaurant, setRestaurant] = useState({})
-    console.log(orderData)
     const history = useHistory()
 
     const getRestaurantInfo = async () => {
@@ -29,7 +28,6 @@ const OrderTile = ({ orderData }) => {
     }, [])
 
     if (!restaurant) return null
-    // console.log(restaurant)
     return (
         <div className='order-tile'>
             <div>

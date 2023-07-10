@@ -9,11 +9,8 @@ def get_users_orders():
     """
     This route will return a list of all past orders of the current logged in user.
     """
-    print('backend hit, requesting...')
-    print(current_user)
     # orders = Order.query.filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
     orders = Order.query.order_by(Order.orderedAt).filter(Order.userId == current_user.id).filter(Order.isCompleted == True).all()
-    print(orders)
     return {
         "users_orders": {
             order.id: order.to_dict() for order in orders
@@ -47,12 +44,10 @@ def add_item_to_order(orderId):
     order = Order.query.get(orderId)
     menuItemId = req["menuItemId"]
     quantity = req['quantity']
-    print("***********************", menuItemId, quantity)
     menuItem = MenuItem.query.get(menuItemId)
     if not order.restaurantId or order.restaurantId == 0:
         order.restaurantId = menuItem.restaurantId
     item = OrderItem.query.filter(OrderItem.orderId == orderId).filter(OrderItem.menuItemId == menuItemId).first()
-    print(item)
 
     if item is None:
         order.menuItems.append({"item": menuItem, "amount": quantity})

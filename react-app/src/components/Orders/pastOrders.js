@@ -13,8 +13,6 @@ const PastOrdersPage = () => {
         dispatch(getUserOrdersThunk())
     }, [dispatch])
 
-    console.log(orders)
-
     return (
         <div className="past-orders-div">
             <h1>Past Orders</h1>

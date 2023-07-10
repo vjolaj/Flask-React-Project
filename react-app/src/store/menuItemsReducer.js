@@ -1,5 +1,6 @@
 const ADD_MENU_ITEM = "/restaurant/menuitems/new";
 const GET_ALL_MENU_ITEMS = "/restaurants/menuitems/all";
+const CLEAR_ITEMS = 'items/clear'
 
 const readAllMenuItemsAction = (menuItems) => {
   return {
@@ -13,6 +14,12 @@ export const addMenuItem = (menuItem) => {
         type: ADD_MENU_ITEM,
         menuItem,
     }    
+}
+
+export const clearItemsAction = () =>{
+    return {
+        type: CLEAR_ITEMS
+    }
 }
 
 
@@ -64,6 +71,8 @@ let newState;
             ...state,
             allMenuItems: action.menuItems,
           };
+    case CLEAR_ITEMS:
+      return{...state, singleMenuItem:{}}
     default:
       return state;
   }

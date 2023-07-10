@@ -5,6 +5,7 @@ import { getAllMenuItemsThunk } from "../../store/menuItemsReducer";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import ItemModal from "./itemModal";
 import { receiveFilter, removeFilter } from "../../store/filterReducer";
+import { clearItemsAction } from "../../store/menuItemsReducer";
 
 export default function RestaurantMenuItems() {
   const { restaurantId } = useParams();
@@ -36,6 +37,7 @@ export default function RestaurantMenuItems() {
 
   useEffect(() => {
     dispatch(getAllMenuItemsThunk(restaurantId));
+    return (() => dispatch((clearItemsAction())))
   }, [dispatch, restaurantId]);
 
   const handleItemTypeChange = (itemType) => {

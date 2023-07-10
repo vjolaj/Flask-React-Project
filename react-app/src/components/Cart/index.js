@@ -55,7 +55,7 @@ const Cart = () => {
                 {(cart.Items && Object.keys(cart.Items).length !== 0) ? (
                     <>
                     <p>Your cart from</p>
-                    <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
+                    <Link to={`/restaurants/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
                     <div className="cart-price-details">
                         <div><p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p></div>
                         <div><p>Subtotal:${cart.totalCost}</p></div>

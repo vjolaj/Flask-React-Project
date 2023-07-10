@@ -26,6 +26,7 @@ function SignupFormPage() {
         if (password.length === 0 || password.length < 6) errors.password = "";
         if (confirmPassword.length === 0 || confirmPassword.length < 6) errors.confirmPassword = "";
         if (phoneNumber.length < 10 && phoneNumber.length > 0) errors.phoneNumber = "Please enter a 10 digit phone number";
+        if (isNaN(phoneNumber)) errors.phoneNumber = "Phone number must be a number"
         if (username.length < 4 && username.length > 0) errors.username = 'Username needs to be at least 4 characters.';
         if (password.length < 6 && password.length > 0) errors.password = 'Password needs to be at least 6 characters.';
         

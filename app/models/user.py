@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     firstName = db.Column(db.String(255), nullable=False)
     lastName = db.Column(db.String(255), nullable=False)
-    phoneNumber = db.Column(db.Integer, nullable=False, unique=True)
+    phoneNumber = db.Column(db.BigInteger, nullable=False, unique=True)
 
     reviews = db.relationship("Review", back_populates="user", cascade="all, delete")
     restaurants = db.relationship("Restaurant", back_populates="owner", cascade="all, delete")

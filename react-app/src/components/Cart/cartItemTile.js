@@ -6,19 +6,18 @@ const CartItemTile = ({ itemData, orderId }) => {
     const dispatch = useDispatch()
     let quantity = useSelector(state => state.orders.cart.Items[itemData.id].quantity)
     let [price, setPrice] = useState(itemData.price * quantity)
-    console.log("this is your item data ", itemData)
 
 
     const incrementQuantity = () => {
         quantity += 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
-        // dispatch(getCartThunk())
+        dispatch(getCartThunk())
     }
       
     const decrementQuantity = () => {
         quantity -= 1
         dispatch(updateItemQuantityThunk(quantity, orderId, itemData.id))
-        // dispatch(getCartThunk())
+        dispatch(getCartThunk())
     }
 
     const deleteItem = () => {

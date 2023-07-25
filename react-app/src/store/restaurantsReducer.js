@@ -74,7 +74,6 @@ export const createRestaurantThunk = (restaurant) => async (dispatch) => {
       throw new Error(errorMessage);
     }
   } catch (error) {
-    console.log("Error creating restaurant:", error.message);
   }
 };
 
@@ -103,7 +102,6 @@ export const editRestaurantThunk = (restaurant, restaurantId) => async (dispatch
       throw new Error(errorMessage);
     }
   } catch (error) {
-    console.log("Error updating restaurant:", error.message);
   }
 };
 

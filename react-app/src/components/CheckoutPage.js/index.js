@@ -47,7 +47,6 @@ export default function CheckoutPage() {
         if (!deliveryTime) errs.deliveryTime = "Please select a delivery estimate"
 
         errors = errs
-        console.log("****VALIDATING*****",errs, errors)
         if (Object.keys(errs).length !== 0) {
             return {validated: false,
             errs}
@@ -60,7 +59,6 @@ export default function CheckoutPage() {
         const {validated, errs} = validate()
 
         if (!validated) {
-            console.log("******WE HAVE ERRORS********", errors)
             setErrors({...errs})
             return errs
         }

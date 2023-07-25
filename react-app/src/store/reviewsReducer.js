@@ -31,7 +31,6 @@ export const getRestaurantReviewsThunk = (restaurantId) => async dispatch => {
     
     if(res.ok){
        const reviewRes = await res.json();
-    //    console.log(reviewRes,'🤗')
         let reviews = reviewRes.restaurant_reviews; 
         dispatch(getRestaurantReviewsAction(reviews));
         return reviews

@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Link } from 'react-router-dom';
 import CartItemTile from './cartItemTile';
 
+import { getCartThunk, updateItemQuantityThunk } from '../../store/ordersReducer';
 import './cart.css'
-import { getCartThunk } from '../../store/ordersReducer';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -13,8 +13,8 @@ const Cart = () => {
     const modalRef = useRef();
 
     const cart = useSelector(state => state.orders.cart)
+    const items = useSelector(state => state.orders.cart.Items)
     const [showMenu, setShowMenu] = useState(false);
-    // console.log(cart)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -32,19 +32,16 @@ const Cart = () => {
         document.addEventListener("click", closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    }, [showMenu, items]);
 
     useEffect(() => {
+        dispatch(updateItemQuantityThunk())
         dispatch(getCartThunk())
     }, [dispatch])
-
-    // if (!cart.Items) return ("Loading...")
 
     const closeMenu = () => setShowMenu(false);
 
     const cartClassName = "cart-dropdown" + (showMenu ? "" : " hidden");
-    // console.log("this is your cart ", cart)
-    // console.log("These are your cart items ", cart.Items)
     return (
         <div className='cart-modal'>
             <div className='cart-button'>
@@ -58,7 +55,7 @@ const Cart = () => {
                 {(cart.Items && Object.keys(cart.Items).length !== 0) ? (
                     <>
                     <p>Your cart from</p>
-                    <Link to={`/restaurant/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
+                    <Link to={`/restaurants/${cart.restaurantId}`}>{cart.restaurant.name}</Link>
                     <div className="cart-price-details">
                         <div><p>{cart.totalItems} item{cart.totalItems > 1 ? "s" : ""}</p></div>
                         <div><p>Subtotal:${cart.totalCost}</p></div>

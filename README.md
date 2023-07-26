@@ -57,7 +57,7 @@ This site uses a Flask-React stack
    ### Backend:
    * Python
    * SQLAlchemy 
-   ## Frontend:
+   ### Frontend:
    * Javascript
    * React
    * Redux

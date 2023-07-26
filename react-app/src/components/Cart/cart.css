@@ -72,12 +72,19 @@
 }
 
 .item-img-div {
-    overflow: hidden;
-    height: 10rem;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 6rem;
+        width: 8rem;
+      
 }
 .cart-item-img {
     width: 9rem;
-    height: 9rem;
+    height: 5rem;
+    object-fit: cover;
+
 }
 
 .cart-item-quantity {

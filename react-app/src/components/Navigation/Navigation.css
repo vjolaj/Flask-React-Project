@@ -196,12 +196,7 @@ padding-left: 15px;
 }
 
 .fa-magnifying-glass {
-  cursor: pointer;
   margin-left: 10px;
-}
-
-.fa-magnifying-glass:hover {
-  color:rgb(63, 187, 63)
 }
 
 .search-container {

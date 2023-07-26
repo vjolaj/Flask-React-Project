@@ -149,6 +149,8 @@ padding-left: 15px;
   font-size: 16px;
   width: 24rem;
   font-family: sans-serif;
+
+  position: relative
 }
 
 .userInfo {
@@ -193,3 +195,47 @@ padding-left: 15px;
   /* justify-content: space-evenly */
 }
 
+.fa-magnifying-glass {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.fa-magnifying-glass:hover {
+  color:rgb(63, 187, 63)
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input:focus{
+  outline: none;
+}
+
+.results-container {
+  display: none;
+}
+
+.results-container-white-bg {
+  background-color: white;
+  position: absolute;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 30px;
+  width: 400px;
+  box-shadow: 1px 1px 7px 3px #CCCCCC;
+
+}
+
+.search-restaurant-div {
+  cursor: pointer;
+  padding: 5px
+}
+
+.search-restaurant-div:hover {
+  font-weight: 700;
+  background-color: rgba(128, 128, 128, 0.098);
+}

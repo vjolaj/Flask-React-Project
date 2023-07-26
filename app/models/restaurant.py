@@ -22,6 +22,7 @@ class Restaurant(db.Model):
     menuItems = db.relationship("MenuItem", back_populates="restaurant", cascade="all, delete")
 
     def to_dict(self):
+        menu_items  = [menuItem.itemName for menuItem in self.menuItems]
         return {
             'id': self.id,
             'ownerId': self.ownerId,
@@ -32,5 +33,6 @@ class Restaurant(db.Model):
             'imageUrl': self.imageUrl,
             'description': self.description,
             'rating' : (len(self.reviews) and sum([review.rating for review in self.reviews]) / len(self.reviews)) or 0,
-            'reviewCount' : len(self.reviews)
+            'reviewCount' : len(self.reviews),
+            'menuItems': menu_items
         }

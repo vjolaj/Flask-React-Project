@@ -8,6 +8,8 @@ https://epic-eats-yc7r.onrender.com
    ### Implementing Python, SQLAlchemy for the backend
    ### Javascript, React, Redux for the frontend
 
+
+# Images: 
 ![checkout-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682451173386/czechout.png)
 ![](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)

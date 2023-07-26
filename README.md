@@ -51,6 +51,8 @@ When a user is logged in, there will always be a cart/current order available fo
       * Make changes to restaurant details and menus they do NOT own
       * Make changes to the cart/current order of other users
 
+--------------------------------------------------------------------------------------------------------------------------------------
+
 ## Technologies used:
 This site uses a Flask-React stack
 
@@ -61,6 +63,8 @@ This site uses a Flask-React stack
    * Javascript
    * React
    * Redux
+
+---------------------------------------------------------------------------------------------------------------------------
 
 ## Launching locally instructions:
 Running the backend server:
@@ -75,12 +79,13 @@ Running the frontend server:
 * Run "npm install" to install dependencies
 * Run "npm start" to boot up the frontend server and open a browser tab to the landing page
 
+------------------------------------------------------------------------------------------------------------------------------------
 
 # Images: 
-![checkout-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682451173386/czechout.png)
-![](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)
+![all-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
+![checkout-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682451173386/czechout.png)
 ![past-orders-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683533303828/living-in-the-past.png)
-![](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683797532802/squishy.png)
+![manage-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683797532802/squishy.png)
 
 ### This web-app was developed by Vjola, Calvin, Genesis and Jonathan.

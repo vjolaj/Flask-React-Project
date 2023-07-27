@@ -59,3 +59,15 @@
     font-size: 14px;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 860px) {
+    #developers {
+        flex-wrap: wrap;
+    }
+
+    .developer {
+        width: 100%;
+        max-width: 18rem;
+        margin: 10px 5px;
+    }
+}

@@ -81,6 +81,8 @@
 #tip-buttons {
     display: flex;
     gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .info-button {
@@ -162,4 +164,97 @@
 
 .fieldset-priority {
     border: none;
+}
+
+.radio-delivery {
+    background-color: black
+}
+
+
+#payment-choice {
+    display: flex;
+    gap: 10px;
+}
+
+#payment-choice button {
+    width: 4rem;
+    font-size: 20px;
+    padding: 7px;
+}
+
+#delivery-choice {
+    display: flex;
+    gap: 10px;
+}
+
+#delivery-choice button {
+    width: 6.4rem;
+}
+
+#custom-tip::-webkit-outer-spin-button,
+#custom-tip::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#custom-tip-wrap > #dollar-sign {
+    position: absolute;
+    padding: 10px;
+    font-size: 15px;
+}
+#custom-tip-wrap {
+    width: 30%;
+}
+#custom-tip-wrap > #custom-tip {
+    padding-left: 20px;
+    max-width: 6rem;
+    width: 100%;
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+#checkout-restaurant {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+#checkout-restaurant > img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+}
+
+@media only screen and (max-width: 1100px) {
+    #checkout-wrapper {
+        flex-direction: column;
+    }
+
+    #checkout-left-side {
+        width: 100%;
+    }
+
+    #checkout-left-side > .left-section {
+        width: 90%;
+        padding-right: 20px;
+    }
+
+    #checkout-right-side:before {
+        position: relative;
+    }
+
+    #checkout-right-side {
+        width: 100%;
+        margin-top: 5rem;
+    }
+
+    .right-section {
+        margin: 0 10%;
+    }
 }

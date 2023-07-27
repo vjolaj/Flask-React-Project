@@ -63,7 +63,8 @@ font-size: 1.3rem;
     margin-top: 10px;
 }
 
-/* .file-upload-button{
+
+input::file-selector-button {
     border-top: 15px;
     padding: 10px;
     background-color: #e4e6e4;
@@ -72,7 +73,13 @@ font-size: 1.3rem;
     border: none;
     font-size: 0.8rem;
     font-weight: 600;
-} */
+    cursor: pointer;
+}
+
+input::file-selector-button:hover {
+    background-color: #d1d1d1;
+    
+}
 
 .submit-form-button {
     width: 100%;

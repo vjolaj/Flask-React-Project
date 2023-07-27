@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./EditRestaurant.css"
 import { readSingleRestaurantThunk, getUserRestaurantsThunk, editRestaurantThunk } from "../../store/restaurantsReducer";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'

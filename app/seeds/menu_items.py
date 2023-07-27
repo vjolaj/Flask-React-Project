@@ -9,7 +9,7 @@ def seed_menu_items():
         price = 4.99,
         itemType = "Entree",
         description = "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
-        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
     )
 
     menuItem2 = MenuItem(
@@ -27,16 +27,16 @@ def seed_menu_items():
         price = 2.49,
         itemType = "Side",
         description = "Golden, crispy, and perfectly salted fries.",
-        imageUrl = "https://acclaimmag.com/wp-content/uploads/2014/07/FriesCova.jpg"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_6050_SmallFrenchFries_Standing_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
     )
 
     menuItem4 = MenuItem(
-        itemName = "McFlurry",
+        itemName = "Oreo McFlurry",
         restaurantId = 1,
         price = 3.99,
         itemType = "Dessert",
         description = "Soft serve ice cream blended with your choice of mix-ins, like Oreo or M&M's.",
-        imageUrl = "https://hips.hearstapps.com/hmg-prod/images/screen-shot-2019-08-26-at-1-02-16-pm-1566838950.png"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3832_OREOMcFlurry_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
     )
 
     menuItem5 = MenuItem(
@@ -63,7 +63,7 @@ def seed_menu_items():
         price = 14.99,
         itemType = "Entree",
         description = "Tender slices of beef stir-fried with scallions and garlic in a savory soy-based sauce. Served with steamed white rice.",
-        imageUrl = "https://www.lecremedelacrumb.com/wp-content/uploads/2021/08/pf-changs-mongolian-beef-14sm-4.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/mongolianbeef-1200x8004bf780e5-3d47-4d7e-a48c-1a08123d4e1e.jpg?sfvrsn=42b49a88_3"
     )
 
     menuItem8 = MenuItem(
@@ -72,25 +72,25 @@ def seed_menu_items():
         price = 13.99,
         itemType = "Entree",
         description = "Wok-tossed diced chicken with peanuts, vegetables, and chili peppers in a spicy Kung Pao sauce. Served with your choice of steamed white or brown rice.",
-        imageUrl = "https://www.pfchangshomemenu.com/sites/g/files/qyyrlu311/files/uploadedImages/img_8272_30982.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/kungpaochicken-1200x800a164d79f-a427-4981-930b-371a4ad5647e.jpg?sfvrsn=4baa8f8e_3"
     )
 
     menuItem9 = MenuItem(
         itemName = "Shrimp Dumplings",
         restaurantId = 2,
         price = 9.99,
-        itemType = "Entree",
+        itemType = "Side",
         description = "Delicate dumplings filled with seasoned shrimp, steamed to perfection. Served with a soy-vinegar dipping sauce.",
-        imageUrl = "https://twoplaidaprons.com/wp-content/uploads/2020/05/Chinese-pork-dumplings-picking-up-a-dumpling-with-chopsticks.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/porkdumplings-6ct-1200x80088af8643-30cc-4ab3-bfa5-58d30b740709.jpg?sfvrsn=710a7282_3"
     )
 
     menuItem10 = MenuItem(
-        itemName = "Vegetable Lo Mein",
+        itemName = "Signature Lo Mein",
         restaurantId = 2,
         price = 12.99,
         itemType = "Entree",
         description = "Stir-fried noodles tossed with a medley of fresh vegetables in a flavorful sauce. A satisfying vegetarian option packed with delicious flavors.",
-        imageUrl = "https://www.southernplate.com/wp-content/uploads/2020/02/DSC_7306-1-scaled.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/noodles-rice/signaturelomein-1200x80001f21cdc-9969-422e-b18f-2baa8439b0f3.jpg?sfvrsn=829c8ba6_3"
     )
 
     menuItem11 = MenuItem(
@@ -108,7 +108,7 @@ def seed_menu_items():
         price = 5.99,
         itemType = "Side",
         description = "Chicken Fried Rice",
-        imageUrl = "https://www.licious.in/blog/wp-content/uploads/2022/12/Shutterstock_1043177881.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/noodles-rice/chickenfriedrice-1200x80043c765aa-5736-45d8-9fc3-13b47b92551d.jpg?sfvrsn=8e9f88d1_3"
     )
 
     menuItem13 = MenuItem(
@@ -117,7 +117,7 @@ def seed_menu_items():
         price = 2.5,
         itemType = "Drink",
         description = "Bottle of water",
-        imageUrl = "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/516125/516125_p/516125"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
     )
 
     menuItem14 = MenuItem(
@@ -131,12 +131,12 @@ def seed_menu_items():
 
 
     menuItem15 = MenuItem(
-        itemName = "Ice Cream",
+        itemName = "Wall of Chocolate",
         restaurantId = 2,
         price = 5.99,
         itemType = "Dessert",
         description = "Chocolate Ice Cream",
-        imageUrl = "https://joyfoodsunshine.com/wp-content/uploads/2020/06/homemade-chocolate-ice-cream-recipe-7.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/the-great-wall-of-chocolate462246ad-6acc-4aa3-9097-67272d1864ab.jpg?sfvrsn=bb99b3b8_7"
     )
 
     menuItem16 = MenuItem(
@@ -145,7 +145,7 @@ def seed_menu_items():
         price = 4.50,
         itemType = "Dessert",
         description = "Strawberry ChesseCake",
-        imageUrl = "https://sugargeekshow.com/wp-content/uploads/2022/12/cherry_cheesecake_featured-4-of-6-copy.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/new-york-style-cheesecake34eab6d6-30a8-4153-b273-1cc4fbdea528.jpg?sfvrsn=c62cf1ed_7"
     )
 
     menuItem17 = MenuItem(
@@ -166,7 +166,7 @@ def seed_menu_items():
         imageUrl="https://www.blossmangas.com/wp-content/uploads/2021/05/Margherita-pizza-2.jpg"
     )
     menuItem19 = MenuItem(
-        itemName="Lasaga",
+        itemName="Lasagna",
         restaurantId=3,
         price=15.99,
         itemType="Entree",
@@ -2726,7 +2726,226 @@ def seed_menu_items():
             description = "",
             imageUrl = "https://post.healthline.com/wp-content/uploads/2019/08/is-coke-zero-bad-for-you-1200x628-facebook.jpg"
         )
+    
+    menuItem500 = MenuItem(
+        itemName = "Quarter Pounder",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202201_0007-005_QuarterPounderwithCheese_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
 
+    menuItem501 = MenuItem(
+        itemName = "Bacon Quarter Pounder",
+        restaurantId = 1,
+        price = 6.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/Header_CheesyJalapenoBaconQPC_Single_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem502 = MenuItem(
+        itemName = "Filet-O-Fish",
+        restaurantId = 1,
+        price = 4.49,
+        itemType = "Entree",
+        description = "There are 390 calories in McDonald's Filet-O-Fish.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202001_5926_Filet-O-Fish_HalfSlice_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem503 = MenuItem(
+        itemName = "Happy Meals",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "Enjoy a Hamburger meal from the McDonald’s Happy Meal menu that your kiddies are sure to love!",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202103_6975_HamburgerHappyMeal_AppleSlices_WhiteMilkJug_Left_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem504 = MenuItem(
+        itemName = "Hot Fudge Sundae",
+        restaurantId = 1,
+        price = 3.45,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious Hot Fudge Sundae from McDonald’s! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0337_HotFudgeSundae_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem505 = MenuItem(
+        itemName = "Hot Chocolate",
+        restaurantId = 1,
+        price = 3.50,
+        itemType = "Drink",
+        description = "Taste the delicious chocolatey flavor of McCafé® Hot Chocolate. ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201906_1697_MediumPremiumHotChocolate_Glass_A1_HL_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem506 = MenuItem(
+        itemName = "Double Quarter Pounder",
+        restaurantId = 1,
+        price = 6.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/202201_3426-005_DoubleQuarterPounderwithCheese_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem507 = MenuItem(
+        itemName = "Sprite",
+        restaurantId = 1,
+        price = 2.50,
+        itemType = "Drink",
+        description = "Sprite",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/Header_MediumSprite_Glass_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem508 = MenuItem(
+        itemName = "Hot Caramel Sundae",
+        restaurantId = 1,
+        price = 3.45,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious Hot Fudge Sundae from McDonald’s! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0345_CaramelSundae_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem509 = MenuItem(
+        itemName = "Iced Mocha",
+        restaurantId = 1,
+        price = 5.39,
+        itemType = "Drink",
+        description = "Put a pep in your step with McDonald’s Iced Mocha Latte",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201906_7659_MediumIcedMocha_Glass_A1_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem510 = MenuItem(
+        itemName = "M&M's McFlurry",
+        restaurantId = 1,
+        price = 2.49,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious M&M’S® McFlurry!  ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3830_MandMMcFlurry_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem511 = MenuItem(
+        itemName = "Cheeseburger",
+        restaurantId = 1,
+        price = 4.49,
+        itemType = "Entree",
+        description = "Enjoy the cheesy deliciousness of a McDonald’s Cheeseburger! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202006_0003_Cheeseburger_StraightBun_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem512 = MenuItem(
+        itemName = "McCrispy",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "The McDonald’s McCrispy™ is a southern-style fried chicken sandwich ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202012_0383_CrispyChickenSandwich_PotatoBun_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+   
+    menuItem513 = MenuItem( 
+        itemName = "Sesame Chicken",
+        restaurantId = 2,
+        price = 13.99,
+        itemType = "Entree",
+        description = "Sesame sauce, broccoli, bell peppers, onion",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/sesamechicken-1200x8001d9794a0-8e71-4c8f-8c70-acc575158cd7.jpg?sfvrsn=12c881ca_3"
+    )
+
+    menuItem514 = MenuItem( 
+        itemName = "Orange Chicken",
+        restaurantId = 2,
+        price = 14.99,
+        itemType = "Entree",
+        description = "Lightly battered, sweet citrus chili sauce, fresh orange slices",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/orangechicken-1200x8004327c385-de1c-4b1e-84ac-c4f05df96bed.jpg?sfvrsn=73e45ce1_3"
+    )
+    menuItem515 = MenuItem( 
+        itemName = "Miso Glazed Salmon",
+        restaurantId = 2,
+        price = 18.99,
+        itemType = "Entree",
+        description = "Grilled salmon, Asian mushrooms, spinach, cabbage, garlic-ginger aromatics, miso glaze",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/misoglazedsalmon-1200x800213e2546-2aaf-40c0-a743-d6611637abf5.jpg?sfvrsn=76904e31_3"
+    )
+
+    menuItem516 = MenuItem( 
+        itemName = "Pork Egg Rolls",
+        restaurantId = 2,
+        price = 11.99,
+        itemType = "Side",
+        description = "With julienned veggies, sweet and sour mustard sauce",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/porkeggrolls-1200x8008e159ee2-389c-4e35-a492-6d4a6e25c3b2.jpg?sfvrsn=de4f50c4_3"
+    )
+    menuItem517 = MenuItem( 
+        itemName = "Crab Wontons",
+        restaurantId = 2,
+        price = 8.99,
+        itemType = "Side",
+        description = "Creamy crab filling, bell pepper, green onion, spicy plum sauce",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/crabwontons-1200x800a8033f87-3b4f-4be5-aeef-881da237c675.jpg?sfvrsn=f163809f_3"
+    )
+    menuItem518 = MenuItem(
+        itemName = "Water",
+        restaurantId = 1,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem519 = MenuItem(
+        itemName = "Water",
+        restaurantId = 3,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem520 = MenuItem(
+        itemName = "Water",
+        restaurantId = 4,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem521 = MenuItem(
+        itemName = "Water",
+        restaurantId = 5,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem522 = MenuItem(
+        itemName = "Water",
+        restaurantId = 6,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem523 = MenuItem(
+        itemName = "Water",
+        restaurantId = 7,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem524 = MenuItem(
+        itemName = "Water",
+        restaurantId = 8,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem525 = MenuItem(
+        itemName = "Banana Spring Rolls",
+        restaurantId = 2,
+        price = 7.50,
+        itemType = "Dessert",
+        description = "Crispy bites of banana, caramel-vanilla drizzle, coconut-pineapple ice cream",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/banana-spring-rolls9a697d9f-ddc7-4685-ba6c-9d6e3678109c.jpg?sfvrsn=2d1a3933_7"
+    )
 
 # db.session.add(menuItem1)
 # db.session.add(menuItem2)
@@ -2743,20 +2962,30 @@ def seed_menu_items():
 
 
     menu_items = [
+        menuItem500,
+        menuItem501,
+        menuItem511,
         menuItem1,
+        menuItem506,
         menuItem2,
+        menuItem512,
+        menuItem502,
+        menuItem503,
+        menuItem5,
         menuItem3,
         menuItem4,
-        menuItem5,
-        menuItem6,
+        menuItem510,
         menuItem7,
         menuItem8,
+        menuItem513,
+        menuItem514,
+        menuItem515,
+        menuItem516,
+        menuItem517,
         menuItem9,
         menuItem10,
         menuItem11,
         menuItem12,
-        menuItem13,
-        menuItem14,
         menuItem15,
         menuItem16,
         menuItem17,
@@ -3048,7 +3277,6 @@ def seed_menu_items():
         menu38item6,
         menu38item7,
         menu38item8,
-
         menu39item1,
         menu39item2,
         menu39item3,
@@ -3056,7 +3284,23 @@ def seed_menu_items():
         menu39item5,
         menu39item6,
         menu39item7,
-        menu39item8
+        menu39item8,
+        menuItem504,
+        menuItem508,
+        menuItem505,
+        menuItem509,
+        menuItem6,
+        menuItem507,
+        menuItem518,
+        menuItem519,
+        menuItem520,
+        menuItem521,
+        menuItem522,
+        menuItem523,
+        menuItem524,
+        menuItem525,
+        menuItem13,
+        menuItem14,
     ]
     for menu_item in menu_items:
         db.session.add(menu_item)

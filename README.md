@@ -84,7 +84,8 @@ Running the frontend server:
 # Images: 
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)
 ![all-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
-![checkout-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682451173386/czechout.png)
+![single-restaurant](https://github.com/vjolaj/Flask-React-Project/assets/120198327/ab441119-acf6-42ae-9b79-80171d870c5a)
+![checkout-page](https://github.com/vjolaj/Flask-React-Project/assets/120198327/dcd9d69c-c439-4d22-9084-bc76146abecb)
 ![past-orders-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683533303828/living-in-the-past.png)
 ![manage-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683797532802/squishy.png)
 

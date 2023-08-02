@@ -222,6 +222,7 @@ input:focus{
   border-radius: 30px;
   width: 400px;
   box-shadow: 1px 1px 7px 3px #CCCCCC;
+  z-index: 900;
 
 }
 

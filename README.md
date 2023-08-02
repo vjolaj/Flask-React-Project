@@ -82,11 +82,23 @@ Running the frontend server:
 ------------------------------------------------------------------------------------------------------------------------------------
 
 # Images: 
+
+## Landing Page
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)
+
+## All Restaurants Page
 ![all-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
+
+## Single Restaurant Page
 ![single-restaurant](https://github.com/vjolaj/Flask-React-Project/assets/120198327/ab441119-acf6-42ae-9b79-80171d870c5a)
+
+## Checkout Page
 ![checkout-page](https://github.com/vjolaj/Flask-React-Project/assets/120198327/dcd9d69c-c439-4d22-9084-bc76146abecb)
+
+## Past Orders Page
 ![past-orders-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683533303828/living-in-the-past.png)
+
+## Manage Restaurants Page
 ![manage-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683797532802/squishy.png)
 
 ### This web-app was developed by Vjola, Calvin, Genesis and Jonathan.

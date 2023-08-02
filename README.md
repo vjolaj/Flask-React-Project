@@ -25,11 +25,13 @@ Similar to UberEats and DoorDash, it's extremely important to limit access of lo
 For our site, we decided that only logged in users can create and finalize orders. If a user does not want to create an account, they can log in as a demo user can order that way. They are still able to browse restaurants but logging in is preffered
 
 A non-logged in user CAN:
+
 * Sign up
 * Log in
 * Browse restaurants and their menu items
 
 A non-logged in user CANNOT:
+
 * Create or finalize orders
 * Create, Update, Delete restaurant details
 * Create, Update, Delete menu items

@@ -24,7 +24,10 @@ const ItemModal = ({ menuItem }) => {
     
         document.addEventListener("click", closeMenu);
     
-        return () => document.removeEventListener("click", closeMenu);
+        return () => {
+          document.removeEventListener("click", closeMenu);
+          setErrors({})
+        }
     }, [showMenu]);
 
     useEffect(() => {

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./NewRestaurant.css";
 import {
   createRestaurantThunk,
   getUserRestaurantsThunk,
 } from "../../store/restaurantsReducer";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function NewRestaurant() {
   const sessionUser = useSelector((state) => state.session.user);

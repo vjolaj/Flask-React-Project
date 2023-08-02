@@ -19,6 +19,7 @@ export default function CheckoutPage() {
     const [paymentDetails, setPaymentDetails] = useState("");
     const [address, setAddress] = useState("");
     const [tip, setTip] = useState("")
+    const [customTip, setCustomTip] = useState(false)
     const [fees, setFees] = useState(Number(((cart.totalCost) * 1.1) + 3.18) - Number(cart.totalCost))
     const [deliveryTime, setDeliveryTime] = useState("")
     const [priorityPrice, setPriorityPrice] = useState(0)
@@ -29,7 +30,7 @@ export default function CheckoutPage() {
         dispatch(getCartThunk());
     }, [dispatch]);
 
-    useEffect(() =>{ 
+    useEffect(() =>{
         setFees(Number(((cart.totalCost) * 1.1) + 3.18) - Number(cart.totalCost))
         if (deliveryTime === "Priority") setPriorityPrice(1.99)
         else if (deliveryTime === "Standard") setPriorityPrice(0)
@@ -81,18 +82,55 @@ export default function CheckoutPage() {
     }
 
     const tipClassName = (value) => {
-        if (Number(tip) === value) {
+        if (customTip && value == 'Custom') {
+            return "checkout-page-button-active"
+        } else if (!customTip && Number(tip) === value) {
             return "checkout-page-button-active"
         } else {
             return "checkout-page-button"
-        } 
+        }
+    }
+
+    const paymentClassName = (value) => {
+        if (paymentDetails == value) {
+            return "checkout-page-button-active"
+        } else {
+            return "checkout-page-button"
+        }
+    }
+
+    const deliveryClassName = (value) => {
+        if (deliveryMethod == value) {
+            return "checkout-page-button-active"
+        } else {
+            return "checkout-page-button"
+        }
     }
 
     const helperSetTip = (value) => {
+        setCustomTip(false)
         if (Number(tip) === Number(value)) setTip("")
         else if (Number(value) < 0) setTip("")
         else setTip(value)
     }
+    const helperCustomTip = (value) => {
+        setCustomTip(true)
+        setTip(value)
+    }
+
+    const preventMinus = (e) => {
+        if (e.code === 'Minus') {
+            e.preventDefault();
+        }
+    };
+
+    const twoDecimal = (e) => {
+        if (!/^\d*(\.\d{0,2})?$/.test(e.target.value)) {
+            e.target.value = Number(e.target.value).toFixed(2)
+        }
+        setTip(e.target.value)
+    }
+
 
     if (!cart.restaurant) return null
 
@@ -100,7 +138,10 @@ export default function CheckoutPage() {
         <div id='checkout-wrapper'>
             <div id='checkout-left-side'>
                 <div className="left-section">
-                    <h2>{cart.restaurant.name}</h2>
+                    <div id='checkout-restaurant' onClick={() => history.push(`/restaurants/${cart.restaurantId}`)}>
+                        <img src={cart.restaurant.imageUrl}/>
+                        <h2>{cart.restaurant.name}</h2>
+                    </div>
                     <div className="left-subsection">
                         <i className="fa-solid fa-location-dot"></i>
                         <div className="space-between bottom-border">
@@ -125,9 +166,26 @@ export default function CheckoutPage() {
                                 <div>Delivery Method: </div>
                             </div>
                             {errors.deliveryMethod && (<p className="red">{errors.deliveryMethod}</p>)}
-                            <fieldset name='delivery-method' className="fieldset-delivery">
+                            <div id='delivery-choice'>
+                                <button
+                                    className={deliveryClassName('Pickup')}
+                                    onClick={() => setDeliveryMethod("Pickup")}
+                                    value="Pickup"
+                                >
+                                    Pickup
+                                </button>
+                                <button
+                                    className={deliveryClassName('Delivery')}
+                                    onClick={() => setDeliveryMethod("Delivery")}
+                                    value="Delivery"
+                                >
+                                    Delivery
+                                </button>
+                            </div>
+
+                            {/* <fieldset name='delivery-method' className="fieldset-delivery">
                                 <div className="left-subsection delivery-choices">
-                                    <input type="radio" name="delivery-method" value="Pickup" onChange={(e) => 
+                                    <input type="radio" name="delivery-method" className='radio-delivery' value="Pickup" onChange={(e) =>
                                     setDeliveryMethod(e.target.value)}/>
                                     <div className="space-between">
                                         <label htmlFor='delivery-method'>Pickup</label>
@@ -140,7 +198,7 @@ export default function CheckoutPage() {
                                         <label htmlFor='delivery-method'>Delivery</label>
                                     </div>
                                 </div>
-                            </fieldset>
+                            </fieldset> */}
                         </div>
                     </div>
                 </div>
@@ -151,15 +209,14 @@ export default function CheckoutPage() {
                     )}
                     <fieldset name='delivery-estimate' className="fieldset-priority">
                         <div className="left-subsection bottom-border">
-                            <input type="radio" name="delivery-time" value="Priority" onChange={(e) => 
+                            <input type="radio" name="delivery-time" value="Priority" onChange={(e) =>
                                 setDeliveryTime(e.target.value)}/>
                             <div className="space-between">
                                 <label htmlFor='delivery-time'>Standard</label>
-                                {/* <div>+$1.99</div> */}
                             </div>
                         </div>
                         <div className="left-subsection bottom-border">
-                            <input type="radio" name="delivery-time" value="Standard" onChange={(e) => 
+                            <input type="radio" name="delivery-time" value="Standard" onChange={(e) =>
                                 setDeliveryTime(e.target.value)} />
                             <div className="space-between">
                                 <label htmlFor='delivery-time'>Priority</label>
@@ -173,14 +230,31 @@ export default function CheckoutPage() {
                     <div className="left-subsection">
                         <i className="fa-regular fa-credit-card"></i>
                         <div className="space-between bottom-border">
-                            <label htmlFor="payment-details">Payment Type: </label>
+                            <label>Payment Type: </label>
                             {errors.paymentDetails && (<p className="red">{errors.paymentDetails}</p>)}
-                            <select name="payment-type" id='payment-type' onChange={(e) => setPaymentDetails(e.target.value)}>
-                                <option value="">--Please choose an option--</option>
-                                <option value="PayPal">PayPal</option>
-                                <option value="Visa">Visa</option>
-                                <option value="MasterCard">MasterCard</option>
-                            </select>
+                            <div id='payment-choice'>
+                                <button
+                                    className={paymentClassName('PayPal')}
+                                    onClick={() => setPaymentDetails("PayPal")}
+                                    value="PayPal"
+                                >
+                                    <i class="fa-brands fa-paypal"></i>
+                                </button>
+                                <button
+                                    className={paymentClassName('Visa')}
+                                    onClick={() => setPaymentDetails("Visa")}
+                                    value="Visa"
+                                >
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                </button>
+                                <button
+                                    className={paymentClassName('MasterCard')}
+                                    onClick={() => setPaymentDetails("MasterCard")}
+                                    value="MasterCard"
+                                >
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="left-subsection bottom-border">
@@ -197,7 +271,7 @@ export default function CheckoutPage() {
                 <div className="left-section">
                     <div className="space-between">
                         <h3>Your items</h3>
-                        <button className="checkout-page-button" onClick={() => history.push('/restaurants')}>
+                        <button className="checkout-page-button" onClick={() => history.push(`/restaurants/${cart.restaurantId}`)}>
                             <i className="fa-solid fa-plus"></i> Add items
                         </button>
                     </div>
@@ -213,7 +287,7 @@ export default function CheckoutPage() {
             <div id='checkout-right-side'>
                 <div className="right-section bottom-border">
                     <div id="place-order-button">
-                        <button onClick={handleSubmit}>Place Order</button>                                      
+                        <button onClick={handleSubmit}>Place Order</button>
                     </div>
                     <p>If you’re not around when the delivery person arrives, they’ll leave your order at the door. By placing your order, you agree to take full responsibility for it once it’s delivered. Orders containing alcohol or other restricted items may not be eligible for leave at door and will be returned to the store if you are not available.</p>
                 </div>
@@ -221,14 +295,14 @@ export default function CheckoutPage() {
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Subtotal</h4>
-                            <i className="fa-solid fa-circle-info"></i>
+                            {/* <i className="fa-solid fa-circle-info"></i> */}
                         </div>
                         <h4>${Number(cart.totalCost).toFixed(2)}</h4>
                     </div>
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Taxes & Other Fees</h4>
-                            <i name="fa-solid fa-circle-info"></i>
+                            {/* <i name="fa-solid fa-circle-info"></i> */}
                         </div>
                         <h4>${(Number((cart.totalCost * 1.1) + 3.18) - cart.totalCost).toFixed(2)}</h4>
                     </div>
@@ -237,11 +311,11 @@ export default function CheckoutPage() {
                     <div className="space-between">
                         <div className="info-button">
                             <h4>Add a tip</h4>
-                            <i className="fa-solid fa-circle-info"></i>
+                            {/* <i className="fa-solid fa-circle-info"></i> */}
                         </div>
                         <h4>${Number(tip).toFixed(2)}</h4>
                     </div>
-                    <p>100% of your tip goes to your courier. Tips are based on your order total of (insert total) before any discounts or promotions.</p>
+                    <p>100% of your tip goes to your courier. Tips are based on your order total of ${Number((cart.totalCost * 1.1) + 3.18).toFixed(2)} before any discounts or promotions.</p>
                     <div id='tip-buttons'>
                         <button
                             className={tipClassName(2.00)}
@@ -263,6 +337,19 @@ export default function CheckoutPage() {
                             value={5.00}
                             onClick={(e) => helperSetTip(e.target.value)}
                         >$5.00</button>
+                        <div id='custom-tip-wrap'>
+                            <div id='dollar-sign' className={customTip? 'white' : 'black'}>$</div>
+                            <input
+                                id='custom-tip'
+                                className={tipClassName('Custom')}
+                                onChange={twoDecimal}
+                                onClick={(e) => helperCustomTip(e.target.value)}
+                                type="number" min="0"
+                                step='0.01'
+                                pattern="^\d*(\.\d{0,2})?$"
+                                onKeyPress={preventMinus}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="right-section">

@@ -9,7 +9,7 @@ def seed_menu_items():
         price = 4.99,
         itemType = "Entree",
         description = "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
-        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
     )
 
     menuItem2 = MenuItem(
@@ -27,16 +27,16 @@ def seed_menu_items():
         price = 2.49,
         itemType = "Side",
         description = "Golden, crispy, and perfectly salted fries.",
-        imageUrl = "https://acclaimmag.com/wp-content/uploads/2014/07/FriesCova.jpg"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_6050_SmallFrenchFries_Standing_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
     )
 
     menuItem4 = MenuItem(
-        itemName = "McFlurry",
+        itemName = "Oreo McFlurry",
         restaurantId = 1,
         price = 3.99,
         itemType = "Dessert",
         description = "Soft serve ice cream blended with your choice of mix-ins, like Oreo or M&M's.",
-        imageUrl = "https://hips.hearstapps.com/hmg-prod/images/screen-shot-2019-08-26-at-1-02-16-pm-1566838950.png"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3832_OREOMcFlurry_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
     )
 
     menuItem5 = MenuItem(
@@ -63,7 +63,7 @@ def seed_menu_items():
         price = 14.99,
         itemType = "Entree",
         description = "Tender slices of beef stir-fried with scallions and garlic in a savory soy-based sauce. Served with steamed white rice.",
-        imageUrl = "https://www.lecremedelacrumb.com/wp-content/uploads/2021/08/pf-changs-mongolian-beef-14sm-4.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/mongolianbeef-1200x8004bf780e5-3d47-4d7e-a48c-1a08123d4e1e.jpg?sfvrsn=42b49a88_3"
     )
 
     menuItem8 = MenuItem(
@@ -72,25 +72,25 @@ def seed_menu_items():
         price = 13.99,
         itemType = "Entree",
         description = "Wok-tossed diced chicken with peanuts, vegetables, and chili peppers in a spicy Kung Pao sauce. Served with your choice of steamed white or brown rice.",
-        imageUrl = "https://www.pfchangshomemenu.com/sites/g/files/qyyrlu311/files/uploadedImages/img_8272_30982.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/kungpaochicken-1200x800a164d79f-a427-4981-930b-371a4ad5647e.jpg?sfvrsn=4baa8f8e_3"
     )
 
     menuItem9 = MenuItem(
         itemName = "Shrimp Dumplings",
         restaurantId = 2,
         price = 9.99,
-        itemType = "Entree",
+        itemType = "Side",
         description = "Delicate dumplings filled with seasoned shrimp, steamed to perfection. Served with a soy-vinegar dipping sauce.",
-        imageUrl = "https://twoplaidaprons.com/wp-content/uploads/2020/05/Chinese-pork-dumplings-picking-up-a-dumpling-with-chopsticks.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/porkdumplings-6ct-1200x80088af8643-30cc-4ab3-bfa5-58d30b740709.jpg?sfvrsn=710a7282_3"
     )
 
     menuItem10 = MenuItem(
-        itemName = "Vegetable Lo Mein",
+        itemName = "Signature Lo Mein",
         restaurantId = 2,
         price = 12.99,
         itemType = "Entree",
         description = "Stir-fried noodles tossed with a medley of fresh vegetables in a flavorful sauce. A satisfying vegetarian option packed with delicious flavors.",
-        imageUrl = "https://www.southernplate.com/wp-content/uploads/2020/02/DSC_7306-1-scaled.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/noodles-rice/signaturelomein-1200x80001f21cdc-9969-422e-b18f-2baa8439b0f3.jpg?sfvrsn=829c8ba6_3"
     )
 
     menuItem11 = MenuItem(
@@ -108,7 +108,7 @@ def seed_menu_items():
         price = 5.99,
         itemType = "Side",
         description = "Chicken Fried Rice",
-        imageUrl = "https://www.licious.in/blog/wp-content/uploads/2022/12/Shutterstock_1043177881.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/noodles-rice/chickenfriedrice-1200x80043c765aa-5736-45d8-9fc3-13b47b92551d.jpg?sfvrsn=8e9f88d1_3"
     )
 
     menuItem13 = MenuItem(
@@ -117,7 +117,7 @@ def seed_menu_items():
         price = 2.5,
         itemType = "Drink",
         description = "Bottle of water",
-        imageUrl = "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/516125/516125_p/516125"
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
     )
 
     menuItem14 = MenuItem(
@@ -131,12 +131,12 @@ def seed_menu_items():
 
 
     menuItem15 = MenuItem(
-        itemName = "Ice Cream",
+        itemName = "Wall of Chocolate",
         restaurantId = 2,
         price = 5.99,
         itemType = "Dessert",
         description = "Chocolate Ice Cream",
-        imageUrl = "https://joyfoodsunshine.com/wp-content/uploads/2020/06/homemade-chocolate-ice-cream-recipe-7.jpg"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/the-great-wall-of-chocolate462246ad-6acc-4aa3-9097-67272d1864ab.jpg?sfvrsn=bb99b3b8_7"
     )
 
     menuItem16 = MenuItem(
@@ -145,88 +145,7 @@ def seed_menu_items():
         price = 4.50,
         itemType = "Dessert",
         description = "Strawberry ChesseCake",
-        imageUrl = "https://sugargeekshow.com/wp-content/uploads/2022/12/cherry_cheesecake_featured-4-of-6-copy.jpg"
-    )
-
-    menuItem17 = MenuItem(
-        itemName="Spaghetti Carbonara",
-        restaurantId=3,
-        price=12.99,
-        itemType="Entree",
-        description="Classic Italian pasta dish with bacon, eggs, and Parmesan cheese.",
-        imageUrl="https://twoplaidaprons.com/wp-content/uploads/2020/07/spaghetti-carbonara-top-down-view-of-a-nest-of-carbonara-with-an-egg-yolk-500x375.jpg"
-    )
-
-    menuItem18 = MenuItem(
-        itemName="Margherita Pizza",
-        restaurantId=3,
-        price=10.99,
-        itemType="Entree",
-        description="Traditional Neapolitan pizza with fresh tomatoes, mozzarella cheese, and basil.",
-        imageUrl="https://www.blossmangas.com/wp-content/uploads/2021/05/Margherita-pizza-2.jpg"
-    )
-    menuItem19 = MenuItem(
-        itemName="Lasaga",
-        restaurantId=3,
-        price=15.99,
-        itemType="Entree",
-        description="Fresh tomatoes, mozzarella cheese, and basil.",
-        imageUrl="https://www.unileverfoodsolutions.com.ph/dam/global-ufs/mcos/SEA/calcmenu/recipes/PH-recipes/the-vegetarian-butcher/lasagna/1245x600_Lasagna.jpg"
-    )
-
-    menuItem20 = MenuItem(
-        itemName="Bruschetta",
-        restaurantId=3,
-        price=8.99,
-        itemType="Side",
-        description="Toasted bread topped with fresh tomatoes, garlic, and basil.",
-        imageUrl="https://www.theedgyveg.com/wp-content/uploads/2021/07/Vegan-Bruschetta-1.jpg"
-    )
-
-    menuItem21 = MenuItem(
-        itemName="Caprese Salad",
-        restaurantId=3,
-        price=9.99,
-        itemType="Side",
-        description="Sliced tomatoes, fresh mozzarella, and basil, drizzled with olive oil.",
-        imageUrl="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg"
-    )
-
-
-    menuItem22 = MenuItem(
-        itemName="Tiramisu",
-        restaurantId=3,
-        price=6.99,
-        itemType="Dessert",
-        description="Layers of coffee-soaked ladyfingers and mascarpone cream, dusted with cocoa powder.",
-        imageUrl="https://www.kingarthurbaking.com/sites/default/files/2023-03/Tiramisu_1426.jpg"
-    )
-
-    menuItem23 = MenuItem(
-        itemName="Cannoli",
-        restaurantId=3,
-        price=5.99,
-        itemType="Dessert",
-        description="Crisp pastry tubes filled with sweetened ricotta cheese and chocolate chips.",
-        imageUrl="https://www.momontimeout.com/wp-content/uploads/2021/04/churro-cannolis-square.jpeg"
-    )
-
-    menuItem24 = MenuItem(
-        itemName="Espresso",
-        restaurantId=3,
-        price=2.99,
-        itemType="Drink",
-        description="Strong black coffee served in a small cup.",
-        imageUrl="https://thumbs.dreamstime.com/b/espresso-shot-glass-white-background-42113855.jpg"
-    )
-
-    menuItem25 = MenuItem(
-        itemName = "Coke",
-        restaurantId = 3,
-        price = 2.5,
-        itemType = "Drink",
-        description = "Regular Coke",
-        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202112_0521_MediumCoke_Glass_832x472:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/new-york-style-cheesecake34eab6d6-30a8-4153-b273-1cc4fbdea528.jpg?sfvrsn=c62cf1ed_7"
     )
 
     menuItem26 = MenuItem(
@@ -2726,78 +2645,657 @@ def seed_menu_items():
             description = "",
             imageUrl = "https://post.healthline.com/wp-content/uploads/2019/08/is-coke-zero-bad-for-you-1200x628-facebook.jpg"
         )
+    
+    menuItem500 = MenuItem(
+        itemName = "Quarter Pounder",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202201_0007-005_QuarterPounderwithCheese_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem501 = MenuItem(
+        itemName = "Bacon Quarter Pounder",
+        restaurantId = 1,
+        price = 6.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/Header_CheesyJalapenoBaconQPC_Single_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem502 = MenuItem(
+        itemName = "Filet-O-Fish",
+        restaurantId = 1,
+        price = 4.49,
+        itemType = "Entree",
+        description = "There are 390 calories in McDonald's Filet-O-Fish.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202001_5926_Filet-O-Fish_HalfSlice_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem503 = MenuItem(
+        itemName = "Happy Meals",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "Enjoy a Hamburger meal from the McDonald’s Happy Meal menu that your kiddies are sure to love!",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202103_6975_HamburgerHappyMeal_AppleSlices_WhiteMilkJug_Left_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem504 = MenuItem(
+        itemName = "Hot Fudge Sundae",
+        restaurantId = 1,
+        price = 3.45,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious Hot Fudge Sundae from McDonald’s! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0337_HotFudgeSundae_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem505 = MenuItem(
+        itemName = "Hot Chocolate",
+        restaurantId = 1,
+        price = 3.50,
+        itemType = "Drink",
+        description = "Taste the delicious chocolatey flavor of McCafé® Hot Chocolate. ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201906_1697_MediumPremiumHotChocolate_Glass_A1_HL_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem506 = MenuItem(
+        itemName = "Double Quarter Pounder",
+        restaurantId = 1,
+        price = 6.49,
+        itemType = "Entree",
+        description = "There are 650 calories in a Cheesy Jalapeño Bacon Quarter Pounder with Cheese Single.",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/202201_3426-005_DoubleQuarterPounderwithCheese_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem507 = MenuItem(
+        itemName = "Sprite",
+        restaurantId = 1,
+        price = 2.50,
+        itemType = "Drink",
+        description = "Sprite",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/Header_MediumSprite_Glass_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem508 = MenuItem(
+        itemName = "Hot Caramel Sundae",
+        restaurantId = 1,
+        price = 3.45,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious Hot Fudge Sundae from McDonald’s! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0345_CaramelSundae_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem509 = MenuItem(
+        itemName = "Iced Mocha",
+        restaurantId = 1,
+        price = 5.39,
+        itemType = "Drink",
+        description = "Put a pep in your step with McDonald’s Iced Mocha Latte",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_201906_7659_MediumIcedMocha_Glass_A1_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem510 = MenuItem(
+        itemName = "M&M's McFlurry",
+        restaurantId = 1,
+        price = 2.49,
+        itemType = "Dessert",
+        description = "Treat yourself to a delicious M&M’S® McFlurry!  ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3830_MandMMcFlurry_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+
+    menuItem511 = MenuItem(
+        itemName = "Cheeseburger",
+        restaurantId = 1,
+        price = 4.49,
+        itemType = "Entree",
+        description = "Enjoy the cheesy deliciousness of a McDonald’s Cheeseburger! ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202006_0003_Cheeseburger_StraightBun_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+    menuItem512 = MenuItem(
+        itemName = "McCrispy",
+        restaurantId = 1,
+        price = 5.49,
+        itemType = "Entree",
+        description = "The McDonald’s McCrispy™ is a southern-style fried chicken sandwich ",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202012_0383_CrispyChickenSandwich_PotatoBun_832x472:product-header-desktop?wid=830&hei=458&dpr=off"
+    )
+   
+    menuItem513 = MenuItem( 
+        itemName = "Sesame Chicken",
+        restaurantId = 2,
+        price = 13.99,
+        itemType = "Entree",
+        description = "Sesame sauce, broccoli, bell peppers, onion",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/sesamechicken-1200x8001d9794a0-8e71-4c8f-8c70-acc575158cd7.jpg?sfvrsn=12c881ca_3"
+    )
+
+    menuItem514 = MenuItem( 
+        itemName = "Orange Chicken",
+        restaurantId = 2,
+        price = 14.99,
+        itemType = "Entree",
+        description = "Lightly battered, sweet citrus chili sauce, fresh orange slices",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/orangechicken-1200x8004327c385-de1c-4b1e-84ac-c4f05df96bed.jpg?sfvrsn=73e45ce1_3"
+    )
+    menuItem515 = MenuItem( 
+        itemName = "Miso Glazed Salmon",
+        restaurantId = 2,
+        price = 18.99,
+        itemType = "Entree",
+        description = "Grilled salmon, Asian mushrooms, spinach, cabbage, garlic-ginger aromatics, miso glaze",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/main-entres/misoglazedsalmon-1200x800213e2546-2aaf-40c0-a743-d6611637abf5.jpg?sfvrsn=76904e31_3"
+    )
+
+    menuItem516 = MenuItem( 
+        itemName = "Pork Egg Rolls",
+        restaurantId = 2,
+        price = 11.99,
+        itemType = "Side",
+        description = "With julienned veggies, sweet and sour mustard sauce",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/porkeggrolls-1200x8008e159ee2-389c-4e35-a492-6d4a6e25c3b2.jpg?sfvrsn=de4f50c4_3"
+    )
+    menuItem517 = MenuItem( 
+        itemName = "Crab Wontons",
+        restaurantId = 2,
+        price = 8.99,
+        itemType = "Side",
+        description = "Creamy crab filling, bell pepper, green onion, spicy plum sauce",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dim-sum/crabwontons-1200x800a8033f87-3b4f-4be5-aeef-881da237c675.jpg?sfvrsn=f163809f_3"
+    )
+    menuItem518 = MenuItem(
+        itemName = "Water",
+        restaurantId = 1,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem519 = MenuItem(
+        itemName = "Water",
+        restaurantId = 3,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+
+    menuItem520 = MenuItem(
+        itemName = "Water",
+        restaurantId = 4,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem521 = MenuItem(
+        itemName = "Water",
+        restaurantId = 5,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem522 = MenuItem(
+        itemName = "Water",
+        restaurantId = 6,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem523 = MenuItem(
+        itemName = "Water",
+        restaurantId = 7,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem524 = MenuItem(
+        itemName = "Water",
+        restaurantId = 8,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Bottle of water",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_5474_DasaniBottledWater_832x472:product-header-desktop?wid=830&hei=456&dpr=off"
+    )
+    menuItem525 = MenuItem(
+        itemName = "Banana Spring Rolls",
+        restaurantId = 2,
+        price = 7.50,
+        itemType = "Dessert",
+        description = "Crispy bites of banana, caramel-vanilla drizzle, coconut-pineapple ice cream",
+        imageUrl = "https://www.pfchangs.com/images/default-source/menu/dessert/banana-spring-rolls9a697d9f-ddc7-4685-ba6c-9d6e3678109c.jpg?sfvrsn=2d1a3933_7"
+    )
+
+    menuItem530 = MenuItem(
+        itemName = "Fried Calamari",
+        restaurantId = 3,
+        price = 8.50,
+        itemType = "Side",
+        description = "Crispy Fried Calamaries",
+        imageUrl = "https://www.willcookforsmiles.com/wp-content/uploads/2021/07/Calamari-6.jpg"
+    )
+
+    menuItem531 = MenuItem(
+        itemName = "Garlic Bread",
+        restaurantId = 3,
+        price = 3.50,
+        itemType = "Side",
+        description = "Garlic Bread with olive oil",
+        imageUrl = "https://www.sorrentina.in/cdn/shop/articles/Garlic_Bread.webp?v=1684226216"
+    )
+
+    menuItem532 = MenuItem(
+        itemName = "Antipasto Skewers",
+        restaurantId = 3,
+        price = 9.50,
+        itemType = "Side",
+        description = "These Antipasto Skewers are the easiest appetiser ever! Packed with Italian flavours",
+        imageUrl = "https://hungryhealthyhappy.com/wp-content/uploads/2021/11/Antipasto-Skewers-featured.jpg"
+    )
+
+    menuItem533 = MenuItem(
+        itemName = "Spaghetti Pesto",
+        restaurantId = 3,
+        price = 13.50,
+        itemType = "Entree",
+        description = "Creamiest pesto spaguetti",
+        imageUrl = "https://joyfoodsunshine.com/wp-content/uploads/2019/08/pesto-pasta-recipe-1.jpg"
+    )
+
+    menuItem534 = MenuItem(
+        itemName = "Seafood Pasta",
+        restaurantId = 3,
+        price = 25.89,
+        itemType = "Entree",
+        description = "Italian Seaffod Pasta with mussels and Calamari",
+        imageUrl = "https://www.cooksmarts.com/wp-content/uploads/2014/11/20140811-Seafood-Pasta-NM-08.jpg"
+    )
+
+    menuItem535 = MenuItem(
+        itemName = "Meatballs",
+        restaurantId = 3,
+        price = 12.45,
+        itemType = "Entree",
+        description = "Italian Meatballs, Tender and Juicy",
+        imageUrl = "https://drivemehungry.com/wp-content/uploads/2021/11/italian-meatballs-f.jpg"
+    )
+
+    menuItem17 = MenuItem(
+        itemName="Spaghetti Carbonara",
+        restaurantId=3,
+        price=12.99,
+        itemType="Entree",
+        description="Classic Italian pasta dish with bacon, eggs, and Parmesan cheese.",
+        imageUrl="https://twoplaidaprons.com/wp-content/uploads/2020/07/spaghetti-carbonara-top-down-view-of-a-nest-of-carbonara-with-an-egg-yolk-500x375.jpg"
+    )
+
+    menuItem18 = MenuItem(
+        itemName="Margherita Pizza",
+        restaurantId=3,
+        price=10.99,
+        itemType="Entree",
+        description="Traditional Neapolitan pizza with fresh tomatoes, mozzarella cheese, and basil.",
+        imageUrl="https://www.blossmangas.com/wp-content/uploads/2021/05/Margherita-pizza-2.jpg"
+    )
+    menuItem19 = MenuItem(
+        itemName="Lasagna",
+        restaurantId=3,
+        price=15.99,
+        itemType="Entree",
+        description="Fresh tomatoes, mozzarella cheese, and basil.",
+        imageUrl="https://www.unileverfoodsolutions.com.ph/dam/global-ufs/mcos/SEA/calcmenu/recipes/PH-recipes/the-vegetarian-butcher/lasagna/1245x600_Lasagna.jpg"
+    )
+
+    menuItem20 = MenuItem(
+        itemName="Bruschetta",
+        restaurantId=3,
+        price=8.99,
+        itemType="Side",
+        description="Toasted bread topped with fresh tomatoes, garlic, and basil.",
+        imageUrl="https://www.theedgyveg.com/wp-content/uploads/2021/07/Vegan-Bruschetta-1.jpg"
+    )
+
+    menuItem21 = MenuItem(
+        itemName="Caprese Salad",
+        restaurantId=3,
+        price=9.99,
+        itemType="Side",
+        description="Sliced tomatoes, fresh mozzarella, and basil, drizzled with olive oil.",
+        imageUrl="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg"
+    )
 
 
-# db.session.add(menuItem1)
-# db.session.add(menuItem2)
-# db.session.add(menuItem3)
-# db.session.add(menuItem4)
-# db.session.add(menuItem5)
-# db.session.add(menuItem6)
-# db.session.add(menuItem7)
-# db.session.add(menuItem8)
-# db.session.add(menuItem9)
-# db.session.add(menuItem10)
-# db.session.add(menuItem11)
-# db.session.commit()
+    menuItem22 = MenuItem(
+        itemName="Tiramisu",
+        restaurantId=3,
+        price=6.99,
+        itemType="Dessert",
+        description="Layers of coffee-soaked ladyfingers and mascarpone cream, dusted with cocoa powder.",
+        imageUrl="https://www.kingarthurbaking.com/sites/default/files/2023-03/Tiramisu_1426.jpg"
+    )
+
+    menuItem23 = MenuItem(
+        itemName="Cannoli",
+        restaurantId=3,
+        price=5.99,
+        itemType="Dessert",
+        description="Crisp pastry tubes filled with sweetened ricotta cheese and chocolate chips.",
+        imageUrl="https://www.momontimeout.com/wp-content/uploads/2021/04/churro-cannolis-square.jpeg"
+    )
+
+    menuItem24 = MenuItem(
+        itemName="Espresso",
+        restaurantId=3,
+        price=2.99,
+        itemType="Drink",
+        description="Strong black coffee served in a small cup.",
+        imageUrl="https://thumbs.dreamstime.com/b/espresso-shot-glass-white-background-42113855.jpg"
+    )
+
+    menuItem25 = MenuItem(
+        itemName = "Coke",
+        restaurantId = 3,
+        price = 2.5,
+        itemType = "Drink",
+        description = "Regular Coke",
+        imageUrl = "https://s7d1.scene7.com/is/image/mcdonalds/DC_202112_0521_MediumCoke_Glass_832x472:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
+    )
+
+
+    menuItem536 = MenuItem(
+        itemName = "Queso Dip",
+        restaurantId = 4,
+        price = 4.50,
+        itemType = "Side",
+        description = "The best queso dip",
+        imageUrl = "https://cookieandkate.com/images/2021/05/mexican-queso-dip-recipe.jpg"
+    )
+
+    menuItem537 = MenuItem(
+        itemName = "Black Beans",
+        restaurantId = 4,
+        price = 3.50,
+        itemType = "Side",
+        description = "Mexican Black Beans",
+        imageUrl = "https://iheartvegetables.com/wp-content/uploads/2021/01/Mexican-Black-Beans-8-of-10.jpg"
+    )
+
+    menuItem538 = MenuItem(
+        itemName = "Beef Enchiladas",
+        restaurantId = 4,
+        price = 7.45,
+        itemType = "Entree",
+        description = "Ground Beef Enchiladas",
+        imageUrl = "https://beef2live.com/images/668/author/995/2015/1/enchiladas_1_635566026194004000.jpg"
+    )
+
+    menuItem539 = MenuItem(
+        itemName = "Chicken Quesadillas",
+        restaurantId = 4,
+        price = 11.50,
+        itemType = "Entree",
+        description = "Chicken Quesadillas",
+        imageUrl = "https://www.eatingonadime.com/wp-content/uploads/2021/09/cp-chicken-quesadillas-7-2.jpg"
+    )
+
+    menuItem540 = MenuItem(
+        itemName = "Carne Asada",
+        restaurantId = 4,
+        price = 24.75,
+        itemType = "Entree",
+        description = "Carne Asada Marinade",
+        imageUrl = "https://easysaucerecipes.com/wp-content/uploads/2022/03/carne-asada-marinade-featured.jpg"
+    )
+
+    menuItem541 = MenuItem(
+        itemName = "Fajitas Mix",
+        restaurantId = 4,
+        price = 22.45,
+        itemType = "Entree",
+        description = "Chicken and Beef Fajitas with corn tortillas",
+        imageUrl = "https://d1ralsognjng37.cloudfront.net/deacf836-2574-40aa-85a0-1851b6077681.jpeg"
+    )
+
+    menuItem542 = MenuItem(
+        itemName = "Tres Leches Cake",
+        restaurantId = 4,
+        price = 5.50,
+        itemType = "Dessert",
+        description = "Light Tres Leches soaked with 3 different kinds of milk",
+        imageUrl = "https://www.lemonblossoms.com/wp-content/uploads/2023/03/Tres-Leches-Cake-S2.jpg"
+    )
+
+    menuItem550 = MenuItem(
+        itemName = "Chicken Sandwich",
+        restaurantId = 5,
+        price = 6.50,
+        itemType = "Entree",
+        description = "A boneless breast of chicken seasoned to perfection",
+        imageUrl = "https://www.cfacdn.com/img/order/menu/Online/Entrees/Jul19_CFASandwich_pdp.png"
+    )
+
+    menuItem551 = MenuItem(
+        itemName = "Spicy Deluxe Sandwich",
+        restaurantId = 5,
+        price = 6.50,
+        itemType = "Entree",
+        description = "A boneless breast of chicken seasoned to perfection",
+        imageUrl = "https://www.cfacdn.com/img/order/COM/Menu_Refresh/Entree/Entree%20Desktop/_0003s_0012_%5BFeed%5D_0001s_0023_Entrees_Spicy-Deluxe-Sandwich.png"
+    )
+
+    menuItem552 = MenuItem(
+        itemName = "Grilled Sandwich",
+        restaurantId = 5,
+        price = 7.50,
+        itemType = "Entree",
+        description = "A lemon-herb marinated boneless breast of chicken",
+        imageUrl = "https://www.cfacdn.com/img/order/COM/Menu_Refresh/Entree/Entree%20PDP/_0000s_0009_Final__0026_CFA_PDP_Grilled-Deluxe-Sandwich_1085.png"
+    )
+
+    menuItem553 = MenuItem(
+        itemName = "Grilled Nuggets",
+        restaurantId = 5,
+        price = 4.50,
+        itemType = "Entree",
+        description = "Bite-sized pieces of freshly marinated boneless breast of chicken,",
+        imageUrl = "https://www.cfacdn.com/img/order/menu/Online/Entrees/grilledNuggets_8ct_PDP.png"
+    )
+
+    menuItem554 = MenuItem(
+        itemName = "Salad",
+        restaurantId = 5,
+        price = 3.50,
+        itemType = "Side",
+        description = "A fresh bed of mixed greens",
+        imageUrl = "https://www.cfacdn.com/img/order/menu/Online/Sides%26treats/sideSalad_pdp.png"
+    )
+
+    menuItem555 = MenuItem(
+        itemName = "Peach Milkshake",
+        restaurantId = 5,
+        price = 3.50,
+        itemType = "Dessert",
+        description = "topped with whipped cream and a cherry",
+        imageUrl = "https://www.cfacdn.com/img/order/menu/Online/Sides%26treats/milkshake_peach_PDP.png"
+    )
+
+    menuItem560 = MenuItem(
+        itemName = "Volcano Taco",
+        restaurantId = 6,
+        price = 2.50,
+        itemType = "Entree",
+        description = "Volcano Taco with ground beef",
+        imageUrl = "https://www.tacobell.com/images/22140_volcano_taco_750x660.jpg"
+    )
+
+    menuItem561 = MenuItem(
+        itemName = "Soft Taco",
+        restaurantId = 6,
+        price = 3.00,
+        itemType = "Entree",
+        description = "Soft tortilla, and ground beef",
+        imageUrl = "https://www.tacobell.com/images/22110_soft_taco_269x269.jpg"
+    )
+
+    menuItem562 = MenuItem(
+        itemName = "Crunchy Taco Supreme",
+        restaurantId = 6,
+        price = 2.68,
+        itemType = "Entree",
+        description = "Crunchy Taco with ground beef",
+        imageUrl = "https://www.tacobell.com/images/22101_crunchy_taco_supreme_750x660.jpg"
+    )
+
+    menuItem563 = MenuItem(
+        itemName = "Cheese Gordita Crunch",
+        restaurantId = 6,
+        price = 4.79,
+        itemType = "Entree",
+        description = "A warm flatbread layered with three-cheese blend",
+        imageUrl = "https://www.tacobell.com/images/22813_cheesy_gordita_crunch_750x660.jpg"
+    )
+
+    menuItem564 = MenuItem(
+        itemName = "Burrito Supreme",
+        restaurantId = 6,
+        price = 4.49,
+        itemType = "Entree",
+        description = "With seasoned beef, refried beans, red sauce, lettuce, real cheddar",
+        imageUrl = "https://www.tacobell.com/images/22201_burrito_supreme_750x660.jpg"
+    )
+
+    menuItem565 = MenuItem(
+        itemName = "Chili Cheese Burrito",
+        restaurantId = 6,
+        price = 2.89,
+        itemType = "Entree",
+        description = "Experience the wonders of the iconic Chili Cheese Burrito.",
+        imageUrl = "https://www.tacobell.com/images/22205_chili_cheese_burrito_269x269.jpg"
+    )
+
+    menuItem566 = MenuItem(
+        itemName = "Chips and Nachos",
+        restaurantId = 6,
+        price = 1.99,
+        itemType = "Side",
+        description = "This is Chips and Nacho Cheese Sauce.",
+        imageUrl = "https://www.tacobell.com/images/22500_chips_and_nacho_cheese_sauce_269x269.jpg"
+    )
+
+    menuItem567 = MenuItem(
+        itemName = "Pintos N Cheese",
+        restaurantId = 6,
+        price = 2.19,
+        itemType = "Side",
+        description = "Pintos N Cheese is a perfectly filling snack-sized portion of protein",
+        imageUrl = "https://www.tacobell.com/images/22510_pintos_n_cheese_750x660.jpg"
+    )
+
+    menuItem568 = MenuItem(
+        itemName = "Cinnabon Delights",
+        restaurantId = 6,
+        price = 2.19,
+        itemType = "Dessert",
+        description = "Cinnamon spheres filled with icing",
+        imageUrl = "https://www.tacobell.com/images/30045_cinnabon_delights_12_pack_750x340.jpg"
+    )
+
 
 
     menu_items = [
+        menuItem500,
+        menuItem501,
+        menuItem511,
         menuItem1,
+        menuItem506,
         menuItem2,
+        menuItem512,
+        menuItem502,
+        menuItem503,
+        menuItem5,
         menuItem3,
         menuItem4,
-        menuItem5,
-        menuItem6,
+        menuItem510,
         menuItem7,
         menuItem8,
+        menuItem513,
+        menuItem514,
+        menuItem515,
+        menuItem516,
+        menuItem517, 
         menuItem9,
         menuItem10,
         menuItem11,
         menuItem12,
-        menuItem13,
-        menuItem14,
         menuItem15,
         menuItem16,
+        menuItem530,
+        menuItem531,
+        menuItem532,
         menuItem17,
         menuItem18,
         menuItem19,
         menuItem20,
         menuItem21,
+        menuItem533,
+        menuItem534,
+        menuItem535,
         menuItem22,
         menuItem23,
-        menuItem24,
+        menuItem24, #40
         menuItem25,
-        menuItem26,
-        menuItem27,
         menuItem28,
+        menuItem536,
+        menuItem26, 
+        menuItem27,
+        menuItem538,
+        menuItem539,
+        menuItem540,
+        menuItem541,
+        menuItem537,
         menuItem29,
+        menuItem542,
         menuItem30,
         menuItem31,
         menuItem32,
         menuItem33,
-        menuItem34,
+        menuItem34, 
         menuItem35,
-        menuItem36,
+        menuItem550,
+        menuItem551,
+        menuItem552,
+        menuItem553,
         menuItem37,
+        menuItem554,
+        menuItem36,
         menuItem38,
         menuItem39,
+        menuItem555,
         menuItem40,
         menuItem41,
+        menuItem560,
+        menuItem561,
+        menuItem562,
+        menuItem563,
+        menuItem564,
+        menuItem565,
         menuItem42,
         menuItem43,
+        menuItem566,
+        menuItem567,
         menuItem44,
         menuItem45,
-        menuItem46,
+        menuItem568,
         menuItem47,
+        menuItem46,
         menuItem48,
         menuItem49,
         menuItem50,
         menuItem51,
         menuItem52,
         menuItem53,
-        menuItem54,
         menuItem55,
+        menuItem54, 
         menuItem56,
         menuItem57,
         menuItem58,
@@ -2978,7 +3476,6 @@ def seed_menu_items():
         menuItem263,
         menuItem264,
         menuItem265,
-
         menu31item1,
         menu31item2,
         menu31item3,
@@ -2986,7 +3483,6 @@ def seed_menu_items():
         menu31item5,
         menu31item6,
         menu31item7,
-
         menu32item1,
         menu32item2,
         menu32item3,
@@ -2995,7 +3491,6 @@ def seed_menu_items():
         menu32item6,
         menu32item7,
         menu32item8,
-
         menu33item1,
         menu33item2,
         menu33item3,
@@ -3004,7 +3499,6 @@ def seed_menu_items():
         menu33item6,
         menu33item7,
         menu33item8,
-
         menu34item1,
         menu34item2,
         menu34item3,
@@ -3013,7 +3507,6 @@ def seed_menu_items():
         menu34item6,
         menu34item7,
         menu34item8,
-
         menu35item1,
         menu35item2,
         menu35item3,
@@ -3048,7 +3541,6 @@ def seed_menu_items():
         menu38item6,
         menu38item7,
         menu38item8,
-
         menu39item1,
         menu39item2,
         menu39item3,
@@ -3056,7 +3548,23 @@ def seed_menu_items():
         menu39item5,
         menu39item6,
         menu39item7,
-        menu39item8
+        menu39item8,
+        menuItem504,
+        menuItem508,
+        menuItem505,
+        menuItem509,
+        menuItem6,
+        menuItem507,
+        menuItem518,
+        menuItem519,
+        menuItem520,
+        menuItem521,
+        menuItem522,
+        menuItem523,
+        menuItem524,
+        menuItem525,
+        menuItem13,
+        menuItem14,
     ]
     for menu_item in menu_items:
         db.session.add(menu_item)

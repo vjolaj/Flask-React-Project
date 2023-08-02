@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantMenuItems from "../AllMenuItems";
-import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readSingleRestaurantThunk } from "../../store/restaurantsReducer";
 import { getAllMenuItemsThunk } from "../../store/menuItemsReducer";
 import NewMenuItemModal from "../NewMenuItemModal";
-import {getRestaurantReviewsThunk} from "../../store/reviewsReducer";
+import { getRestaurantReviewsThunk } from "../../store/reviewsReducer";
 import "./restaurantShow.css";
 import OpenModalButton from "../OpenModalButton";
 import ReviewModal from "../PostReviewModal";
@@ -23,7 +22,6 @@ const RestaurantShow = () => {
   let reviews = useSelector((state) => state.reviews.reviews);
   reviews = Object.values(reviews);
 
-
   // Calculate total number of reviews
   const totalReviews = reviews.length;
 
@@ -36,6 +34,22 @@ const RestaurantShow = () => {
   const reviewNum = (num) => {
     if (num === 1) return "1 rating";
     else return ` ${num} ratings`;
+  };
+
+  // State to track the number of visible reviews
+  const [visibleReviews, setVisibleReviews] = useState(4);
+   const [showMoreClicked, setShowMoreClicked] = useState(false);
+
+  // Function to handle the "Show More" button click
+  const handleShowMore = () => {
+    // Increase the number of visible reviews to show all reviews
+    setVisibleReviews(reviews.length);
+    setShowMoreClicked(true);
+  };
+
+   const handleShowLess = () => {
+    setVisibleReviews(4);
+    setShowMoreClicked(false);
   };
 
   useEffect(() => {
@@ -53,10 +67,9 @@ const RestaurantShow = () => {
   const postReviewButton = (user, reviews, restaurant) => {
     if (user === null || user === undefined) return false; //=> Need to log in to post a review
     for (let review of reviews) {
-        if (review.userId === user.id) // =>Can't post a second review
-            return false;
+      if (review.userId === user.id) return false; // =>Can't post a second review
     }
-    if (user.id === restaurant.ownerId) return false;// => You can't write a review for your own restaurant
+    if (user.id === restaurant.ownerId) return false; // => You can't write a review for your own restaurant
     return true;
   };
 
@@ -92,8 +105,8 @@ const RestaurantShow = () => {
       <RestaurantMenuItems menuItems={filteredMenuItems} />
       <div>
         {user && restaurant.ownerId === user.id && (
-          <div className="plus-container"> 
-           <OpenModalButton
+          <div className="plus-container">
+            <OpenModalButton
               buttonText="Add a Menu Item"
               modalComponent={<NewMenuItemModal restaurant={restaurant} />}
             />
@@ -101,7 +114,7 @@ const RestaurantShow = () => {
         )}
       </div>
 
-      <div>
+      <div className="main-review-container">
         <div className="rating-and-reviews">
           <h2>Rating & Reviews</h2>
           <div className="newReview">
@@ -113,9 +126,9 @@ const RestaurantShow = () => {
             ) : null}
           </div>
           {reviews.length > 0 ? (
-            <ul>
+            <div className="second-review-container">
               <div className="review-container">
-                {reviews.map((review) => (
+                {reviews.slice(0, visibleReviews).map((review) => (
                   <div key={review.id}>
                     <div className="single-review-container">
                       <h4>{review.UserName}</h4>
@@ -131,7 +144,7 @@ const RestaurantShow = () => {
 
                       {deleteReviewButton(user, review) ? (
                         <OpenModalButton
-                          buttonText="Delete"
+                          buttonText={<i class="fa-solid fa-trash-can"></i>}
                           modalComponent={
                             <DeleteReviewModal
                               review={review}
@@ -143,10 +156,26 @@ const RestaurantShow = () => {
                     </div>
                   </div>
                 ))}
+
+            {reviews.length > 4 && (
+                <div className="show-more-less-container">
+                  {!showMoreClicked ? (
+                    <button onClick={handleShowMore}>
+                      Show More
+                    </button>
+                  ) : (
+                    <button onClick={handleShowLess}>
+                      Show Less
+                    </button>
+                  )}
+                </div>
+              )}
+
               </div>
-            </ul>
+           
+            </div>
           ) : (
-            <p></p>
+            <p>No reviews yet.</p>
           )}
         </div>
       </div>
@@ -155,3 +184,4 @@ const RestaurantShow = () => {
 };
 
 export default RestaurantShow;
+

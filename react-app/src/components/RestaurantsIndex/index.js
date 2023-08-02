@@ -86,7 +86,10 @@ const RestaurantsIndex = ({ restaurants }) => {
                   <img src={restaurant.imageUrl} alt="img" className="restImg" />
                 </NavLink>
               </div>
+              <div className="name-rating">
               <p className="main-name">{restaurant.name}</p>
+              <p className="rating">{restaurant.rating ? restaurant.rating.toFixed(1) : "New"}</p>
+              </div>
               <p className="delivery-fee-main">{getRandomDeliveryFee()} Delivery Fee</p>
             </div>
           </div>

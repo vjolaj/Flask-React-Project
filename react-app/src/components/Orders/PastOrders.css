@@ -95,7 +95,6 @@
     align-items: center;
 }
 
-<<<<<<< HEAD
 
 @media only screen and (max-width: 900px) {
     .order-content {
@@ -146,7 +145,6 @@
         width: 100%;
         padding: 0;
     }
-=======
 .no-orders{
     width: 100%;
     display: flex;
@@ -160,5 +158,5 @@
 .no-orders a{
     color: rgb(63, 187, 63);
     
->>>>>>> genesis_branch
+}
 }

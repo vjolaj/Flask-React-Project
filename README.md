@@ -89,7 +89,7 @@ Running the frontend server:
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)
 
 ## All Restaurants Page
-![all-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
+![epiceats-landing-page](https://github.com/vjolaj/Flask-React-Project/assets/120198327/3936cdde-13ad-44b8-b105-890d60bf41da)
 
 ## Single Restaurant Page
 ![single-restaurant](https://github.com/vjolaj/Flask-React-Project/assets/120198327/ab441119-acf6-42ae-9b79-80171d870c5a)

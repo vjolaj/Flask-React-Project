@@ -1159,12 +1159,6 @@ def seed_reviews():
 
     ]
 
-
-    # db.session.add(review1)
-    # db.session.add(review2)
-    # db.session.add(review3)
-    # db.session.add(review4)
-    # db.session.add(review5)
     db.session.add_all(reviews)
     db.session.commit()
 

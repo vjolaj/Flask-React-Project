@@ -26,6 +26,18 @@ def seed_order():
         address = "673 Drive"
     )
 
+    # order4 = Order(
+    #    userId = 1,
+    #    restaurantId = 5,
+    #    isCompleted= True,
+    #    deliveryMethod = "Delivery",
+    #    paymentDetails = "Visa",
+    #    address = "321 Drive",
+    #    totalPrice = 25.86
+    # )
+    
+
+    # db.session.add(order4)
     db.session.add(order1)
     db.session.add(order2)
     db.session.add(order3)

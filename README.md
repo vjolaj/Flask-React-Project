@@ -5,7 +5,7 @@ https://epic-eats-yc7r.onrender.com
 
 ## Introduction
 
-In this project, our team cloned and implemented some of the more basic and core features of UberEats and DoorDash. Epic Eats is a food oredering web-app that allows users to browse restaurants and order food from them, leave reviews, and upload/manage restaurants. Its current functionality includes the following features:
+In this project, our team cloned and implemented some of the more basic and core features of UberEats and DoorDash. Epic Eats is a food ordering web-app that allows users to browse restaurants and order food from them, leave reviews, and upload/manage restaurants. Its current functionality includes the following features:
 
 * Signing up a new user and logging in as an existing user
 * Creating, Reading, Updating and Deleting a single Restaurant

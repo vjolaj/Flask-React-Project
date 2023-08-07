@@ -43,8 +43,8 @@ export const authenticate = () => async (dispatch) => {
 		dispatch(getCartThunk())
 		dispatch(readSingleRestaurantThunk())
 		dispatch(getAllRestaurantsThunk())
-		dispatch(getRestaurantReviewsThunk())
-		dispatch(getAllMenuItemsThunk())
+		// dispatch(getRestaurantReviewsThunk())
+		// dispatch(getAllMenuItemsThunk())
 	}
 };
 

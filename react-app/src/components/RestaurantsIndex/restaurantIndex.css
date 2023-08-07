@@ -157,10 +157,35 @@ width: 5rem;
   .main-filter-items {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .dollar-buttoms {
     display: none
   }
+
+  .main-filter-items{
+    margin: 0;
+    width: 100%;
+
+  }
+
+  .singleRestContainer{
+    width: 100%;
+    margin: 0px;
+    height: auto;
+  }
+
+  .rest-index-container{
+    margin-top: 10px;
+    margin: 20px;
+    height: auto;
+  }
+
+  .restImg{
+    width: 23rem;
+    height: 13rem;
+  }
+
 
 }

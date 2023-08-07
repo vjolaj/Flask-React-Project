@@ -257,10 +257,6 @@ input:focus{
   .results-container-white-bg {
     top: 12em;
   }
-  .categories-container {
-    margin-top: 1em;
-    overflow: auto;
-  }
 
   .all-main {
     display: none

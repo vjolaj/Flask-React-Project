@@ -151,3 +151,16 @@ width: 5rem;
   border-radius: 50%;
   font-size: 14px;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .main-filter-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dollar-buttoms {
+    display: none
+  }
+
+}

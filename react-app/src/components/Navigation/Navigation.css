@@ -131,7 +131,8 @@ width: 17rem;
 }
 
 .search-bar{
-width: 26rem;
+/* width: 26rem;
+ */
 display: flex;
 flex-direction: row;
 height: 2.3rem;
@@ -234,4 +235,40 @@ input:focus{
 .search-restaurant-div:hover {
   font-weight: 700;
   background-color: rgba(128, 128, 128, 0.098);
+}
+
+@media only screen and (max-width: 600px) {
+
+  .nav {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .results-container-white-bg {
+    top: 12em;
+  }
+
+  .all-main {
+    display: none
+  }
+
+  .price {
+    display: none
+  }
+
+  .right-side-buttons {
+    margin-bottom: 1em;
+    margin-left: 5em;
+  }
+
 }

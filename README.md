@@ -5,7 +5,7 @@ https://epic-eats-yc7r.onrender.com
 
 ## Introduction
 
-In this project, our team cloned and implemented some of the more basic and core features of UberEats and DoorDash. Epic Eats is a food oredering web-app that allows users to browse restaurants and order food from them, leave reviews, and upload/manage restaurants. Its current functionality includes the following features:
+In this project, our team cloned and implemented some of the more basic and core features of UberEats and DoorDash. Epic Eats is a food ordering web-app that allows users to browse restaurants and order food from them, leave reviews, and upload/manage restaurants. Its current functionality includes the following features:
 
 * Signing up a new user and logging in as an existing user
 * Creating, Reading, Updating and Deleting a single Restaurant
@@ -24,16 +24,18 @@ Similar to UberEats and DoorDash, it's extremely important to limit access of lo
 
 For our site, we decided that only logged in users can create and finalize orders. If a user does not want to create an account, they can log in as a demo user can order that way. They are still able to browse restaurants but logging in is preffered
 
-   A non-logged in user CAN:
-      * Sign up
-      * Log in
-      * Browse restaurants and their menu items
+A non-logged in user CAN:
 
-   A non-logged in user CANNOT:
-      * Create or finalize orders
-      * Create, Update, Delete restaurant details
-      * Create, Update, Delete menu items
-      * Create, Delete reviews
+* Sign up
+* Log in
+* Browse restaurants and their menu items
+
+A non-logged in user CANNOT:
+
+* Create or finalize orders
+* Create, Update, Delete restaurant details
+* Create, Update, Delete menu items
+* Create, Delete reviews
 
 ### Logged in users
 
@@ -82,10 +84,23 @@ Running the frontend server:
 ------------------------------------------------------------------------------------------------------------------------------------
 
 # Images: 
+
+## Landing Page
 ![landing-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683088703629/kings-landing.png)
-![all-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682711208026/food-court.png)
-![checkout-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949682451173386/czechout.png)
+
+## All Restaurants Page
+![epiceats-landing-page](https://github.com/vjolaj/Flask-React-Project/assets/120198327/3936cdde-13ad-44b8-b105-890d60bf41da)
+
+## Single Restaurant Page
+![single-restaurant](https://github.com/vjolaj/Flask-React-Project/assets/120198327/ab441119-acf6-42ae-9b79-80171d870c5a)
+
+## Checkout Page
+![checkout-page](https://github.com/vjolaj/Flask-React-Project/assets/120198327/dcd9d69c-c439-4d22-9084-bc76146abecb)
+
+## Past Orders Page
 ![past-orders-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683533303828/living-in-the-past.png)
+
+## Manage Restaurants Page
 ![manage-restaurants-page](https://cdn.discordapp.com/attachments/1125124805771935765/1127949683797532802/squishy.png)
 
 ### This web-app was developed by Vjola, Calvin, Genesis and Jonathan.

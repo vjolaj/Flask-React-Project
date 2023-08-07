@@ -58,7 +58,6 @@ export const getCartThunk = () => async dispatch => {
         const restaurantRes = await fetch(`/api/restaurants/${cartData.restaurantId}`)
         const restaurantData = await restaurantRes.json()
         cartData.restaurant = restaurantData.restaurant_info
-
     }
 
     dispatch(setCartAction(cartData))

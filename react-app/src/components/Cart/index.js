@@ -35,7 +35,7 @@ const Cart = () => {
     }, [showMenu, items]);
 
     useEffect(() => {
-        dispatch(updateItemQuantityThunk())
+        // dispatch(updateItemQuantityThunk())
         dispatch(getCartThunk())
     }, [dispatch])
 

@@ -146,7 +146,7 @@ function SignupFormPage() {
             className="input"
           />
         </label>
-        <button type="submit" className="logIn-form-button">Sign Up</button>
+        {!Object.values(errors).length ? (<button type="submit" className="logIn-form-button">Sign Up</button>) : <button type="submit" className="logIn-form-button" disabled>Sign Up</button>}
       </form>
     </>
   );
